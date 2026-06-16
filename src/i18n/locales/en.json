@@ -40,6 +40,62 @@
     "cost_value": "10×",
     "cost_label": "Error cost reduction"
   },
+  "solutions": {
+    "section_label": "SOLUTIONS",
+    "title": "Designed for your context",
+    "subtitle": "The same AI engine, adapted to startup velocity or enterprise governance.",
+    "tabs": ["Startups & Squads", "Enterprise & Corporate"],
+    "startup": {
+      "headline": "From meeting to sprint in minutes, not days",
+      "pain": "Your squad can't wait 2 days for a clean backlog after every discovery call. Every hour of friction is lost sprint velocity.",
+      "benefits": [
+        { "title": "Backlog ready post-meeting",      "desc": "The analyst leaves the call with structured User Stories and generated Gherkin — not loose notes that need to be re-interpreted the next day." },
+        { "title": "No manual formatting",            "desc": "Forget copy-pasting between transcripts, Notion, and Jira. ReqsAI connects all three in one automatic flow." },
+        { "title": "Edge cases detected live",        "desc": "The AI co-pilot suggests questions during the meeting to surface scenarios the analyst wouldn't have asked with the client present." },
+        { "title": "One-click export to Jira",        "desc": "Approved stories arrive in your backlog with pre-filled fields (story points, labels, acceptance criteria) ready for sprint planning." }
+      ],
+      "stat_value": "40%",
+      "stat_label": "fewer follow-up meetings from the very first sprint",
+      "cta": "See Startup plan →"
+    },
+    "enterprise": {
+      "headline": "Compliance, scale and isolation from day one",
+      "pain": "Legal needs data isolation guarantees. Analysts handle 3-hour recordings with non-technical stakeholders. The architecture has 3 years of history that can't be ignored.",
+      "benefits": [
+        { "title": "Schema-per-tenant isolation",       "desc": "Each organization has its own database schema. No shared data, no risk of cross-tenant leaks — technical documentation available for your legal team." },
+        { "title": "RAG with project history",         "desc": "The context engine detects duplicate requirements and automatically aligns with the existing architecture using your vectorized project history." },
+        { "title": "SSO / SAML 2.0 + 99.9% SLA",      "desc": "Integration with your corporate identity provider (Okta, Azure AD) and uptime SLA for critical production environments." },
+        { "title": "Azure DevOps + full traceability", "desc": "Export to Jira or Azure DevOps with approval workflow, change history and full traceability from meeting → story → sprint." }
+      ],
+      "stat_value": "10×",
+      "stat_label": "reduction in requirements error cost in production",
+      "cta": "Talk to sales →"
+    }
+  },
+  "footer": {
+    "cta_title": "Start eliciting without losing anything",
+    "cta_subtitle": "14 days free, no credit card. Cancel anytime.",
+    "cta_button": "Create free account",
+    "cta_login": "Already have an account? Sign in",
+    "tagline": "From the meeting to the backlog, without friction.",
+    "cols": {
+      "product": {
+        "title": "Product",
+        "links": ["Features", "Pricing", "Integrations", "Changelog", "Security"]
+      },
+      "resources": {
+        "title": "Resources",
+        "links": ["Documentation", "API Reference", "Status", "Blog", "Community"]
+      },
+      "company": {
+        "title": "Company",
+        "links": ["About us", "Careers", "Press", "Contact"]
+      }
+    },
+    "copyright": "© 2025 Kntro-Soft. All rights reserved.",
+    "made_in": "Made in Lima, Peru 🇵🇪",
+    "legal": ["Privacy", "Terms", "Cookies"]
+  },
   "faq": {
     "section_label": "FREQUENTLY ASKED QUESTIONS",
     "title": "Everything you need to know",

@@ -40,6 +40,62 @@
     "cost_value": "10×",
     "cost_label": "Reducción en costo de errores"
   },
+  "solutions": {
+    "section_label": "SOLUCIONES",
+    "title": "Diseñado para tu contexto",
+    "subtitle": "El mismo motor de IA, adaptado a la velocidad de una startup o a la gobernanza de una enterprise.",
+    "tabs": ["Startups & Squads", "Enterprise & Corporate"],
+    "startup": {
+      "headline": "De la reunión al sprint en minutos, no en días",
+      "pain": "Tu squad no puede esperar 2 días para tener un backlog limpio después de cada discovery call. Cada hora de fricción es velocidad de sprint perdida.",
+      "benefits": [
+        { "title": "Backlog listo post-reunión",      "desc": "El analista sale de la llamada con User Stories estructuradas y Gherkin generado, no con notas sueltas que hay que reinterpretar al día siguiente." },
+        { "title": "Sin formateo manual",             "desc": "Olvida el copy-paste entre transcripciones, Notion y Jira. ReqsAI conecta los tres en un solo flujo automático." },
+        { "title": "Edge cases detectados en vivo",  "desc": "El copiloto IA sugiere preguntas durante la reunión para revelar escenarios que el analista no habría preguntado con el cliente presente." },
+        { "title": "Exportación a Jira con un clic", "desc": "Las historias aprobadas llegan a tu backlog con campos pre-llenados (story points, labels, acceptance criteria) listos para el sprint planning." }
+      ],
+      "stat_value": "40%",
+      "stat_label": "menos reuniones de seguimiento desde el primer sprint",
+      "cta": "Ver plan Startup →"
+    },
+    "enterprise": {
+      "headline": "Compliance, escala y aislamiento desde el día uno",
+      "pain": "Legal necesita garantías de aislamiento de datos. Los analistas manejan grabaciones de 3 horas con stakeholders no técnicos. La arquitectura tiene 3 años de historia que no puede ignorarse.",
+      "benefits": [
+        { "title": "Aislamiento schema-per-tenant",       "desc": "Cada organización tiene su propio esquema de base de datos. Sin datos compartidos, sin riesgo de cross-tenant leaks — documentación técnica disponible para tu equipo legal." },
+        { "title": "RAG con historial de proyecto",      "desc": "El motor de contexto detecta requerimientos duplicados y alinea automáticamente con la arquitectura existente usando el historial vectorizado de tus proyectos." },
+        { "title": "SSO / SAML 2.0 + SLA 99.9%",        "desc": "Integración con tu proveedor de identidad corporativo (Okta, Azure AD) y SLA de disponibilidad para entornos de producción críticos." },
+        { "title": "Azure DevOps + trazabilidad total",  "desc": "Exporta a Jira o Azure DevOps con flujo de aprobación, historial de cambios y trazabilidad completa entre reunión → historia → sprint." }
+      ],
+      "stat_value": "10×",
+      "stat_label": "reducción en costo de errores de requerimientos en producción",
+      "cta": "Hablar con ventas →"
+    }
+  },
+  "footer": {
+    "cta_title": "Empieza a elicitar sin perder nada",
+    "cta_subtitle": "14 días gratis, sin tarjeta de crédito. Cancela cuando quieras.",
+    "cta_button": "Crear cuenta gratis",
+    "cta_login": "¿Ya tienes cuenta? Inicia sesión",
+    "tagline": "De la reunión al backlog, sin fricción.",
+    "cols": {
+      "product": {
+        "title": "Producto",
+        "links": ["Funcionalidades", "Precios", "Integraciones", "Changelog", "Seguridad"]
+      },
+      "resources": {
+        "title": "Recursos",
+        "links": ["Documentación", "API Reference", "Status", "Blog", "Comunidad"]
+      },
+      "company": {
+        "title": "Empresa",
+        "links": ["Sobre nosotros", "Careers", "Prensa", "Contacto"]
+      }
+    },
+    "copyright": "© 2025 Kntro-Soft. Todos los derechos reservados.",
+    "made_in": "Hecho en Lima, Perú 🇵🇪",
+    "legal": ["Privacidad", "Términos", "Cookies"]
+  },
   "faq": {
     "section_label": "PREGUNTAS FRECUENTES",
     "title": "Todo lo que necesitas saber",
