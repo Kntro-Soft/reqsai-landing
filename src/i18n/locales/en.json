@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "product": "Product",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "login": "Sign in",
+    "cta": "Start free",
+    "menu_open": "Open menu",
+    "menu_close": "Close menu"
+  },
+  "hero": {
+    "badge": "AI Assistant for Requirements Meetings",
+    "headline_1": "Turn discovery meetings into",
+    "headline_2": "perfect backlogs",
+    "subheadline": "ReqsAI listens to your elicitation sessions in real time and automatically generates structured User Stories with Gherkin acceptance criteria — so you never miss a critical edge case again.",
+    "cta_primary": "Start 14-day free trial",
+    "cta_secondary": "Watch demo",
+    "note": "No credit card required · Cancel anytime",
+    "mockup": {
+      "live_badge": "LIVE SESSION",
+      "ai_suggestion": "AI Suggestion",
+      "ai_text": "Consider the edge case: what happens when the user has no active subscription but tries to access a premium feature?",
+      "story_label": "GENERATED USER STORY",
+      "feature": "Premium Access Control",
+      "scenario": "User without subscription attempts access",
+      "given": "a user with a free account",
+      "when": "they navigate to a premium section",
+      "then": "they see an upgrade modal",
+      "and": "their current path is saved for post-upgrade redirect",
+      "approve": "Approve",
+      "export": "Export to Jira",
+      "counter": "1 of 8 stories"
+    }
+  },
+  "stats": {
+    "meetings_value": "40%",
+    "meetings_label": "Fewer follow-up meetings",
+    "acceptance_value": ">80%",
+    "acceptance_label": "First-pass acceptance rate",
+    "cost_value": "10×",
+    "cost_label": "Error cost reduction"
+  },
+  "features": {
+    "section_label": "CAPABILITIES",
+    "title": "Everything your team needs to elicit requirements perfectly",
+    "subtitle": "From the meeting to a sprint-ready backlog, without friction.",
+    "live_title": "Live AI Co-pilot",
+    "live_desc": "Real-time prompts during client meetings to surface hidden edge cases and logic gaps before the call ends.",
+    "gherkin_title": "Auto-generated Gherkin",
+    "gherkin_desc": "Structured Given-When-Then acceptance criteria generated instantly from meeting transcripts, ready to export.",
+    "rag_title": "Intelligent Context (RAG)",
+    "rag_desc": "Detects requirement duplication and automatically aligns with your existing architecture using your project history.",
+    "privacy_title": "Enterprise Privacy",
+    "privacy_desc": "Schema-per-tenant isolation to guarantee that each organization's data is completely separate and secure.",
+    "jira_title": "Jira Integration",
+    "jira_desc": "Export approved User Stories directly to your Jira or Azure DevOps backlog with one click, in under 10 minutes.",
+    "collab_title": "Team Review",
+    "collab_desc": "Share, comment and approve User Stories with the whole team before they reach the sprint. Full traceability included."
+  }
+}
