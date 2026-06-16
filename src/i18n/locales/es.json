@@ -1,0 +1,306 @@
+{
+  "nav": {
+    "product": "Producto",
+    "solutions": "Soluciones",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "cta": "Prueba gratis",
+    "menu_open": "Abrir menú",
+    "menu_close": "Cerrar menú"
+  },
+  "hero": {
+    "badge": "Asistente IA para Reuniones de Requerimientos",
+    "headline_1": "Transforma reuniones en",
+    "headline_2": "backlogs perfectos",
+    "subheadline": "ReqsAI escucha tus sesiones de elicitación en tiempo real y genera automáticamente User Stories estructuradas con criterios de aceptación en Gherkin — para que nunca pierdas un caso edge crítico.",
+    "cta_primary": "Prueba 14 días gratis",
+    "cta_secondary": "Ver demo",
+    "note": "Sin tarjeta de crédito · Cancela cuando quieras",
+    "mockup": {
+      "live_badge": "SESIÓN EN VIVO",
+      "ai_suggestion": "Sugerencia IA",
+      "ai_text": "Considera el edge case: ¿qué sucede cuando el usuario no tiene suscripción activa e intenta acceder a una función premium?",
+      "story_label": "USER STORY GENERADA",
+      "feature": "Control de Acceso Premium",
+      "scenario": "Usuario sin suscripción intenta acceder",
+      "given": "un usuario con cuenta gratuita",
+      "when": "navega a una sección premium",
+      "then": "ve un modal de actualización",
+      "and": "su ruta actual se guarda para redirigir post-upgrade",
+      "approve": "Aprobar",
+      "export": "Exportar a Jira",
+      "counter": "1 de 8 historias"
+    }
+  },
+  "stats": {
+    "meetings_value": "40%",
+    "meetings_label": "Menos reuniones de seguimiento",
+    "acceptance_value": ">80%",
+    "acceptance_label": "Tasa de aceptación en primer pase",
+    "cost_value": "10×",
+    "cost_label": "Reducción en costo de errores"
+  },
+  "solutions": {
+    "section_label": "SOLUCIONES",
+    "title": "Diseñado para tu contexto",
+    "subtitle": "El mismo motor de IA, adaptado a la velocidad de una startup o a la gobernanza de una enterprise.",
+    "tabs": ["Startups & Squads", "Enterprise & Corporate"],
+    "startup": {
+      "headline": "De la reunión al sprint en minutos, no en días",
+      "pain": "Tu squad no puede esperar 2 días para tener un backlog limpio después de cada discovery call. Cada hora de fricción es velocidad de sprint perdida.",
+      "benefits": [
+        { "title": "Backlog listo post-reunión",      "desc": "El analista sale de la llamada con User Stories estructuradas y Gherkin generado, no con notas sueltas que hay que reinterpretar al día siguiente." },
+        { "title": "Sin formateo manual",             "desc": "Olvida el copy-paste entre transcripciones, Notion y Jira. ReqsAI conecta los tres en un solo flujo automático." },
+        { "title": "Edge cases detectados en vivo",  "desc": "El copiloto IA sugiere preguntas durante la reunión para revelar escenarios que el analista no habría preguntado con el cliente presente." },
+        { "title": "Exportación a Jira con un clic", "desc": "Las historias aprobadas llegan a tu backlog con campos pre-llenados (story points, labels, acceptance criteria) listos para el sprint planning." }
+      ],
+      "stat_value": "40%",
+      "stat_label": "menos reuniones de seguimiento desde el primer sprint",
+      "cta": "Ver plan Startup →"
+    },
+    "enterprise": {
+      "headline": "Compliance, escala y aislamiento desde el día uno",
+      "pain": "Legal necesita garantías de aislamiento de datos. Los analistas manejan grabaciones de 3 horas con stakeholders no técnicos. La arquitectura tiene 3 años de historia que no puede ignorarse.",
+      "benefits": [
+        { "title": "Aislamiento schema-per-tenant",       "desc": "Cada organización tiene su propio esquema de base de datos. Sin datos compartidos, sin riesgo de cross-tenant leaks — documentación técnica disponible para tu equipo legal." },
+        { "title": "RAG con historial de proyecto",      "desc": "El motor de contexto detecta requerimientos duplicados y alinea automáticamente con la arquitectura existente usando el historial vectorizado de tus proyectos." },
+        { "title": "SSO / SAML 2.0 + SLA 99.9%",        "desc": "Integración con tu proveedor de identidad corporativo (Okta, Azure AD) y SLA de disponibilidad para entornos de producción críticos." },
+        { "title": "Azure DevOps + trazabilidad total",  "desc": "Exporta a Jira o Azure DevOps con flujo de aprobación, historial de cambios y trazabilidad completa entre reunión → historia → sprint." }
+      ],
+      "stat_value": "10×",
+      "stat_label": "reducción en costo de errores de requerimientos en producción",
+      "cta": "Hablar con ventas →"
+    }
+  },
+  "footer": {
+    "cta_title": "Empieza a elicitar sin perder nada",
+    "cta_subtitle": "14 días gratis, sin tarjeta de crédito. Cancela cuando quieras.",
+    "cta_button": "Crear cuenta gratis",
+    "cta_login": "¿Ya tienes cuenta? Inicia sesión",
+    "tagline": "De la reunión al backlog, sin fricción.",
+    "cols": {
+      "product": {
+        "title": "Producto",
+        "links": ["Funcionalidades", "Precios", "Integraciones", "Changelog", "Seguridad"]
+      },
+      "resources": {
+        "title": "Recursos",
+        "links": ["Documentación", "API Reference", "Status", "Blog", "Comunidad"]
+      },
+      "company": {
+        "title": "Empresa",
+        "links": ["Sobre nosotros", "Careers", "Prensa", "Contacto"]
+      }
+    },
+    "copyright": "© 2025 Kntro-Soft. Todos los derechos reservados.",
+    "made_in": "Hecho en Lima, Perú 🇵🇪",
+    "legal": ["Privacidad", "Términos", "Cookies"]
+  },
+  "faq": {
+    "section_label": "PREGUNTAS FRECUENTES",
+    "title": "Todo lo que necesitas saber",
+    "subtitle": "¿Algo que no encuentras aquí? Escríbenos a hola@reqsai.com",
+    "items": [
+      {
+        "q": "¿Cómo funciona ReqsAI durante una reunión en vivo?",
+        "a": "ReqsAI se conecta al audio de tu reunión (Zoom, Meet, Teams) o a un archivo de grabación. Mientras el analista conversa con el cliente, el motor de IA transcribe en tiempo real, detecta requerimientos implícitos y sugiere preguntas para revelar edge cases ocultos. Al terminar la reunión, el sistema genera automáticamente las User Stories con criterios de aceptación en Gherkin listos para revisar."
+      },
+      {
+        "q": "¿Mis datos están seguros? ¿Cómo se aíslan entre organizaciones?",
+        "a": "Usamos una arquitectura de aislamiento schema-per-tenant: cada organización tiene su propio esquema de base de datos completamente separado. Ningún dato cruza entre tenants bajo ninguna circunstancia. Los vectores RAG también se almacenan por tenant. Cumplimos con estándares de seguridad enterprise y podemos proveer documentación técnica de aislamiento al equipo legal en el proceso de onboarding Enterprise."
+      },
+      {
+        "q": "¿Necesito instalar algún software o plugin?",
+        "a": "No. ReqsAI funciona 100% en la nube desde el navegador. Para reuniones en vivo ofrecemos un bot de grabación que se une automáticamente a tu sala de Zoom o Meet — sin instalar nada en tu computadora. Para grabaciones existentes simplemente subes el archivo de audio o video directamente desde la plataforma."
+      },
+      {
+        "q": "¿Con qué herramientas se integra ReqsAI?",
+        "a": "En el plan Startup incluimos integración con Jira (Cloud y Server) y Azure DevOps. Las User Stories aprobadas se exportan directamente como issues con los campos correctos pre-llenados. También ofrecemos webhooks para integraciones personalizadas en el plan Enterprise. Próximamente: Linear, Notion y GitHub Issues."
+      },
+      {
+        "q": "¿Puedo analizar grabaciones de reuniones anteriores?",
+        "a": "Sí. Además del modo en vivo, puedes subir archivos MP3, MP4, WAV o importar desde Google Drive y OneDrive. El motor procesa el audio, identifica requerimientos y genera el mismo output estructurado que en una sesión en vivo. Ideal para equipos que quieren retroalimentar contexto histórico al sistema RAG."
+      },
+      {
+        "q": "¿Qué tan preciso es el Gherkin generado? ¿Cuánto hay que editarlo?",
+        "a": "En sesiones con buena calidad de audio y conversaciones estructuradas, los analistas reportan menos de 15 minutos de edición promedio por sesión. El sistema aprende del historial de tu proyecto vía RAG, lo que mejora la precisión con cada sesión. Todas las historias pasan por un flujo de revisión y aprobación antes de exportarse, así que el equipo siempre tiene control final."
+      },
+      {
+        "q": "¿En qué idiomas funciona la IA?",
+        "a": "El motor de transcripción y análisis soporta español, inglés y portugués de forma nativa — los tres idiomas más usados en equipos de tecnología en LATAM. El Gherkin puede generarse en el idioma que prefieras. La plataforma (UI) está disponible en español e inglés."
+      },
+      {
+        "q": "¿Cómo funciona el período de prueba de 14 días?",
+        "a": "Al registrarte, tu cuenta queda en estado Trial con acceso completo al plan Startup durante 14 días — sin tarjeta de crédito requerida. Puedes procesar reuniones reales, invitar a tu equipo y exportar a Jira. Al final del período te avisamos con anticipación y puedes continuar con un plan pago o pasar al plan Starter gratuito sin perder tus datos."
+      }
+    ]
+  },
+  "contact": {
+    "section_label": "CONTACTO",
+    "title": "Hablemos de tu equipo",
+    "subtitle": "¿Tienes preguntas sobre planes, seguridad o una integración específica? Escríbenos y respondemos en menos de 24 horas.",
+    "info_email_label": "Email directo",
+    "info_email": "hola@reqsai.com",
+    "info_response_label": "Tiempo de respuesta",
+    "info_response": "Menos de 24 horas hábiles",
+    "info_calendar_label": "Demo en vivo",
+    "info_calendar": "Agenda una sesión de 30 min",
+    "form_name": "Nombre completo",
+    "form_name_placeholder": "Alejandro Ríos",
+    "form_email": "Email corporativo",
+    "form_email_placeholder": "alex@tuempresa.com",
+    "form_company": "Empresa",
+    "form_company_placeholder": "Wiio S.A.C.",
+    "form_role": "Tu rol",
+    "form_role_placeholder": "Selecciona tu rol",
+    "form_plan": "Plan de interés",
+    "form_plan_placeholder": "Selecciona un plan",
+    "form_message": "¿En qué podemos ayudarte?",
+    "form_message_placeholder": "Cuéntanos sobre tu equipo, el proceso actual y qué quieres mejorar...",
+    "form_submit": "Enviar mensaje",
+    "form_submitting": "Enviando...",
+    "form_success_title": "¡Mensaje recibido!",
+    "form_success_body": "Nos pondremos en contacto contigo en menos de 24 horas hábiles.",
+    "roles": ["Tech Lead", "Analista de Sistemas", "Product Owner", "CTO / VP Engineering", "Otro"],
+    "plans": ["Startup ($49/mes)", "Enterprise (custom)", "Solo tengo preguntas"]
+  },
+  "pricing": {
+    "section_label": "PRECIOS",
+    "title": "Planes para cada etapa de tu equipo",
+    "subtitle": "Sin contratos anuales forzados. Empieza gratis y escala cuando estés listo.",
+    "toggle_monthly": "Mensual",
+    "toggle_annual": "Anual",
+    "save_badge": "Ahorra 20%",
+    "popular_badge": "Más popular",
+    "cta_start": "Empezar gratis",
+    "cta_pro": "Prueba 14 días gratis",
+    "cta_enterprise": "Hablar con ventas",
+    "per_month": "/ mes",
+    "billed_annually": "facturado anualmente",
+    "billed_monthly": "facturado mensualmente",
+    "custom_price": "Custom",
+    "contact_us": "Contáctanos",
+    "plans": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "desc": "Para explorar la plataforma y validar el flujo con tu equipo.",
+        "monthly": 0,
+        "annual": 0,
+        "highlight": false,
+        "features": [
+          { "text": "3 sesiones por mes", "included": true },
+          { "text": "5 User Stories por sesión", "included": true },
+          { "text": "Exportar a Jira (básico)", "included": true },
+          { "text": "Gherkin automático", "included": true },
+          { "text": "Copiloto IA en vivo", "included": false },
+          { "text": "Contexto RAG", "included": false },
+          { "text": "Revisión en equipo", "included": false },
+          { "text": "Aislamiento schema-per-tenant", "included": false }
+        ]
+      },
+      {
+        "id": "startup",
+        "name": "Startup",
+        "desc": "Para squads ágiles que necesitan velocidad de sprint sin fricción.",
+        "monthly": 49,
+        "annual": 39,
+        "highlight": true,
+        "features": [
+          { "text": "Sesiones ilimitadas", "included": true },
+          { "text": "User Stories ilimitadas", "included": true },
+          { "text": "Exportar a Jira & Azure DevOps", "included": true },
+          { "text": "Gherkin automático", "included": true },
+          { "text": "Copiloto IA en vivo", "included": true },
+          { "text": "Contexto RAG", "included": true },
+          { "text": "Revisión en equipo (hasta 10)", "included": true },
+          { "text": "Aislamiento schema-per-tenant", "included": false }
+        ]
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "desc": "Para organizaciones con compliance, SSO y escala multi-proyecto.",
+        "monthly": null,
+        "annual": null,
+        "highlight": false,
+        "features": [
+          { "text": "Todo lo de Startup", "included": true },
+          { "text": "Usuarios ilimitados", "included": true },
+          { "text": "SSO / SAML 2.0", "included": true },
+          { "text": "SLA 99.9% uptime", "included": true },
+          { "text": "Copiloto IA en vivo", "included": true },
+          { "text": "Contexto RAG avanzado", "included": true },
+          { "text": "Revisión en equipo ilimitada", "included": true },
+          { "text": "Aislamiento schema-per-tenant", "included": true }
+        ]
+      }
+    ]
+  },
+  "testimonials": {
+    "section_label": "TESTIMONIOS",
+    "title": "Equipos que ya elicitan sin perder nada",
+    "subtitle": "Startups y empresas de LATAM que transformaron su proceso de requerimientos.",
+    "items": [
+      {
+        "quote": "Antes perdíamos entre 2 y 3 reuniones de seguimiento por sprint solo para aclarar requerimientos mal capturados. Con ReqsAI, el analista llega a la retrospectiva con el backlog completo y aprobado. El impacto en velocidad fue inmediato.",
+        "name": "Alejandro Ríos",
+        "role": "Tech Lead",
+        "company": "Wiio",
+        "initials": "AR",
+        "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+        "color": "blue",
+        "stars": 5
+      },
+      {
+        "quote": "Soy la puente entre stakeholders que no hablan técnico y un equipo que necesita criterios exactos. ReqsAI genera los Gherkin mientras yo me concentro en escuchar al cliente. Por fin puedo hacer activa la escucha activa.",
+        "name": "Claudia Mendoza",
+        "role": "Analista de Sistemas Sr.",
+        "company": "Grupo Financiero Andino",
+        "initials": "CM",
+        "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+        "color": "violet",
+        "stars": 5
+      },
+      {
+        "quote": "Lo que más me sorprendió fue el contexto RAG. En un proyecto con 3 años de historia, ReqsAI detectó que estábamos duplicando un módulo que ya habíamos implementado. Nos ahorró semanas de trabajo.",
+        "name": "Sebastián Vargas",
+        "role": "Product Owner",
+        "company": "Nuvem Studio",
+        "initials": "SV",
+        "photo": "https://randomuser.me/api/portraits/men/61.jpg",
+        "color": "indigo",
+        "stars": 5
+      },
+      {
+        "quote": "El aislamiento por schema-per-tenant fue lo que convenció a Legal. Necesitábamos garantizar que los datos de cada cliente estuvieran completamente separados y ReqsAI lo hace por defecto. Cero fricción en el proceso de compliance.",
+        "name": "Mariana Torres",
+        "role": "CTO",
+        "company": "DataSafe Enterprise",
+        "initials": "MT",
+        "photo": "https://randomuser.me/api/portraits/women/26.jpg",
+        "color": "emerald",
+        "stars": 5
+      }
+    ]
+  },
+  "features": {
+    "section_label": "CAPACIDADES",
+    "title": "Todo lo que tu equipo necesita para elicitar requerimientos perfectos",
+    "subtitle": "De la reunión al backlog listo para el sprint, sin fricción.",
+    "live_title": "Copiloto IA en Vivo",
+    "live_desc": "Sugerencias en tiempo real durante la reunión con el cliente para detectar edge cases ocultos y brechas lógicas antes de que termine la llamada.",
+    "gherkin_title": "Gherkin Automático",
+    "gherkin_desc": "Criterios de aceptación Given-When-Then estructurados, generados instantáneamente desde transcripciones de reuniones listos para exportar.",
+    "rag_title": "Contexto Inteligente (RAG)",
+    "rag_desc": "Detecta duplicación de requerimientos y alinea automáticamente con la arquitectura existente usando el historial de tus proyectos.",
+    "privacy_title": "Privacidad Enterprise",
+    "privacy_desc": "Aislamiento schema-por-tenant para garantizar que los datos de cada organización estén completamente separados y seguros.",
+    "jira_title": "Integración con Jira",
+    "jira_desc": "Exporta User Stories aprobadas directamente a tu backlog de Jira o Azure DevOps con un solo clic, en menos de 10 minutos.",
+    "collab_title": "Revisión en Equipo",
+    "collab_desc": "Comparte, comenta y aprueba User Stories con todo el equipo antes de que lleguen al sprint. Trazabilidad completa incluida."
+  }
+}
