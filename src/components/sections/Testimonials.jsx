@@ -88,7 +88,7 @@ export default function Testimonials() {
       aria-labelledby="testimonials-heading"
     >
       {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-72 h-72 bg-blue-600/8 rounded-full blur-3xl" />
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-72 h-72 bg-violet-600/8 rounded-full blur-3xl" />
       </div>

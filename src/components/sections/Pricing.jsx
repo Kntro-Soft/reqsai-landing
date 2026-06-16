@@ -159,7 +159,7 @@ export default function Pricing() {
       aria-labelledby="pricing-heading"
     >
       {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-blue-600/8 rounded-full blur-3xl" />
       </div>
 

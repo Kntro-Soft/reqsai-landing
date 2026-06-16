@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { useScrolled } from '../../hooks/useScrolled'
 
-const NAV_LINKS = ['product', 'solutions', 'pricing']
+const NAV_LINKS = ['product', 'solutions', 'pricing', 'faq', 'contact']
 
 function LangToggle() {
   const { i18n } = useTranslation()
@@ -61,7 +61,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-6" role="list">
+        <ul className="hidden lg:flex items-center gap-6" role="list">
           {NAV_LINKS.map((key) => (
             <li key={key}>
               <a
@@ -75,7 +75,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop actions */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <LangToggle />
           <a
             href="#login"
@@ -92,7 +92,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile hamburger */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex lg:hidden items-center gap-3">
           <LangToggle />
           <button
             onClick={() => setOpen((v) => !v)}
@@ -110,8 +110,8 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         aria-hidden={!open}
-        className={`md:hidden glass-nav border-t border-white/5 overflow-hidden transition-all duration-300 ${
-          open ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+        className={`lg:hidden glass-nav border-t border-white/5 overflow-hidden transition-all duration-300 ${
+          open ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 py-4 flex flex-col gap-1">

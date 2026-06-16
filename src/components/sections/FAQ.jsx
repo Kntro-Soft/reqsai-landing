@@ -66,7 +66,7 @@ export default function FAQ() {
       className="relative py-24 lg:py-32 border-t border-white/5"
       aria-labelledby="faq-heading"
     >
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-64 bg-indigo-600/6 rounded-full blur-3xl" />
       </div>
 

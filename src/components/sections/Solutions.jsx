@@ -45,7 +45,7 @@ export default function Solutions() {
       aria-labelledby="solutions-heading"
     >
       {/* Ambient */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div className={`absolute top-1/3 transition-all duration-700 ${active === 0 ? 'left-1/4' : 'right-1/4'} w-80 h-80 ${active === 0 ? 'bg-blue-600/8' : 'bg-violet-600/8'} rounded-full blur-3xl`} />
       </div>
 
@@ -68,7 +68,7 @@ export default function Solutions() {
 
         {/* Tab switcher */}
         <div className="flex justify-center mb-12" role="tablist" aria-label={t('solutions.section_label')}>
-          <div className="inline-flex gap-2 p-1 rounded-xl glass">
+          <div className="flex flex-col sm:flex-row gap-2 p-1 rounded-xl glass w-full sm:w-auto">
             {tabs.map((label, i) => {
               const Icon = TAB_ICONS[i]
               const isActive = active === i
@@ -79,7 +79,7 @@ export default function Solutions() {
                   aria-selected={isActive}
                   aria-controls={`solutions-panel-${i}`}
                   onClick={() => setActive(i)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border transition-all duration-200 ${
+                  className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border transition-all duration-200 w-full sm:w-auto ${
                     isActive
                       ? TAB_STYLES[i].active
                       : 'border-transparent text-slate-500 hover:text-slate-300'
