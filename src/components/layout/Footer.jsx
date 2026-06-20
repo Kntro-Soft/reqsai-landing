@@ -78,12 +78,16 @@ export default function Footer() {
 
             {/* Brand column */}
             <div className="col-span-2 lg:col-span-1">
-              <a href="/" className="inline-flex items-center gap-1.5 mb-4" aria-label="ReqsAI — home">
-                <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-blue-600 text-white text-xs font-bold select-none">
-                  R
-                </span>
-                <span className="font-semibold text-white tracking-tight">
-                  Reqs<span className="gradient-text">AI</span>
+              <a href="/" className="inline-flex items-center gap-2.5 mb-4" aria-label="ReqsAI — home">
+                <img
+                  src="/reqsai-combination-mark-white.webp"
+                  alt="ReqsAI"
+                  className="h-8 w-auto"
+                  width="36"
+                  height="36"
+                />
+                <span className="text-base font-semibold tracking-tight text-white">
+                  Reqs AI
                 </span>
               </a>
               <p className="text-sm text-slate-500 leading-relaxed max-w-[200px]">
