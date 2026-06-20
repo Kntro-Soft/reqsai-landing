@@ -51,12 +51,16 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <a href="/" className="flex items-center gap-1.5 shrink-0" aria-label="ReqsAI — home">
-          <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-blue-600 text-white text-xs font-bold select-none">
-            R
-          </span>
-          <span className="font-semibold text-white tracking-tight">
-            Reqs<span className="gradient-text">AI</span>
+        <a href="/" className="flex items-center gap-2.5 shrink-0" aria-label="ReqsAI — home">
+          <img
+            src="/reqsai-combination-mark-white.webp"
+            alt="ReqsAI"
+            className="h-8 w-auto sm:h-9"
+            width="36"
+            height="36"
+          />
+          <span className="text-base sm:text-lg font-semibold tracking-tight text-white">
+            Reqs AI
           </span>
         </a>
 

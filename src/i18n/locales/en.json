@@ -44,34 +44,34 @@
   },
   "solutions": {
     "section_label": "SOLUTIONS",
-    "title": "Designed for your context",
-    "subtitle": "The same AI engine, adapted to startup velocity or enterprise governance.",
-    "tabs": ["Startups & Squads", "Enterprise & Corporate"],
-    "startup": {
-      "headline": "From meeting to sprint in minutes, not days",
-      "pain": "Your squad can't wait 2 days for a clean backlog after every discovery call. Every hour of friction is lost sprint velocity.",
+    "title": "Built for your team",
+    "subtitle": "Compare how ReqsAI adapts to software consultancies and product teams that need different workflows but the same clarity.",
+    "tabs": ["Software Consultancies", "Product Managers / Startups"],
+    "consulting": {
+      "headline": "Reduce billable hours lost to analysis and requirements capture",
+      "pain": "When your team depends on workshops, discovery calls, and manual validation, every poorly documented meeting turns into non-billable hours, rework, and fuzzy scope with the client.",
       "benefits": [
-        { "title": "Backlog ready post-meeting",      "desc": "The analyst leaves the call with structured User Stories and generated Gherkin — not loose notes that need to be re-interpreted the next day." },
-        { "title": "No manual formatting",            "desc": "Forget copy-pasting between transcripts, Notion, and Jira. ReqsAI connects all three in one automatic flow." },
-        { "title": "Edge cases detected live",        "desc": "The AI co-pilot suggests questions during the meeting to surface scenarios the analyst wouldn't have asked with the client present." },
-        { "title": "One-click export to Jira",        "desc": "Approved stories arrive in your backlog with pre-filled fields (story points, labels, acceptance criteria) ready for sprint planning." }
+        { "title": "Fewer manual discovery hours", "desc": "Every session ends with structured User Stories and ready-to-review Gherkin, reducing the time your team spends reconstructing agreements and cleaning up notes." },
+        { "title": "More billable capacity", "desc": "Analysts spend less time on administrative follow-up between meetings and can support more accounts or go deeper on new initiatives faster." },
+        { "title": "Less client-side rework", "desc": "The AI co-pilot suggests questions live to close gaps before the next meeting and avoid unplanned clarification rounds." },
+        { "title": "Deliverables ready to share", "desc": "Export approved stories to Jira or Azure DevOps with consistent formatting so clients see tangible progress without manual handoff work." }
       ],
-      "stat_value": "40%",
-      "stat_label": "fewer follow-up meetings from the very first sprint",
-      "cta": "See Startup plan →"
-    },
-    "enterprise": {
-      "headline": "Compliance, scale and isolation from day one",
-      "pain": "Legal needs data isolation guarantees. Analysts handle 3-hour recordings with non-technical stakeholders. The architecture has 3 years of history that can't be ignored.",
-      "benefits": [
-        { "title": "Schema-per-tenant isolation",       "desc": "Each organization has its own database schema. No shared data, no risk of cross-tenant leaks — technical documentation available for your legal team." },
-        { "title": "RAG with project history",         "desc": "The context engine detects duplicate requirements and automatically aligns with the existing architecture using your vectorized project history." },
-        { "title": "SSO / SAML 2.0 + 99.9% SLA",      "desc": "Integration with your corporate identity provider (Okta, Azure AD) and uptime SLA for critical production environments." },
-        { "title": "Azure DevOps + full traceability", "desc": "Export to Jira or Azure DevOps with approval workflow, change history and full traceability from meeting → story → sprint." }
-      ],
-      "stat_value": "10×",
-      "stat_label": "reduction in requirements error cost in production",
+      "stat_value": "-30%",
+      "stat_label": "less operational time spent on repetitive analysis work",
       "cta": "Talk to sales →"
+    },
+    "startup": {
+      "headline": "Push requirements straight into Jira and move faster with agile workflows",
+      "pain": "Your product team can't slow down the sprint just to turn meetings into clear tickets. You need to move from conversation to backlog without losing context or momentum.",
+      "benefits": [
+        { "title": "Direct Jira integration", "desc": "Approved stories land in your backlog with pre-filled fields, ready for prioritization, estimation, and sprint planning." },
+        { "title": "Better fit for agile teams", "desc": "ReqsAI turns conversations into actionable stories, helping Product Managers and squads keep weekly cadence without documentation bottlenecks." },
+        { "title": "Edge cases before development starts", "desc": "The AI suggests questions during the meeting to surface alternate scenarios before they become bugs or scope changes." },
+        { "title": "From meeting to ticket in minutes", "desc": "The team avoids manual transcription, summarization, and rewriting, keeping focus on validating hypotheses and shipping product." }
+      ],
+      "stat_value": "1 click",
+      "stat_label": "to move from meeting to a sprint-ready backlog",
+      "cta": "See Startup plan →"
     }
   },
   "footer": {

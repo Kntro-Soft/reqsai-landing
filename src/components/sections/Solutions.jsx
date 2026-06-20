@@ -9,7 +9,7 @@ const TAB_STYLES = {
   1: { active: 'bg-violet-600/15 border-violet-500/40 text-violet-300', dot: 'bg-violet-400' },
 }
 
-const CONTENT_KEYS = ['startup', 'enterprise']
+const CONTENT_KEYS = ['consulting', 'startup']
 
 const BENEFIT_ACCENTS = [
   'text-blue-400 bg-blue-500/10 border-blue-500/20',
@@ -129,7 +129,7 @@ export default function Solutions() {
 
             <div className="mt-8">
               <a
-                href={active === 1 ? '#contact' : '#signup'}
+                href={active === 0 ? '#contact' : '#signup'}
                 className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${active === 0 ? 'text-blue-400 hover:text-blue-300' : 'text-violet-400 hover:text-violet-300'}`}
               >
                 {content.cta}
