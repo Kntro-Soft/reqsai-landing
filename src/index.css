@@ -31,6 +31,7 @@ body {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
 }
 
 @keyframes gradient-shift {
@@ -71,7 +72,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #818cf8 100%);
+  background: linear-gradient(135deg, #fb7185 0%, #ef4444 50%, #b91c1c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -89,4 +90,50 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+  filter: blur(10px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.reveal-up {
+  transform: scale(0.985);
+}
+
+.reveal-soft {
+  transform: scale(0.992);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-up,
+  .reveal-soft,
+  .reveal.is-revealed,
+  .animate-gradient,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-cursor {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
 }

@@ -14,13 +14,13 @@ Landing page for **ReqsAI**, an AI-powered requirements elicitation platform by 
 
 ## Stack
 
-| | |
-|---|---|
-| Framework | React 19 + Vite 8 |
-| Styling | Tailwind CSS v4 (CSS-first, no config file) |
-| Compiler | React Compiler via `babel-plugin-react-compiler` |
-| i18n | i18next + react-i18next (ES / EN, persisted in localStorage) |
-| Icons | lucide-react |
+|           |                                                              |
+|-----------|--------------------------------------------------------------|
+| Framework | React 19 + Vite 8                                            |
+| Styling   | Tailwind CSS v4 (CSS-first, no config file)                  |
+| Compiler  | React Compiler via `babel-plugin-react-compiler`             |
+| i18n      | i18next + react-i18next (ES / EN, persisted in localStorage) |
+| Icons     | lucide-react                                                 |
 
 ## Sections
 
@@ -62,4 +62,4 @@ src/
 
 ---
 
-© 2025 Kntro-Soft · Lima, Peru 🇵🇪
+© 2026 Kntro-Soft · Lima, Peru 🇵🇪

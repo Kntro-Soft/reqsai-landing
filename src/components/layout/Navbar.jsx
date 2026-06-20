@@ -21,9 +21,9 @@ function LangToggle() {
           key={lang}
           onClick={() => toggle(lang)}
           aria-pressed={current === lang}
-          className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+            className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
             current === lang
-              ? 'bg-blue-600 text-white'
+              ? 'bg-red-600 text-white'
               : 'text-slate-400 hover:text-slate-200'
           }`}
         >
@@ -51,12 +51,16 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <a href="/" className="flex items-center gap-1.5 shrink-0" aria-label="ReqsAI — home">
-          <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-blue-600 text-white text-xs font-bold select-none">
-            R
-          </span>
-          <span className="font-semibold text-white tracking-tight">
-            Reqs<span className="gradient-text">AI</span>
+        <a href="/" className="flex items-center gap-2.5 shrink-0" aria-label="ReqsAI — home">
+          <img
+            src="/reqsai-combination-mark-white.webp"
+            alt="ReqsAI"
+            className="h-8 w-auto sm:h-9"
+            width="36"
+            height="36"
+          />
+          <span className="text-base sm:text-lg font-semibold tracking-tight text-white">
+            Reqs AI
           </span>
         </a>
 
@@ -85,7 +89,7 @@ export default function Navbar() {
           </a>
           <a
             href="#signup"
-            className="text-sm font-medium bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-colors"
+            className="text-sm font-medium bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-colors"
           >
             {t('nav.cta')}
           </a>
@@ -136,7 +140,7 @@ export default function Navbar() {
             <a
               href="#signup"
               onClick={() => setOpen(false)}
-              className="text-sm font-medium text-center bg-blue-600 hover:bg-blue-500 text-white py-2.5 px-3 rounded-lg transition-colors"
+              className="text-sm font-medium text-center bg-red-600 hover:bg-red-500 text-white py-2.5 px-3 rounded-lg transition-colors"
             >
               {t('nav.cta')}
             </a>

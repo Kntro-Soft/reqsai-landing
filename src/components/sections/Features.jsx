@@ -2,18 +2,18 @@ import { useTranslation } from 'react-i18next'
 import { Mic, FileCode2, BrainCircuit, ShieldCheck, ArrowUpRight, Users } from 'lucide-react'
 
 const FEATURES = [
-  { key: 'live',    Icon: Mic,          accent: 'blue'   },
-  { key: 'gherkin', Icon: FileCode2,    accent: 'violet' },
-  { key: 'rag',     Icon: BrainCircuit, accent: 'indigo' },
+  { key: 'live',    Icon: Mic,          accent: 'red'    },
+  { key: 'gherkin', Icon: FileCode2,    accent: 'rose'   },
+  { key: 'rag',     Icon: BrainCircuit, accent: 'amber'  },
   { key: 'privacy', Icon: ShieldCheck,  accent: 'emerald'},
-  { key: 'jira',    Icon: ArrowUpRight, accent: 'blue'   },
-  { key: 'collab',  Icon: Users,        accent: 'violet' },
+  { key: 'jira',    Icon: ArrowUpRight, accent: 'red'    },
+  { key: 'collab',  Icon: Users,        accent: 'rose'   },
 ]
 
 const ACCENT_STYLES = {
-  blue:    { icon: 'bg-blue-500/10 text-blue-400 border-blue-500/20',   glow: 'group-hover:shadow-blue-500/10'    },
-  violet:  { icon: 'bg-violet-500/10 text-violet-400 border-violet-500/20', glow: 'group-hover:shadow-violet-500/10' },
-  indigo:  { icon: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20', glow: 'group-hover:shadow-indigo-500/10' },
+  red:     { icon: 'bg-red-500/10 text-red-400 border-red-500/20', glow: 'group-hover:shadow-red-500/10' },
+  rose:    { icon: 'bg-rose-500/10 text-rose-400 border-rose-500/20', glow: 'group-hover:shadow-rose-500/10' },
+  amber:   { icon: 'bg-amber-500/10 text-amber-400 border-amber-500/20', glow: 'group-hover:shadow-amber-500/10' },
   emerald: { icon: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', glow: 'group-hover:shadow-emerald-500/10' },
 }
 
@@ -51,7 +51,7 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-semibold text-blue-400 tracking-widest uppercase">
+          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
             {t('features.section_label')}
           </span>
           <h2

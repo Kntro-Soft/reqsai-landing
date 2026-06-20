@@ -5,16 +5,16 @@ import { Zap, ShieldCheck, ArrowRight } from 'lucide-react'
 const TAB_ICONS = [Zap, ShieldCheck]
 
 const TAB_STYLES = {
-  0: { active: 'bg-blue-600/15 border-blue-500/40 text-blue-300',   dot: 'bg-blue-400'    },
-  1: { active: 'bg-violet-600/15 border-violet-500/40 text-violet-300', dot: 'bg-violet-400' },
+  0: { active: 'bg-red-600/15 border-red-500/40 text-red-300', dot: 'bg-red-400' },
+  1: { active: 'bg-rose-600/15 border-rose-500/40 text-rose-300', dot: 'bg-rose-400' },
 }
 
-const CONTENT_KEYS = ['startup', 'enterprise']
+const CONTENT_KEYS = ['consulting', 'startup']
 
 const BENEFIT_ACCENTS = [
-  'text-blue-400 bg-blue-500/10 border-blue-500/20',
-  'text-violet-400 bg-violet-500/10 border-violet-500/20',
-  'text-indigo-400 bg-indigo-500/10 border-indigo-500/20',
+  'text-red-400 bg-red-500/10 border-red-500/20',
+  'text-rose-400 bg-rose-500/10 border-rose-500/20',
+  'text-amber-400 bg-amber-500/10 border-amber-500/20',
   'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
 ]
 
@@ -46,13 +46,13 @@ export default function Solutions() {
     >
       {/* Ambient */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className={`absolute top-1/3 transition-all duration-700 ${active === 0 ? 'left-1/4' : 'right-1/4'} w-80 h-80 ${active === 0 ? 'bg-blue-600/8' : 'bg-violet-600/8'} rounded-full blur-3xl`} />
+        <div className={`absolute top-1/3 transition-all duration-700 ${active === 0 ? 'left-1/4' : 'right-1/4'} w-80 h-80 ${active === 0 ? 'bg-red-600/8' : 'bg-rose-600/8'} rounded-full blur-3xl`} />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-semibold text-blue-400 tracking-widest uppercase">
+          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
             {t('solutions.section_label')}
           </span>
           <h2
@@ -104,7 +104,7 @@ export default function Solutions() {
         >
           {/* Left — headline + pain + stat */}
           <div>
-            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-medium mb-6 ${active === 0 ? 'bg-blue-500/10 border-blue-500/25 text-blue-300' : 'bg-violet-500/10 border-violet-500/25 text-violet-300'}`}>
+            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-medium mb-6 ${active === 0 ? 'bg-red-500/10 border-red-500/25 text-red-300' : 'bg-rose-500/10 border-rose-500/25 text-rose-300'}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${TAB_STYLES[active].dot}`} aria-hidden="true" />
               {tabs[active]}
             </div>
@@ -118,8 +118,8 @@ export default function Solutions() {
             </p>
 
             {/* Stat */}
-            <div className={`inline-flex flex-col rounded-2xl border px-6 py-5 ${active === 0 ? 'bg-blue-500/5 border-blue-500/15' : 'bg-violet-500/5 border-violet-500/15'}`}>
-              <span className={`text-4xl font-extrabold tracking-tight ${active === 0 ? 'text-blue-400' : 'text-violet-400'}`}>
+            <div className={`inline-flex flex-col rounded-2xl border px-6 py-5 ${active === 0 ? 'bg-red-500/5 border-red-500/15' : 'bg-rose-500/5 border-rose-500/15'}`}>
+              <span className={`text-4xl font-extrabold tracking-tight ${active === 0 ? 'text-red-400' : 'text-rose-400'}`}>
                 {content.stat_value}
               </span>
               <span className="text-sm text-slate-400 mt-1 max-w-[200px] leading-snug">
@@ -129,8 +129,8 @@ export default function Solutions() {
 
             <div className="mt-8">
               <a
-                href={active === 1 ? '#contact' : '#signup'}
-                className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${active === 0 ? 'text-blue-400 hover:text-blue-300' : 'text-violet-400 hover:text-violet-300'}`}
+                href={active === 0 ? '#contact' : '#signup'}
+                className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${active === 0 ? 'text-red-400 hover:text-red-300' : 'text-rose-400 hover:text-rose-300'}`}
               >
                 {content.cta}
                 <ArrowRight size={14} aria-hidden="true" />
