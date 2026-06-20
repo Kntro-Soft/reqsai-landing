@@ -71,7 +71,7 @@
       ],
       "stat_value": "1 click",
       "stat_label": "to move from meeting to a sprint-ready backlog",
-      "cta": "See Startup plan →"
+      "cta": "See Pro plan →"
     }
   },
   "footer": {
@@ -117,7 +117,7 @@
       },
       {
         "q": "What tools does ReqsAI integrate with?",
-        "a": "The Startup plan includes integration with Jira (Cloud and Server) and Azure DevOps. Approved User Stories export directly as issues with the correct fields pre-filled. We also offer webhooks for custom integrations in the Enterprise plan. Coming soon: Linear, Notion, and GitHub Issues."
+        "a": "The Pro plan includes integration with Jira (Cloud and Server) and Azure DevOps. Approved User Stories export directly as issues with the correct fields pre-filled. We also offer webhooks for custom integrations in the Enterprise plan. Coming soon: Linear, Notion, and GitHub Issues."
       },
       {
         "q": "Can I analyze recordings from previous meetings?",
@@ -133,7 +133,7 @@
       },
       {
         "q": "How does the 14-day trial period work?",
-        "a": "When you sign up, your account is in Trial status with full access to the Startup plan for 14 days — no credit card required. You can process real meetings, invite your team, and export to Jira. At the end of the period we notify you in advance and you can continue with a paid plan or switch to the free Starter plan without losing your data."
+        "a": "When you sign up, your account is in Trial status with full access to the Pro plan for 14 days — no credit card required. You can process real meetings, invite your team, and export to Jira. At the end of the period we notify you in advance and you can continue with a paid plan or switch to the free Starter plan without losing your data."
       }
     ]
   },
@@ -164,7 +164,7 @@
     "form_success_title": "Message received!",
     "form_success_body": "We'll get back to you in under 24 business hours.",
     "roles": ["Tech Lead", "Systems Analyst", "Product Owner", "CTO / VP Engineering", "Other"],
-    "plans": ["Startup ($49/mo)", "Enterprise (custom)", "Just have questions"]
+    "plans": ["Pro ($49/mo)", "Enterprise (custom)", "Just have questions"]
   },
   "pricing": {
     "section_label": "PRICING",
@@ -203,7 +203,7 @@
       },
       {
         "id": "startup",
-        "name": "Startup",
+        "name": "Pro",
         "desc": "For agile squads that need sprint velocity without friction.",
         "monthly": 49,
         "annual": 39,
@@ -227,7 +227,7 @@
         "annual": null,
         "highlight": false,
         "features": [
-          { "text": "Everything in Startup", "included": true },
+          { "text": "Everything in Pro", "included": true },
           { "text": "Unlimited users", "included": true },
           { "text": "SSO / SAML 2.0", "included": true },
           { "text": "99.9% uptime SLA", "included": true },

@@ -77,7 +77,7 @@ function PlanCard({ plan, annual }) {
 
   return (
     <article
-      className={`relative flex h-full flex-col overflow-hidden rounded-[28px] px-6 pb-6 pt-9 transition-all duration-300 hover:-translate-y-1 ${
+      className={`relative flex h-full flex-col rounded-[28px] px-6 pb-6 pt-9 transition-all duration-300 hover:-translate-y-1 ${
         plan.highlight
           ? 'border border-blue-400/40 bg-gradient-to-b from-blue-600/14 via-navy-800/95 to-violet-600/10 shadow-2xl shadow-blue-950/50'
           : 'border border-white/10 bg-white/[0.035] shadow-[0_24px_80px_rgba(3,8,15,0.42)] backdrop-blur-sm'
@@ -94,7 +94,7 @@ function PlanCard({ plan, annual }) {
 
       {/* Popular badge */}
       {plan.highlight && (
-        <div className="absolute left-1/2 top-3 -translate-x-1/2">
+        <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2">
           <span className="inline-block rounded-full border border-white/10 bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1 text-[11px] font-semibold text-white shadow-lg shadow-blue-500/30">
             {t('pricing.popular_badge')}
           </span>

@@ -71,7 +71,7 @@
       ],
       "stat_value": "1 clic",
       "stat_label": "para pasar de la reunión al backlog priorizable",
-      "cta": "Ver plan Startup →"
+      "cta": "Ver plan Pro →"
     }
   },
   "footer": {
@@ -117,7 +117,7 @@
       },
       {
         "q": "¿Con qué herramientas se integra ReqsAI?",
-        "a": "En el plan Startup incluimos integración con Jira (Cloud y Server) y Azure DevOps. Las User Stories aprobadas se exportan directamente como issues con los campos correctos pre-llenados. También ofrecemos webhooks para integraciones personalizadas en el plan Enterprise. Próximamente: Linear, Notion y GitHub Issues."
+        "a": "En el plan Pro incluimos integración con Jira (Cloud y Server) y Azure DevOps. Las User Stories aprobadas se exportan directamente como issues con los campos correctos pre-llenados. También ofrecemos webhooks para integraciones personalizadas en el plan Enterprise. Próximamente: Linear, Notion y GitHub Issues."
       },
       {
         "q": "¿Puedo analizar grabaciones de reuniones anteriores?",
@@ -133,7 +133,7 @@
       },
       {
         "q": "¿Cómo funciona el período de prueba de 14 días?",
-        "a": "Al registrarte, tu cuenta queda en estado Trial con acceso completo al plan Startup durante 14 días — sin tarjeta de crédito requerida. Puedes procesar reuniones reales, invitar a tu equipo y exportar a Jira. Al final del período te avisamos con anticipación y puedes continuar con un plan pago o pasar al plan Starter gratuito sin perder tus datos."
+        "a": "Al registrarte, tu cuenta queda en estado Trial con acceso completo al plan Pro durante 14 días — sin tarjeta de crédito requerida. Puedes procesar reuniones reales, invitar a tu equipo y exportar a Jira. Al final del período te avisamos con anticipación y puedes continuar con un plan pago o pasar al plan Starter gratuito sin perder tus datos."
       }
     ]
   },
@@ -164,7 +164,7 @@
     "form_success_title": "¡Mensaje recibido!",
     "form_success_body": "Nos pondremos en contacto contigo en menos de 24 horas hábiles.",
     "roles": ["Tech Lead", "Analista de Sistemas", "Product Owner", "CTO / VP Engineering", "Otro"],
-    "plans": ["Startup ($49/mes)", "Enterprise (custom)", "Solo tengo preguntas"]
+    "plans": ["Pro ($49/mes)", "Enterprise (custom)", "Solo tengo preguntas"]
   },
   "pricing": {
     "section_label": "PRECIOS",
@@ -203,7 +203,7 @@
       },
       {
         "id": "startup",
-        "name": "Startup",
+        "name": "Pro",
         "desc": "Para squads ágiles que necesitan velocidad de sprint sin fricción.",
         "monthly": 49,
         "annual": 39,
@@ -227,7 +227,7 @@
         "annual": null,
         "highlight": false,
         "features": [
-          { "text": "Todo lo de Startup", "included": true },
+          { "text": "Todo lo de Pro", "included": true },
           { "text": "Usuarios ilimitados", "included": true },
           { "text": "SSO / SAML 2.0", "included": true },
           { "text": "SLA 99.9% uptime", "included": true },
