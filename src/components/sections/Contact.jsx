@@ -9,13 +9,13 @@ const INFO_ITEMS = [
 ]
 
 const INPUT_BASE =
-  'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-blue-500/60 focus:bg-white/8 transition-colors'
+  'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-red-500/60 focus:bg-white/8 transition-colors'
 
 function Field({ id, label, required, children }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} className="text-xs font-medium text-slate-400">
-        {label}{required && <span className="text-blue-400 ml-0.5" aria-hidden="true">*</span>}
+        {label}{required && <span className="text-red-400 ml-0.5" aria-hidden="true">*</span>}
       </label>
       {children}
     </div>
@@ -124,7 +124,7 @@ function ContactForm() {
               aria-pressed={fields.plan === p}
               className={`text-xs py-2.5 px-2 rounded-xl border text-center transition-colors ${
                 fields.plan === p
-                  ? 'bg-blue-600/20 border-blue-500/50 text-blue-300'
+                  ? 'bg-red-600/20 border-red-500/50 text-red-300'
                   : 'bg-white/5 border-white/10 text-slate-500 hover:text-slate-300 hover:border-white/20'
               }`}
             >
@@ -149,7 +149,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/20 hover:shadow-blue-500/25 hover:-translate-y-0.5 disabled:translate-y-0"
+        className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-red-600/20 hover:shadow-red-500/25 hover:-translate-y-0.5 disabled:translate-y-0"
       >
         {submitting ? (
           <>
@@ -178,8 +178,8 @@ export default function Contact() {
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-violet-600/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-600/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-rose-600/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-600/8 rounded-full blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -187,7 +187,7 @@ export default function Contact() {
 
           {/* Left — copy & info */}
           <div className="lg:col-span-2">
-            <span className="text-xs font-semibold text-blue-400 tracking-widest uppercase">
+            <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
               {t('contact.section_label')}
             </span>
             <h2
@@ -203,8 +203,8 @@ export default function Contact() {
             <ul className="mt-10 space-y-5" role="list">
               {INFO_ITEMS.map(({ icon: Icon, labelKey, valueKey }) => (
                 <li key={labelKey} className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                    <Icon size={16} className="text-blue-400" aria-hidden="true" />
+                  <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0">
+                    <Icon size={16} className="text-red-400" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xs text-slate-600 font-medium uppercase tracking-wider">{t(`contact.${labelKey}`)}</p>
