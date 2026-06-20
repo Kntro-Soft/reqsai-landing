@@ -13,9 +13,9 @@ function BillingToggle({ annual, onChange }) {
         role="switch"
         aria-checked={annual}
         onClick={() => onChange(!annual)}
-        className={`relative h-7 w-12 rounded-full border transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 ${
+        className={`relative h-7 w-12 rounded-full border transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-500 ${
           annual
-            ? 'border-blue-500/50 bg-blue-600 shadow-lg shadow-blue-600/20'
+            ? 'border-red-500/50 bg-red-600 shadow-lg shadow-red-600/20'
             : 'border-white/10 bg-slate-800'
         }`}
       >
@@ -79,14 +79,14 @@ function PlanCard({ plan, annual }) {
     <article
       className={`relative flex h-full flex-col rounded-[28px] px-6 pb-6 pt-9 transition-all duration-300 hover:-translate-y-1 ${
         plan.highlight
-          ? 'border border-blue-400/40 bg-gradient-to-b from-blue-600/14 via-navy-800/95 to-violet-600/10 shadow-2xl shadow-blue-950/50'
+          ? 'border border-red-400/40 bg-gradient-to-b from-red-600/14 via-navy-800/95 to-rose-600/10 shadow-2xl shadow-red-950/50'
           : 'border border-white/10 bg-white/[0.035] shadow-[0_24px_80px_rgba(3,8,15,0.42)] backdrop-blur-sm'
       }`}
     >
       <div
         className={`pointer-events-none absolute inset-x-0 top-0 h-28 ${
           plan.highlight
-            ? 'bg-gradient-to-b from-blue-500/18 via-violet-500/10 to-transparent'
+            ? 'bg-gradient-to-b from-red-500/18 via-rose-500/10 to-transparent'
             : 'bg-gradient-to-b from-white/7 to-transparent'
         }`}
         aria-hidden="true"
@@ -95,7 +95,7 @@ function PlanCard({ plan, annual }) {
       {/* Popular badge */}
       {plan.highlight && (
         <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2">
-          <span className="inline-block rounded-full border border-white/10 bg-gradient-to-r from-blue-500 to-violet-500 px-3 py-1 text-[11px] font-semibold text-white shadow-lg shadow-blue-500/30">
+          <span className="inline-block rounded-full border border-white/10 bg-gradient-to-r from-red-500 to-rose-500 px-3 py-1 text-[11px] font-semibold text-white shadow-lg shadow-red-500/30">
             {t('pricing.popular_badge')}
           </span>
         </div>
@@ -111,9 +111,9 @@ function PlanCard({ plan, annual }) {
           <span
             className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
               plan.highlight
-                ? 'border-blue-400/25 bg-blue-500/10 text-blue-300'
+                ? 'border-red-400/25 bg-red-500/10 text-red-300'
                 : isTeam
-                  ? 'border-violet-400/20 bg-violet-500/10 text-violet-300'
+                  ? 'border-rose-400/20 bg-rose-500/10 text-rose-300'
                   : 'border-white/10 bg-white/5 text-slate-300'
             }`}
           >
@@ -161,9 +161,9 @@ function PlanCard({ plan, annual }) {
         href="#signup"
         className={`mt-auto block text-center text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 ${
           plan.highlight
-            ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 hover:shadow-blue-500/30 hover:-translate-y-0.5'
+            ? 'bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/25 hover:shadow-red-500/30 hover:-translate-y-0.5'
             : isTeam
-              ? 'border border-violet-400/20 bg-violet-500/8 text-violet-200 hover:text-white hover:border-violet-300/30 hover:bg-violet-500/12'
+              ? 'border border-rose-400/20 bg-rose-500/8 text-rose-200 hover:text-white hover:border-rose-300/30 hover:bg-rose-500/12'
               : 'border border-white/10 bg-white/4 text-slate-200 hover:text-white hover:border-white/25 hover:bg-white/6'
         }`}
       >
@@ -187,8 +187,8 @@ export default function Pricing() {
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full bg-blue-600/8 blur-3xl" />
-        <div className="absolute right-0 top-1/2 h-72 w-72 rounded-full bg-violet-600/8 blur-3xl" />
+        <div className="absolute top-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full bg-red-600/8 blur-3xl" />
+        <div className="absolute right-0 top-1/2 h-72 w-72 rounded-full bg-rose-600/8 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.06]" style={{
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
@@ -198,7 +198,7 @@ export default function Pricing() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-semibold text-blue-400 tracking-widest uppercase">
+          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
             {t('pricing.section_label')}
           </span>
           <h2
@@ -231,7 +231,7 @@ export default function Pricing() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-xl border border-violet-300/20 bg-violet-500/10 px-5 py-3 text-sm font-semibold text-violet-100 transition-all duration-200 hover:border-violet-200/30 hover:bg-violet-500/16 hover:text-white"
+            className="inline-flex items-center justify-center rounded-xl border border-rose-300/20 bg-rose-500/10 px-5 py-3 text-sm font-semibold text-rose-100 transition-all duration-200 hover:border-rose-200/30 hover:bg-rose-500/16 hover:text-white"
           >
             {t('pricing.cta_enterprise')}
           </a>

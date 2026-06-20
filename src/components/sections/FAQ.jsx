@@ -14,7 +14,7 @@ function FAQItem({ item, index, open, onToggle }) {
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="group w-full flex items-start justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-lg"
+          className="group w-full flex items-start justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-lg"
         >
           <span className={`text-sm sm:text-base font-medium leading-snug transition-colors ${open ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
             {item.q}
@@ -22,7 +22,7 @@ function FAQItem({ item, index, open, onToggle }) {
           <span
             className={`mt-0.5 shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-200 ${
               open
-                ? 'bg-blue-600/20 border-blue-500/40 text-blue-400'
+                ? 'bg-red-600/20 border-red-500/40 text-red-400'
                 : 'border-white/10 text-slate-500 group-hover:border-white/20 group-hover:text-slate-300'
             }`}
             aria-hidden="true"
@@ -67,13 +67,13 @@ export default function FAQ() {
       aria-labelledby="faq-heading"
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-64 bg-indigo-600/6 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-64 bg-rose-600/6 rounded-full blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-semibold text-blue-400 tracking-widest uppercase">
+          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
             {t('faq.section_label')}
           </span>
           <h2

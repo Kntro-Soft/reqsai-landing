@@ -43,8 +43,8 @@ export default function Footer() {
       {/* CTA strip */}
       <div className="relative border-t border-white/5 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-violet-600/10" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-48 bg-blue-600/10 blur-3xl rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-transparent to-rose-600/10" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-48 bg-red-600/10 blur-3xl rounded-full" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
@@ -56,7 +56,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="#signup"
-              className="group inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/25 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-red-600/25 hover:-translate-y-0.5"
             >
               {t('footer.cta_button')}
               <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
