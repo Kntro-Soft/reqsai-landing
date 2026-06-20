@@ -62,9 +62,9 @@ function PlanCard({ plan, annual }) {
   const { t } = useTranslation()
 
   const price = annual ? plan.annual : plan.monthly
-  const isEnterprise = plan.monthly === null
   const isFree = price === 0
-  const hasDiscount = !isEnterprise && !isFree && annual && plan.monthly > plan.annual
+  const isTeam = plan.id === 'team'
+  const hasDiscount = !isFree && annual && plan.monthly > plan.annual
   const savings = hasDiscount ? plan.monthly - plan.annual : 0
 
   const billingLabel = annual ? t('pricing.billed_annually') : t('pricing.billed_monthly')
@@ -73,7 +73,7 @@ function PlanCard({ plan, annual }) {
     ? t('pricing.cta_start')
     : plan.id === 'startup'
       ? t('pricing.cta_pro')
-      : t('pricing.cta_enterprise')
+      : t('pricing.cta_team')
 
   return (
     <article
@@ -112,7 +112,7 @@ function PlanCard({ plan, annual }) {
             className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
               plan.highlight
                 ? 'border-blue-400/25 bg-blue-500/10 text-blue-300'
-                : isEnterprise
+                : isTeam
                   ? 'border-violet-400/20 bg-violet-500/10 text-violet-300'
                   : 'border-white/10 bg-white/5 text-slate-300'
             }`}
@@ -124,38 +124,29 @@ function PlanCard({ plan, annual }) {
 
       {/* Price */}
       <div className="relative mb-6 rounded-2xl border border-white/8 bg-navy-950/55 p-5 shadow-inner shadow-black/20">
-        {isEnterprise ? (
-          <div>
-            <p className="text-3xl font-extrabold text-white tracking-tight">
-              {t('pricing.custom_price')}
-            </p>
-            <p className="mt-2 text-sm text-slate-500">{t('pricing.contact_us')}</p>
+        <div>
+          <div className="flex items-end gap-2">
+            {!isFree && (
+              <span className="mb-2 text-lg font-medium text-slate-400">$</span>
+            )}
+            <span className="text-5xl font-extrabold text-white tracking-tight leading-none">
+              {isFree ? t('pricing.cta_start').split(' ')[0] === 'Get' ? 'Free' : 'Gratis' : price}
+            </span>
+            {!isFree && (
+              <span className="mb-1 text-sm text-slate-500">{t('pricing.per_month')}</span>
+            )}
           </div>
-        ) : (
-          <div>
-            <div className="flex items-end gap-2">
-              {!isFree && (
-                <span className="mb-2 text-lg font-medium text-slate-400">$</span>
-              )}
-              <span className="text-5xl font-extrabold text-white tracking-tight leading-none">
-                {isFree ? t('pricing.cta_start').split(' ')[0] === 'Get' ? 'Free' : 'Gratis' : price}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            {!isFree && (
+              <p className="text-xs text-slate-500">{billingLabel}</p>
+            )}
+            {hasDiscount && (
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-1 text-[11px] font-medium text-emerald-300">
+                -${savings}
               </span>
-              {!isFree && (
-                <span className="mb-1 text-sm text-slate-500">{t('pricing.per_month')}</span>
-              )}
-            </div>
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              {!isFree && (
-                <p className="text-xs text-slate-500">{billingLabel}</p>
-              )}
-              {hasDiscount && (
-                <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-1 text-[11px] font-medium text-emerald-300">
-                  -${savings}
-                </span>
-              )}
-            </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
 
       {/* Features */}
@@ -167,11 +158,11 @@ function PlanCard({ plan, annual }) {
 
       {/* CTA */}
       <a
-        href={plan.id === 'enterprise' ? '#contact' : '#signup'}
+        href="#signup"
         className={`mt-auto block text-center text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 ${
           plan.highlight
             ? 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 hover:shadow-blue-500/30 hover:-translate-y-0.5'
-            : plan.id === 'enterprise'
+            : isTeam
               ? 'border border-violet-400/20 bg-violet-500/8 text-violet-200 hover:text-white hover:border-violet-300/30 hover:bg-violet-500/12'
               : 'border border-white/10 bg-white/4 text-slate-200 hover:text-white hover:border-white/25 hover:bg-white/6'
         }`}
@@ -186,6 +177,7 @@ export default function Pricing() {
   const { t } = useTranslation()
   const [annual, setAnnual] = useState(false)
   const plans = t('pricing.plans', { returnObjects: true })
+  const enterprise = t('pricing.enterprise_block', { returnObjects: true })
 
   return (
     <section
@@ -230,6 +222,19 @@ export default function Pricing() {
           {plans.map((plan) => (
             <PlanCard key={plan.id} plan={plan} annual={annual} />
           ))}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 text-center">
+          <p className="max-w-2xl text-sm text-slate-400 sm:text-base">
+            <span className="font-medium text-slate-200">{enterprise.title}</span>{' '}
+            {enterprise.subtitle}
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center rounded-xl border border-violet-300/20 bg-violet-500/10 px-5 py-3 text-sm font-semibold text-violet-100 transition-all duration-200 hover:border-violet-200/30 hover:bg-violet-500/16 hover:text-white"
+          >
+            {t('pricing.cta_enterprise')}
+          </a>
         </div>
       </div>
     </section>

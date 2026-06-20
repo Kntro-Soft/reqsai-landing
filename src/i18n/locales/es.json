@@ -176,12 +176,17 @@
     "popular_badge": "Más popular",
     "cta_start": "Empezar gratis",
     "cta_pro": "Prueba 14 días gratis",
+    "cta_team": "Elegir Team",
     "cta_enterprise": "Hablar con ventas",
     "per_month": "/ mes",
     "billed_annually": "facturado anualmente",
     "billed_monthly": "facturado mensualmente",
     "custom_price": "Custom",
     "contact_us": "Contáctanos",
+    "enterprise_block": {
+      "title": "¿Necesitas más capacidad, seguridad o acompañamiento dedicado?",
+      "subtitle": "Hablemos sobre un plan a medida para tu organización."
+    },
     "plans": [
       {
         "id": "starter",
@@ -193,8 +198,9 @@
         "features": [
           { "text": "3 sesiones por mes", "included": true },
           { "text": "5 User Stories por sesión", "included": true },
-          { "text": "Exportar a Jira (básico)", "included": true },
           { "text": "Gherkin automático", "included": true },
+          { "text": "Resumen de reunión y notas clave", "included": true },
+          { "text": "Exportar a Jira & Azure DevOps", "included": false },
           { "text": "Copiloto IA en vivo", "included": false },
           { "text": "Contexto RAG", "included": false },
           { "text": "Revisión en equipo", "included": false },
@@ -214,27 +220,27 @@
           { "text": "Exportar a Jira & Azure DevOps", "included": true },
           { "text": "Gherkin automático", "included": true },
           { "text": "Copiloto IA en vivo", "included": true },
-          { "text": "Contexto RAG", "included": true },
-          { "text": "Revisión en equipo (hasta 10)", "included": true },
+          { "text": "Contexto RAG por proyecto", "included": true },
+          { "text": "Revisión en equipo (hasta 10 miembros)", "included": true },
           { "text": "Aislamiento schema-per-tenant", "included": false }
         ]
       },
       {
-        "id": "enterprise",
-        "name": "Enterprise",
-        "desc": "Para organizaciones con compliance, SSO y escala multi-proyecto.",
-        "monthly": null,
-        "annual": null,
+        "id": "team",
+        "name": "Team",
+        "desc": "Para equipos en crecimiento que necesitan colaboración, control y capacidad adicional.",
+        "monthly": 149,
+        "annual": 119,
         "highlight": false,
         "features": [
           { "text": "Todo lo de Pro", "included": true },
-          { "text": "Usuarios ilimitados", "included": true },
-          { "text": "SSO / SAML 2.0", "included": true },
-          { "text": "SLA 99.9% uptime", "included": true },
-          { "text": "Copiloto IA en vivo", "included": true },
+          { "text": "Hasta 25 miembros del equipo", "included": true },
+          { "text": "Workspaces y proyectos colaborativos", "included": true },
+          { "text": "Flujos de revisión y aprobación", "included": true },
+          { "text": "Analytics y trazabilidad de requerimientos", "included": true },
+          { "text": "Roles y permisos básicos", "included": true },
           { "text": "Contexto RAG avanzado", "included": true },
-          { "text": "Revisión en equipo ilimitada", "included": true },
-          { "text": "Aislamiento schema-per-tenant", "included": true }
+          { "text": "Soporte prioritario", "included": true }
         ]
       }
     ]

@@ -176,12 +176,17 @@
     "popular_badge": "Most popular",
     "cta_start": "Get started free",
     "cta_pro": "Start 14-day free trial",
+    "cta_team": "Choose Team",
     "cta_enterprise": "Talk to sales",
     "per_month": "/ mo",
     "billed_annually": "billed annually",
     "billed_monthly": "billed monthly",
     "custom_price": "Custom",
     "contact_us": "Contact us",
+    "enterprise_block": {
+      "title": "Need more capacity, security, or dedicated support?",
+      "subtitle": "Let’s talk about a tailored plan for your organization."
+    },
     "plans": [
       {
         "id": "starter",
@@ -193,8 +198,9 @@
         "features": [
           { "text": "3 sessions per month", "included": true },
           { "text": "5 User Stories per session", "included": true },
-          { "text": "Export to Jira (basic)", "included": true },
           { "text": "Auto-generated Gherkin", "included": true },
+          { "text": "Meeting summary and key notes", "included": true },
+          { "text": "Export to Jira & Azure DevOps", "included": false },
           { "text": "Live AI Co-pilot", "included": false },
           { "text": "RAG Context", "included": false },
           { "text": "Team Review", "included": false },
@@ -214,27 +220,27 @@
           { "text": "Export to Jira & Azure DevOps", "included": true },
           { "text": "Auto-generated Gherkin", "included": true },
           { "text": "Live AI Co-pilot", "included": true },
-          { "text": "RAG Context", "included": true },
-          { "text": "Team Review (up to 10)", "included": true },
+          { "text": "Project-level RAG Context", "included": true },
+          { "text": "Team Review (up to 10 members)", "included": true },
           { "text": "Schema-per-tenant isolation", "included": false }
         ]
       },
       {
-        "id": "enterprise",
-        "name": "Enterprise",
-        "desc": "For organizations with compliance, SSO and multi-project scale.",
-        "monthly": null,
-        "annual": null,
+        "id": "team",
+        "name": "Team",
+        "desc": "For growing teams that need collaboration, control, and more capacity.",
+        "monthly": 149,
+        "annual": 119,
         "highlight": false,
         "features": [
           { "text": "Everything in Pro", "included": true },
-          { "text": "Unlimited users", "included": true },
-          { "text": "SSO / SAML 2.0", "included": true },
-          { "text": "99.9% uptime SLA", "included": true },
-          { "text": "Live AI Co-pilot", "included": true },
+          { "text": "Up to 25 team members", "included": true },
+          { "text": "Collaborative workspaces and projects", "included": true },
+          { "text": "Review and approval workflows", "included": true },
+          { "text": "Requirements analytics and traceability", "included": true },
+          { "text": "Basic roles and permissions", "included": true },
           { "text": "Advanced RAG Context", "included": true },
-          { "text": "Unlimited Team Review", "included": true },
-          { "text": "Schema-per-tenant isolation", "included": true }
+          { "text": "Priority support", "included": true }
         ]
       }
     ]
