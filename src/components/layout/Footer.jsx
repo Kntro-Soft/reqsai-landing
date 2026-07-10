@@ -1,5 +1,9 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+
+// href por posición del array `footer.legal`: [Privacidad, Términos, Cookies]
+const LEGAL_HREFS = ['#', '/terminos', '#']
 
 const COL_KEYS = ['product', 'resources', 'company']
 
@@ -143,13 +147,19 @@ export default function Footer() {
           </div>
           <nav aria-label="Legal links">
             <ul className="flex items-center gap-4" role="list">
-              {legal.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {legal.map((item, i) => {
+                const href = LEGAL_HREFS[i] ?? '#'
+                const className = 'text-xs text-slate-600 hover:text-slate-400 transition-colors'
+                return (
+                  <li key={item}>
+                    {href.startsWith('/') ? (
+                      <Link to={href} className={className}>{item}</Link>
+                    ) : (
+                      <a href={href} className={className}>{item}</a>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         </div>

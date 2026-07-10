@@ -98,6 +98,31 @@
     "made_in": "Hecho en Lima, Perú 🇵🇪",
     "legal": ["Privacidad", "Términos", "Cookies"]
   },
+  "terms": {
+    "eyebrow": "ReqsAI",
+    "title": "Términos de Servicio",
+    "updated_label": "Última actualización:",
+    "updated_date": "2026-06-29",
+    "sections": [
+      { "title": "1. Aceptación y elegibilidad", "body": "Al crear una cuenta o usar ReqsAI aceptas estos Términos. Debes tener al menos 18 años y, si aceptas en nombre de una organización, confirmas que estás autorizado para obligarla." },
+      { "title": "2. Definiciones", "body": "«Servicio» es la plataforma ReqsAI; «Organización» el espacio de trabajo al que perteneces; «Contenido» los datos que envías, incluidos el audio y las transcripciones de reuniones; «Datos de Reunión» cualquier grabación o transcripción procesada por el Servicio." },
+      { "title": "3. El servicio y la licencia", "body": "ReqsAI te concede una licencia limitada, revocable y no exclusiva para usar el Servicio para capturar reuniones y generar artefactos de requisitos. No puedes hacer ingeniería inversa, revenderlo, abusar de él ni usarlo con fines ilícitos." },
+      { "title": "4. Cuentas y organizaciones", "body": "Eres responsable de la exactitud de los datos de tu cuenta, de proteger tus credenciales y de las acciones de los miembros que invites a tu Organización." },
+      { "title": "5. Grabación de reuniones y consentimiento", "body": "Declaras y garantizas que, antes de grabar o transcribir cualquier reunión, has obtenido todos los consentimientos exigidos por la ley de cada participante — algunas jurisdicciones requieren el consentimiento de todas las partes. ReqsAI ofrece un indicador de grabación, pero tu Organización es la única responsable de la captura lícita e indemnizará a Kntro-Soft S.A.C. por reclamaciones derivadas del incumplimiento de esta sección." },
+      { "title": "6. Resultados generados por IA", "body": "Las historias de usuario, sugerencias y demás resultados de IA se generan automáticamente, pueden ser inexactos o incompletos y se proporcionan para tu revisión. No son asesoría profesional, legal ni de negocio; revísalos antes de confiar en ellos." },
+      { "title": "7. Tu contenido y propiedad intelectual", "body": "Conservas la propiedad de tu Contenido y concedes a ReqsAI una licencia limitada para procesarlo únicamente para prestar el Servicio. Kntro-Soft S.A.C. conserva todos los derechos sobre la plataforma, el software y las marcas." },
+      { "title": "8. Subprocesadores de IA de terceros", "body": "Para prestar el Servicio usamos proveedores de IA de terceros — Deepgram (voz a texto), Google Gemini (generación) y OpenAI (embeddings). Los detalles están en nuestra Política de Privacidad." },
+      { "title": "9. Entrenamiento de modelos", "body": "No usamos tu Contenido, ni los datos derivados de él, para entrenar los modelos de aprendizaje automático de ReqsAI ni de nuestros subprocesadores." },
+      { "title": "10. Tarifas y suscripción", "body": "Los planes de pago, cuando se ofrezcan, se facturan de forma recurrente y se renuevan hasta su cancelación. Podemos cambiar los precios con aviso previo; el Servicio puede ofrecerse de forma gratuita total o parcialmente." },
+      { "title": "11. Terminación y exportación de datos", "body": "Puedes dejar de usar el Servicio en cualquier momento. Al terminar, dispondrás de un plazo razonable para exportar tus datos antes de su eliminación, sujeto a las reglas de retención de la Política de Privacidad." },
+      { "title": "12. Garantías y limitación de responsabilidad", "body": "El Servicio se ofrece «tal cual», sin garantías de ningún tipo. En la máxima medida permitida por la ley, Kntro-Soft S.A.C. no se responsabiliza por daños indirectos o consecuentes, y su responsabilidad total se limita a los importes que hayas pagado en los doce meses previos." },
+      { "title": "13. Cambios en estos Términos", "body": "Podemos actualizar estos Términos; cuando cambie su contenido sustancial te pediremos aceptar la nueva versión. El uso continuado tras una actualización constituye aceptación." },
+      { "title": "14. Ley aplicable", "body": "Estos Términos se rigen por las leyes de Perú, y cualquier disputa se somete a los tribunales competentes de Perú." }
+    ],
+    "contact_title": "15. Contacto",
+    "contact_before": "Las preguntas sobre estos Términos pueden enviarse a ",
+    "contact_after": "."
+  },
   "faq": {
     "section_label": "PREGUNTAS FRECUENTES",
     "title": "Todo lo que necesitas saber",

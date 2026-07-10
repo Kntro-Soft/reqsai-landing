@@ -98,6 +98,31 @@
     "made_in": "Made in Lima, Peru 🇵🇪",
     "legal": ["Privacy", "Terms", "Cookies"]
   },
+  "terms": {
+    "eyebrow": "ReqsAI",
+    "title": "Terms of Service",
+    "updated_label": "Last updated:",
+    "updated_date": "2026-06-29",
+    "sections": [
+      { "title": "1. Acceptance and eligibility", "body": "By creating an account or using ReqsAI you accept these Terms. You must be at least 18 years old, and if you accept on behalf of an organization, you confirm that you are authorized to bind it." },
+      { "title": "2. Definitions", "body": "“Service” means the ReqsAI platform; “Organization” the workspace you belong to; “Content” the data you submit, including meeting audio and transcripts; “Meeting Data” any recording or transcript processed by the Service." },
+      { "title": "3. The service and the license", "body": "ReqsAI grants you a limited, revocable, non-exclusive license to use the Service to capture meetings and generate requirements artifacts. You may not reverse engineer, resell, abuse, or use it for unlawful purposes." },
+      { "title": "4. Accounts and organizations", "body": "You are responsible for the accuracy of your account data, for protecting your credentials, and for the actions of the members you invite to your Organization." },
+      { "title": "5. Meeting recording and consent", "body": "You represent and warrant that, before recording or transcribing any meeting, you have obtained all consents required by law from each participant — some jurisdictions require the consent of all parties. ReqsAI provides a recording indicator, but your Organization is solely responsible for lawful capture and will indemnify Kntro-Soft S.A.C. against claims arising from a breach of this section." },
+      { "title": "6. AI-generated outputs", "body": "User stories, suggestions, and other AI outputs are generated automatically, may be inaccurate or incomplete, and are provided for your review. They are not professional, legal, or business advice; review them before relying on them." },
+      { "title": "7. Your content and intellectual property", "body": "You retain ownership of your Content and grant ReqsAI a limited license to process it solely to provide the Service. Kntro-Soft S.A.C. retains all rights to the platform, the software, and the trademarks." },
+      { "title": "8. Third-party AI subprocessors", "body": "To provide the Service we use third-party AI providers — Deepgram (speech-to-text), Google Gemini (generation), and OpenAI (embeddings). Details are in our Privacy Policy." },
+      { "title": "9. Model training", "body": "We do not use your Content, nor data derived from it, to train the machine learning models of ReqsAI or of our subprocessors." },
+      { "title": "10. Fees and subscription", "body": "Paid plans, when offered, are billed on a recurring basis and renew until cancelled. We may change prices with prior notice; the Service may be offered free of charge in whole or in part." },
+      { "title": "11. Termination and data export", "body": "You may stop using the Service at any time. Upon termination, you will have a reasonable period to export your data before it is deleted, subject to the retention rules in the Privacy Policy." },
+      { "title": "12. Warranties and limitation of liability", "body": "The Service is provided “as is,” without warranties of any kind. To the maximum extent permitted by law, Kntro-Soft S.A.C. is not liable for indirect or consequential damages, and its total liability is limited to the amounts you paid in the previous twelve months." },
+      { "title": "13. Changes to these Terms", "body": "We may update these Terms; when their substantive content changes we will ask you to accept the new version. Continued use after an update constitutes acceptance." },
+      { "title": "14. Governing law", "body": "These Terms are governed by the laws of Peru, and any dispute is submitted to the competent courts of Peru." }
+    ],
+    "contact_title": "15. Contact",
+    "contact_before": "Questions about these Terms may be sent to ",
+    "contact_after": "."
+  },
   "faq": {
     "section_label": "FREQUENTLY ASKED QUESTIONS",
     "title": "Everything you need to know",
