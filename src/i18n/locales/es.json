@@ -2,6 +2,7 @@
   "nav": {
     "product": "Producto",
     "solutions": "Soluciones",
+    "demo": "Demo",
     "pricing": "Precios",
     "team": "Equipo",
     "faq": "FAQ",
@@ -147,7 +148,12 @@
       { "title": "12. Acuerdo de Tratamiento de Datos", "body": "Las Organizaciones que actúan como responsables del tratamiento pueden solicitar un Acuerdo de Tratamiento de Datos (DPA) escribiendo a legal@kntro.dev." }
     ]
   },
-  "video": {
+  "demo": {
+    "section_label": "DEMO",
+    "title": "Mira ReqsAI en acción",
+    "subtitle": "Una demostración de cómo ReqsAI convierte una reunión en User Stories y criterios Gherkin listos para tu backlog."
+  },
+  "team": {
     "section_label": "EQUIPO",
     "title": "Conoce al equipo detrás de ReqsAI",
     "subtitle": "Un vistazo a las personas que construyen ReqsAI y la visión que impulsa el producto."

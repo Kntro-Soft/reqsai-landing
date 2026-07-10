@@ -2,6 +2,7 @@
   "nav": {
     "product": "Product",
     "solutions": "Solutions",
+    "demo": "Demo",
     "pricing": "Pricing",
     "team": "Team",
     "faq": "FAQ",
@@ -147,7 +148,12 @@
       { "title": "12. Data Processing Agreement", "body": "Organizations acting as data controllers may request a Data Processing Agreement (DPA) by writing to legal@kntro.dev." }
     ]
   },
-  "video": {
+  "demo": {
+    "section_label": "DEMO",
+    "title": "See ReqsAI in action",
+    "subtitle": "A demo of how ReqsAI turns a meeting into ready-to-ship User Stories and Gherkin acceptance criteria for your backlog."
+  },
+  "team": {
     "section_label": "TEAM",
     "title": "Meet the team behind ReqsAI",
     "subtitle": "A look at the people building ReqsAI and the vision driving the product."

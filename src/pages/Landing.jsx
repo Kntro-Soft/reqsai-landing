@@ -21,8 +21,9 @@ export default function Landing() {
         <Stats />
         <Features />
         <Solutions />
+        <Video id="demo" videoId="RPf5v-jJYlc" tKey="demo" />
         <Pricing />
-        <Video />
+        <Video id="team" videoId="6ZnpSvMzwR4" tKey="team" />
         <FAQ />
         <Contact />
       </main>
