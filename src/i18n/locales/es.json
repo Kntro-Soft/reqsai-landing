@@ -176,7 +176,7 @@
     "popular_badge": "Más popular",
     "cta_start": "Empezar gratis",
     "cta_pro": "Prueba 14 días gratis",
-    "cta_team": "Elegir Team",
+    "cta_team": "Elegir Enterprise",
     "cta_enterprise": "Hablar con ventas",
     "per_month": "/ mes",
     "billed_annually": "facturado anualmente",
@@ -226,8 +226,8 @@
         ]
       },
       {
-        "id": "team",
-        "name": "Team",
+        "id": "enterprise",
+        "name": "Enterprise",
         "desc": "Para equipos en crecimiento que necesitan colaboración, control y capacidad adicional.",
         "monthly": 149,
         "annual": 119,

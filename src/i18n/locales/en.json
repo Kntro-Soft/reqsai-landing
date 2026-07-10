@@ -176,7 +176,7 @@
     "popular_badge": "Most popular",
     "cta_start": "Get started free",
     "cta_pro": "Start 14-day free trial",
-    "cta_team": "Choose Team",
+    "cta_team": "Choose Enterprise",
     "cta_enterprise": "Talk to sales",
     "per_month": "/ mo",
     "billed_annually": "billed annually",
@@ -226,8 +226,8 @@
         ]
       },
       {
-        "id": "team",
-        "name": "Team",
+        "id": "enterprise",
+        "name": "Enterprise",
         "desc": "For growing teams that need collaboration, control, and more capacity.",
         "monthly": 149,
         "annual": 119,

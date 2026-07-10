@@ -63,7 +63,7 @@ function PlanCard({ plan, annual }) {
 
   const price = annual ? plan.annual : plan.monthly
   const isFree = price === 0
-  const isTeam = plan.id === 'team'
+  const isEnterprise = plan.id === 'enterprise'
   const hasDiscount = !isFree && annual && plan.monthly > plan.annual
   const savings = hasDiscount ? plan.monthly - plan.annual : 0
 
@@ -112,7 +112,7 @@ function PlanCard({ plan, annual }) {
             className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
               plan.highlight
                 ? 'border-red-400/25 bg-red-500/10 text-red-300'
-                : isTeam
+                : isEnterprise
                   ? 'border-rose-400/20 bg-rose-500/10 text-rose-300'
                   : 'border-white/10 bg-white/5 text-slate-300'
             }`}
@@ -162,7 +162,7 @@ function PlanCard({ plan, annual }) {
         className={`mt-auto block text-center text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 ${
           plan.highlight
             ? 'bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/25 hover:shadow-red-500/30 hover:-translate-y-0.5'
-            : isTeam
+            : isEnterprise
               ? 'border border-rose-400/20 bg-rose-500/8 text-rose-200 hover:text-white hover:border-rose-300/30 hover:bg-rose-500/12'
               : 'border border-white/10 bg-white/4 text-slate-200 hover:text-white hover:border-white/25 hover:bg-white/6'
         }`}
