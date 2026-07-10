@@ -6,6 +6,7 @@ import Stats from '../components/sections/Stats'
 import Features from '../components/sections/Features'
 import Solutions from '../components/sections/Solutions'
 import Pricing from '../components/sections/Pricing'
+import Video from '../components/sections/Video'
 import FAQ from '../components/sections/FAQ'
 import Contact from '../components/sections/Contact'
 
@@ -20,7 +21,9 @@ export default function Landing() {
         <Stats />
         <Features />
         <Solutions />
+        <Video id="demo" videoId="RPf5v-jJYlc" tKey="demo" />
         <Pricing />
+        <Video id="team" videoId="6ZnpSvMzwR4" tKey="team" />
         <FAQ />
         <Contact />
       </main>
