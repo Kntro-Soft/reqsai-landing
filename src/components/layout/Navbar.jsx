@@ -53,7 +53,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 shrink-0" aria-label="ReqsAI — home">
           <img
-            src="/reqsai-combination-mark-white.webp"
+            src="/reqsai-combination-mark-original.webp"
             alt="ReqsAI"
             className="h-8 w-auto sm:h-9"
             width="36"
@@ -82,13 +82,13 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <LangToggle />
           <a
-            href="#login"
+            href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-in"
             className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-1.5"
           >
             {t('nav.login')}
           </a>
           <a
-            href="#signup"
+            href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-up"
             className="text-sm font-medium bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-colors"
           >
             {t('nav.cta')}
@@ -131,14 +131,14 @@ export default function Navbar() {
           ))}
           <div className="mt-3 pt-3 border-t border-white/5 flex flex-col gap-2">
             <a
-              href="#login"
+              href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-in"
               onClick={() => setOpen(false)}
               className="text-sm text-center text-slate-300 py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
             >
               {t('nav.login')}
             </a>
             <a
-              href="#signup"
+              href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-up"
               onClick={() => setOpen(false)}
               className="text-sm font-medium text-center bg-red-600 hover:bg-red-500 text-white py-2.5 px-3 rounded-lg transition-colors"
             >

@@ -58,7 +58,7 @@
       ],
       "stat_value": "-30%",
       "stat_label": "less operational time spent on repetitive analysis work",
-      "cta": "Talk to sales →"
+      "cta": "Send message →"
     },
     "startup": {
       "headline": "Push requirements straight into Jira and move faster with agile workflows",
@@ -83,25 +83,73 @@
     "cols": {
       "product": {
         "title": "Product",
-        "links": ["Features", "Pricing", "Integrations", "Changelog", "Security"]
-      },
-      "resources": {
-        "title": "Resources",
-        "links": ["Documentation", "API Reference", "Status", "Blog", "Community"]
+        "links": [
+          { "label": "Features", "href": "/#product" },
+          { "label": "Solutions", "href": "/#solutions" },
+          { "label": "Pricing", "href": "/#pricing" }
+        ]
       },
       "company": {
         "title": "Company",
-        "links": ["About us", "Careers", "Press", "Contact"]
+        "links": [
+          { "label": "FAQ", "href": "/#faq" },
+          { "label": "Contact", "href": "/#contact" }
+        ]
       }
     },
     "copyright": "© 2026 Kntro-Soft. All rights reserved.",
     "made_in": "Made in Lima, Peru 🇵🇪",
-    "legal": ["Privacy", "Terms", "Cookies"]
+    "legal": ["Privacy", "Terms"]
+  },
+  "terms": {
+    "eyebrow": "ReqsAI",
+    "title": "Terms of Service",
+    "updated_label": "Last updated:",
+    "updated_date": "2026-06-29",
+    "sections": [
+      { "title": "1. Acceptance and eligibility", "body": "By creating an account or using ReqsAI you accept these Terms. You must be at least 18 years old, and if you accept on behalf of an organization, you confirm that you are authorized to bind it." },
+      { "title": "2. Definitions", "body": "“Service” means the ReqsAI platform; “Organization” the workspace you belong to; “Content” the data you submit, including meeting audio and transcripts; “Meeting Data” any recording or transcript processed by the Service." },
+      { "title": "3. The service and the license", "body": "ReqsAI grants you a limited, revocable, non-exclusive license to use the Service to capture meetings and generate requirements artifacts. You may not reverse engineer, resell, abuse, or use it for unlawful purposes." },
+      { "title": "4. Accounts and organizations", "body": "You are responsible for the accuracy of your account data, for protecting your credentials, and for the actions of the members you invite to your Organization." },
+      { "title": "5. Meeting recording and consent", "body": "You represent and warrant that, before recording or transcribing any meeting, you have obtained all consents required by law from each participant — some jurisdictions require the consent of all parties. ReqsAI provides a recording indicator, but your Organization is solely responsible for lawful capture and will indemnify Kntro-Soft S.A.C. against claims arising from a breach of this section." },
+      { "title": "6. AI-generated outputs", "body": "User stories, suggestions, and other AI outputs are generated automatically, may be inaccurate or incomplete, and are provided for your review. They are not professional, legal, or business advice; review them before relying on them." },
+      { "title": "7. Your content and intellectual property", "body": "You retain ownership of your Content and grant ReqsAI a limited license to process it solely to provide the Service. Kntro-Soft S.A.C. retains all rights to the platform, the software, and the trademarks." },
+      { "title": "8. Third-party AI subprocessors", "body": "To provide the Service we use third-party AI providers — Deepgram (speech-to-text), Google Gemini (generation), and OpenAI (embeddings). Details are in our Privacy Policy." },
+      { "title": "9. Model training", "body": "We do not use your Content, nor data derived from it, to train the machine learning models of ReqsAI or of our subprocessors." },
+      { "title": "10. Fees and subscription", "body": "Paid plans, when offered, are billed on a recurring basis and renew until cancelled. We may change prices with prior notice; the Service may be offered free of charge in whole or in part." },
+      { "title": "11. Termination and data export", "body": "You may stop using the Service at any time. Upon termination, you will have a reasonable period to export your data before it is deleted, subject to the retention rules in the Privacy Policy." },
+      { "title": "12. Warranties and limitation of liability", "body": "The Service is provided “as is,” without warranties of any kind. To the maximum extent permitted by law, Kntro-Soft S.A.C. is not liable for indirect or consequential damages, and its total liability is limited to the amounts you paid in the previous twelve months." },
+      { "title": "13. Changes to these Terms", "body": "We may update these Terms; when their substantive content changes we will ask you to accept the new version. Continued use after an update constitutes acceptance." },
+      { "title": "14. Governing law", "body": "These Terms are governed by the laws of Peru, and any dispute is submitted to the competent courts of Peru." }
+    ],
+    "contact_title": "15. Contact",
+    "contact_before": "Questions about these Terms may be sent to ",
+    "contact_after": "."
+  },
+  "privacy": {
+    "eyebrow": "ReqsAI",
+    "title": "Privacy Policy",
+    "updated_label": "Last updated:",
+    "updated_date": "2026-06-29",
+    "sections": [
+      { "title": "1. Who we are", "body": "Kntro-Soft S.A.C. (Lima, Peru) is the controller of the personal data processed through ReqsAI. You can contact us about privacy at legal@kntro.dev." },
+      { "title": "2. Data we collect", "body": "Account data (name, email), the meeting audio and transcripts you submit, the requirements artifacts and embeddings generated from them, and technical data such as IP address, device, and usage logs." },
+      { "title": "3. Purposes and legal bases", "body": "We process data to provide the Service (performance of a contract), keep it secure (legitimate interest), comply with the law, and — when third parties are recorded — on the basis of the consent you are responsible for obtaining." },
+      { "title": "4. AI processing and subprocessors", "body": "Audio and text are processed by Deepgram (speech-to-text), Google Gemini (generation), and OpenAI (embeddings) strictly to provide the Service. Neither they nor ReqsAI use your data to train models." },
+      { "title": "5. International transfers", "body": "Some subprocessors operate outside your country, so your data may be processed abroad with appropriate safeguards." },
+      { "title": "6. Retention", "body": "Audio and transcript retention is configurable per Organization (audio retention days; -1 keeps them until you delete them). Other data is kept while your account is active and as required by law." },
+      { "title": "7. Your rights", "body": "Under applicable law you may access, rectify, delete, port, or object to the processing of your data and withdraw your consent. Write to legal@kntro.dev to exercise them; you may also lodge a complaint with your data protection authority." },
+      { "title": "8. Security", "body": "We protect data with encryption in transit and at rest, access controls, and strict per-Organization isolation (a separate database schema per tenant). We will notify you of any breach as required by law." },
+      { "title": "9. Cookies and local storage", "body": "We only store what the app needs to function — session management and your theme and language preferences. We do not use advertising cookies." },
+      { "title": "10. Minors", "body": "The Service is not directed to minors and is intended for users aged 18 or older." },
+      { "title": "11. Changes to this Policy", "body": "We may update this Policy; we will post the new effective date and, when the change is material, we will notify you." },
+      { "title": "12. Data Processing Agreement", "body": "Organizations acting as data controllers may request a Data Processing Agreement (DPA) by writing to legal@kntro.dev." }
+    ]
   },
   "faq": {
     "section_label": "FREQUENTLY ASKED QUESTIONS",
     "title": "Everything you need to know",
-    "subtitle": "Can't find what you're looking for? Write to us at hello@reqsai.com",
+    "subtitle": "Can't find what you're looking for? Write to us at noreply.reqsai@gmail.com",
     "items": [
       {
         "q": "How does ReqsAI work during a live meeting?",
@@ -142,7 +190,7 @@
     "title": "Let's talk about your team",
     "subtitle": "Questions about plans, security, or a specific integration? Write to us and we'll respond in under 24 hours.",
     "info_email_label": "Direct email",
-    "info_email": "hello@reqsai.com",
+    "info_email": "noreply.reqsai@gmail.com",
     "info_response_label": "Response time",
     "info_response": "Under 24 business hours",
     "info_calendar_label": "Live demo",
@@ -176,8 +224,8 @@
     "popular_badge": "Most popular",
     "cta_start": "Get started free",
     "cta_pro": "Start 14-day free trial",
-    "cta_team": "Choose Team",
-    "cta_enterprise": "Talk to sales",
+    "cta_team": "Choose Enterprise",
+    "cta_enterprise": "Send message",
     "per_month": "/ mo",
     "billed_annually": "billed annually",
     "billed_monthly": "billed monthly",
@@ -226,8 +274,8 @@
         ]
       },
       {
-        "id": "team",
-        "name": "Team",
+        "id": "enterprise",
+        "name": "Enterprise",
         "desc": "For growing teams that need collaboration, control, and more capacity.",
         "monthly": 149,
         "annual": 119,

@@ -129,7 +129,7 @@ export default function Solutions() {
 
             <div className="mt-8">
               <a
-                href={active === 0 ? '#contact' : '#signup'}
+                href={active === 0 ? '#contact' : 'https://d29o19vcsmcdsd.cloudfront.net/auth/sign-up'}
                 className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${active === 0 ? 'text-red-400 hover:text-red-300' : 'text-rose-400 hover:text-rose-300'}`}
               >
                 {content.cta}
