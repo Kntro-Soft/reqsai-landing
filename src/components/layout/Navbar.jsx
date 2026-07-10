@@ -53,7 +53,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 shrink-0" aria-label="ReqsAI — home">
           <img
-            src="/reqsai-combination-mark-white.webp"
+            src="/reqsai-combination-mark-original.webp"
             alt="ReqsAI"
             className="h-8 w-auto sm:h-9"
             width="36"

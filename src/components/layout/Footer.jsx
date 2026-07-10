@@ -80,7 +80,7 @@ export default function Footer() {
             <div className="col-span-2 lg:col-span-1">
               <a href="/" className="inline-flex items-center gap-2.5 mb-4" aria-label="ReqsAI — home">
                 <img
-                  src="/reqsai-combination-mark-white.webp"
+                  src="/reqsai-combination-mark-original.webp"
                   alt="ReqsAI"
                   className="h-8 w-auto"
                   width="36"

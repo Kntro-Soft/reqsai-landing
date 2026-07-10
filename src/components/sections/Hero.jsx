@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { ArrowRight, Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 function ProductMockup() {
   const { t } = useTranslation()
@@ -157,17 +157,6 @@ export default function Hero() {
                   className="group-hover:translate-x-0.5 transition-transform"
                   aria-hidden="true"
                 />
-              </a>
-              <a
-                href="#demo"
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 text-slate-300 hover:text-white border border-white/10 hover:border-white/25 px-6 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-              >
-                <Play
-                  size={14}
-                  className="fill-current"
-                  aria-hidden="true"
-                />
-                {t('hero.cta_secondary')}
               </a>
             </div>
 
