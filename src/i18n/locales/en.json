@@ -83,20 +83,23 @@
     "cols": {
       "product": {
         "title": "Product",
-        "links": ["Features", "Pricing", "Integrations", "Changelog", "Security"]
-      },
-      "resources": {
-        "title": "Resources",
-        "links": ["Documentation", "API Reference", "Status", "Blog", "Community"]
+        "links": [
+          { "label": "Features", "href": "/#product" },
+          { "label": "Solutions", "href": "/#solutions" },
+          { "label": "Pricing", "href": "/#pricing" }
+        ]
       },
       "company": {
         "title": "Company",
-        "links": ["About us", "Careers", "Press", "Contact"]
+        "links": [
+          { "label": "FAQ", "href": "/#faq" },
+          { "label": "Contact", "href": "/#contact" }
+        ]
       }
     },
     "copyright": "© 2026 Kntro-Soft. All rights reserved.",
     "made_in": "Made in Lima, Peru 🇵🇪",
-    "legal": ["Privacy", "Terms", "Cookies"]
+    "legal": ["Privacy", "Terms"]
   },
   "terms": {
     "eyebrow": "ReqsAI",
