@@ -3,6 +3,7 @@
     "product": "Producto",
     "solutions": "Soluciones",
     "pricing": "Precios",
+    "team": "Equipo",
     "faq": "FAQ",
     "contact": "Contacto",
     "login": "Iniciar sesión",
@@ -145,6 +146,11 @@
       { "title": "11. Cambios en esta Política", "body": "Podemos actualizar esta Política; publicaremos la nueva fecha de vigencia y, cuando el cambio sea relevante, te lo notificaremos." },
       { "title": "12. Acuerdo de Tratamiento de Datos", "body": "Las Organizaciones que actúan como responsables del tratamiento pueden solicitar un Acuerdo de Tratamiento de Datos (DPA) escribiendo a legal@kntro.dev." }
     ]
+  },
+  "video": {
+    "section_label": "EQUIPO",
+    "title": "Conoce al equipo detrás de ReqsAI",
+    "subtitle": "Un vistazo a las personas que construyen ReqsAI y la visión que impulsa el producto."
   },
   "faq": {
     "section_label": "PREGUNTAS FRECUENTES",

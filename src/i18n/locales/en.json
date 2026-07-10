@@ -3,6 +3,7 @@
     "product": "Product",
     "solutions": "Solutions",
     "pricing": "Pricing",
+    "team": "Team",
     "faq": "FAQ",
     "contact": "Contact",
     "login": "Sign in",
@@ -145,6 +146,11 @@
       { "title": "11. Changes to this Policy", "body": "We may update this Policy; we will post the new effective date and, when the change is material, we will notify you." },
       { "title": "12. Data Processing Agreement", "body": "Organizations acting as data controllers may request a Data Processing Agreement (DPA) by writing to legal@kntro.dev." }
     ]
+  },
+  "video": {
+    "section_label": "TEAM",
+    "title": "Meet the team behind ReqsAI",
+    "subtitle": "A look at the people building ReqsAI and the vision driving the product."
   },
   "faq": {
     "section_label": "FREQUENTLY ASKED QUESTIONS",

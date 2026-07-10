@@ -6,6 +6,7 @@ import Stats from '../components/sections/Stats'
 import Features from '../components/sections/Features'
 import Solutions from '../components/sections/Solutions'
 import Pricing from '../components/sections/Pricing'
+import Video from '../components/sections/Video'
 import FAQ from '../components/sections/FAQ'
 import Contact from '../components/sections/Contact'
 
@@ -21,6 +22,7 @@ export default function Landing() {
         <Features />
         <Solutions />
         <Pricing />
+        <Video />
         <FAQ />
         <Contact />
       </main>

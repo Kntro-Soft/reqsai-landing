@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { useScrolled } from '../../hooks/useScrolled'
 
-const NAV_LINKS = ['product', 'solutions', 'pricing', 'faq', 'contact']
+const NAV_LINKS = ['product', 'solutions', 'pricing', 'team', 'faq', 'contact']
 
 function LangToggle() {
   const { i18n } = useTranslation()
