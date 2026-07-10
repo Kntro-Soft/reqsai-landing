@@ -148,7 +148,7 @@ export default function Hero() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 justify-center lg:justify-start mb-6">
               <a
-                href="#signup"
+                href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-up"
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-red-600/25 hover:shadow-red-500/30 hover:-translate-y-0.5"
               >
                 {t('hero.cta_primary')}

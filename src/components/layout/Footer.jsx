@@ -55,14 +55,14 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="#signup"
+              href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-up"
               className="group inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-red-600/25 hover:-translate-y-0.5"
             >
               {t('footer.cta_button')}
               <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </a>
             <a
-              href="#login"
+              href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-in"
               className="text-sm text-slate-500 hover:text-slate-300 transition-colors px-4 py-3"
             >
               {t('footer.cta_login')}
