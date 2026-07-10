@@ -149,7 +149,7 @@
   "faq": {
     "section_label": "PREGUNTAS FRECUENTES",
     "title": "Todo lo que necesitas saber",
-    "subtitle": "¿Algo que no encuentras aquí? Escríbenos a hola@reqsai.com",
+    "subtitle": "¿Algo que no encuentras aquí? Escríbenos a noreply.reqsai@gmail.com",
     "items": [
       {
         "q": "¿Cómo funciona ReqsAI durante una reunión en vivo?",
@@ -190,7 +190,7 @@
     "title": "Hablemos de tu equipo",
     "subtitle": "¿Tienes preguntas sobre planes, seguridad o una integración específica? Escríbenos y respondemos en menos de 24 horas.",
     "info_email_label": "Email directo",
-    "info_email": "hola@reqsai.com",
+    "info_email": "noreply.reqsai@gmail.com",
     "info_response_label": "Tiempo de respuesta",
     "info_response": "Menos de 24 horas hábiles",
     "info_calendar_label": "Demo en vivo",
