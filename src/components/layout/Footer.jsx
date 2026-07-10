@@ -1,23 +1,11 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
-const COL_KEYS = ['product', 'resources', 'company']
+// href por posición del array `footer.legal`: [Privacidad, Términos]
+const LEGAL_HREFS = ['/privacidad', '/terminos']
 
-function XIcon({ size = 16 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.254 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-    </svg>
-  )
-}
-
-function LinkedInIcon({ size = 16 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  )
-}
+const COL_KEYS = ['product', 'company']
 
 function GitHubIcon({ size = 16 }) {
   return (
@@ -28,9 +16,7 @@ function GitHubIcon({ size = 16 }) {
 }
 
 const SOCIAL = [
-  { label: 'X (Twitter)', href: '#', Icon: XIcon },
-  { label: 'LinkedIn',    href: '#', Icon: LinkedInIcon },
-  { label: 'GitHub',      href: '#', Icon: GitHubIcon },
+  { label: 'GitHub', href: 'https://github.com/Kntro-Soft', Icon: GitHubIcon },
 ]
 
 export default function Footer() {
@@ -55,14 +41,14 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="#signup"
+              href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-up"
               className="group inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-red-600/25 hover:-translate-y-0.5"
             >
               {t('footer.cta_button')}
               <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </a>
             <a
-              href="#login"
+              href="https://d29o19vcsmcdsd.cloudfront.net/auth/sign-in"
               className="text-sm text-slate-500 hover:text-slate-300 transition-colors px-4 py-3"
             >
               {t('footer.cta_login')}
@@ -74,13 +60,13 @@ export default function Footer() {
       {/* Main footer */}
       <div className="border-t border-white/5 bg-white/[0.01]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-10">
 
             {/* Brand column */}
             <div className="col-span-2 lg:col-span-1">
               <a href="/" className="inline-flex items-center gap-2.5 mb-4" aria-label="ReqsAI — home">
                 <img
-                  src="/reqsai-combination-mark-white.webp"
+                  src="/reqsai-combination-mark-original.webp"
                   alt="ReqsAI"
                   className="h-8 w-auto"
                   width="36"
@@ -101,9 +87,12 @@ export default function Footer() {
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="w-8 h-8 rounded-lg border border-white/10 text-slate-500 hover:text-white hover:border-white/25 flex items-center justify-center transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-8 px-2.5 gap-2 rounded-lg border border-white/10 text-slate-500 hover:text-white hover:border-white/25 flex items-center justify-center text-xs font-medium transition-colors"
                   >
                     <Icon size={14} />
+                    {label}
                   </a>
                 ))}
               </div>
@@ -116,13 +105,13 @@ export default function Footer() {
                   {cols[key].title}
                 </p>
                 <ul className="space-y-2.5" role="list">
-                  {cols[key].links.map((link) => (
-                    <li key={link}>
+                  {cols[key].links.map(({ label, href }) => (
+                    <li key={label}>
                       <a
-                        href="#"
+                        href={href}
                         className="text-sm text-slate-500 hover:text-slate-200 transition-colors"
                       >
-                        {link}
+                        {label}
                       </a>
                     </li>
                   ))}
@@ -143,13 +132,19 @@ export default function Footer() {
           </div>
           <nav aria-label="Legal links">
             <ul className="flex items-center gap-4" role="list">
-              {legal.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {legal.map((item, i) => {
+                const href = LEGAL_HREFS[i] ?? '#'
+                const className = 'text-xs text-slate-600 hover:text-slate-400 transition-colors'
+                return (
+                  <li key={item}>
+                    {href.startsWith('/') ? (
+                      <Link to={href} className={className}>{item}</Link>
+                    ) : (
+                      <a href={href} className={className}>{item}</a>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </nav>
         </div>
