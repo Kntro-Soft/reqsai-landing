@@ -123,6 +123,26 @@
     "contact_before": "Questions about these Terms may be sent to ",
     "contact_after": "."
   },
+  "privacy": {
+    "eyebrow": "ReqsAI",
+    "title": "Privacy Policy",
+    "updated_label": "Last updated:",
+    "updated_date": "2026-06-29",
+    "sections": [
+      { "title": "1. Who we are", "body": "Kntro-Soft S.A.C. (Lima, Peru) is the controller of the personal data processed through ReqsAI. You can contact us about privacy at legal@kntro.dev." },
+      { "title": "2. Data we collect", "body": "Account data (name, email), the meeting audio and transcripts you submit, the requirements artifacts and embeddings generated from them, and technical data such as IP address, device, and usage logs." },
+      { "title": "3. Purposes and legal bases", "body": "We process data to provide the Service (performance of a contract), keep it secure (legitimate interest), comply with the law, and — when third parties are recorded — on the basis of the consent you are responsible for obtaining." },
+      { "title": "4. AI processing and subprocessors", "body": "Audio and text are processed by Deepgram (speech-to-text), Google Gemini (generation), and OpenAI (embeddings) strictly to provide the Service. Neither they nor ReqsAI use your data to train models." },
+      { "title": "5. International transfers", "body": "Some subprocessors operate outside your country, so your data may be processed abroad with appropriate safeguards." },
+      { "title": "6. Retention", "body": "Audio and transcript retention is configurable per Organization (audio retention days; -1 keeps them until you delete them). Other data is kept while your account is active and as required by law." },
+      { "title": "7. Your rights", "body": "Under applicable law you may access, rectify, delete, port, or object to the processing of your data and withdraw your consent. Write to legal@kntro.dev to exercise them; you may also lodge a complaint with your data protection authority." },
+      { "title": "8. Security", "body": "We protect data with encryption in transit and at rest, access controls, and strict per-Organization isolation (a separate database schema per tenant). We will notify you of any breach as required by law." },
+      { "title": "9. Cookies and local storage", "body": "We only store what the app needs to function — session management and your theme and language preferences. We do not use advertising cookies." },
+      { "title": "10. Minors", "body": "The Service is not directed to minors and is intended for users aged 18 or older." },
+      { "title": "11. Changes to this Policy", "body": "We may update this Policy; we will post the new effective date and, when the change is material, we will notify you." },
+      { "title": "12. Data Processing Agreement", "body": "Organizations acting as data controllers may request a Data Processing Agreement (DPA) by writing to legal@kntro.dev." }
+    ]
+  },
   "faq": {
     "section_label": "FREQUENTLY ASKED QUESTIONS",
     "title": "Everything you need to know",

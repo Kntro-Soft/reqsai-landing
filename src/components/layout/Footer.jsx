@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
 // href por posición del array `footer.legal`: [Privacidad, Términos, Cookies]
-const LEGAL_HREFS = ['#', '/terminos', '#']
+const LEGAL_HREFS = ['/privacidad', '/terminos', '#']
 
 const COL_KEYS = ['product', 'resources', 'company']
 

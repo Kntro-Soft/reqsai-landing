@@ -123,6 +123,26 @@
     "contact_before": "Las preguntas sobre estos Términos pueden enviarse a ",
     "contact_after": "."
   },
+  "privacy": {
+    "eyebrow": "ReqsAI",
+    "title": "Política de Privacidad",
+    "updated_label": "Última actualización:",
+    "updated_date": "2026-06-29",
+    "sections": [
+      { "title": "1. Quiénes somos", "body": "Kntro-Soft S.A.C. (Lima, Perú) es el responsable de los datos personales tratados a través de ReqsAI. Puedes contactarnos sobre privacidad en legal@kntro.dev." },
+      { "title": "2. Datos que recopilamos", "body": "Datos de la cuenta (nombre, correo), el audio y las transcripciones de reuniones que envías, los artefactos de requisitos y embeddings generados a partir de ellos, y datos técnicos como dirección IP, dispositivo y registros de uso." },
+      { "title": "3. Finalidades y bases legales", "body": "Tratamos los datos para prestar el Servicio (ejecución de un contrato), mantenerlo seguro (interés legítimo), cumplir la ley y — cuando se graba a terceros — sobre la base del consentimiento que eres responsable de obtener." },
+      { "title": "4. Procesamiento de IA y subprocesadores", "body": "El audio y el texto son procesados por Deepgram (voz a texto), Google Gemini (generación) y OpenAI (embeddings) estrictamente para prestar el Servicio. Ni ellos ni ReqsAI usan tus datos para entrenar modelos." },
+      { "title": "5. Transferencias internacionales", "body": "Algunos subprocesadores operan fuera de tu país, por lo que tus datos pueden tratarse en el extranjero con las garantías adecuadas." },
+      { "title": "6. Retención", "body": "La retención de audio y transcripciones es configurable por Organización (días de retención de audio; -1 los conserva hasta que los elimines). Los demás datos se conservan mientras tu cuenta esté activa y según lo exija la ley." },
+      { "title": "7. Tus derechos", "body": "Conforme a la ley aplicable puedes acceder, rectificar, eliminar, portar u oponerte al tratamiento de tus datos y retirar tu consentimiento. Escribe a legal@kntro.dev para ejercerlos; también puedes reclamar ante tu autoridad de protección de datos." },
+      { "title": "8. Seguridad", "body": "Protegemos los datos con cifrado en tránsito y en reposo, controles de acceso y un aislamiento estricto por Organización (un esquema de base de datos separado por inquilino). Te notificaremos cualquier brecha según lo exija la ley." },
+      { "title": "9. Cookies y almacenamiento local", "body": "Solo guardamos lo que la app necesita para funcionar — la gestión de sesión y tus preferencias de tema e idioma. No usamos cookies publicitarias." },
+      { "title": "10. Menores", "body": "El Servicio no está dirigido a menores y está destinado a usuarios de 18 años o más." },
+      { "title": "11. Cambios en esta Política", "body": "Podemos actualizar esta Política; publicaremos la nueva fecha de vigencia y, cuando el cambio sea relevante, te lo notificaremos." },
+      { "title": "12. Acuerdo de Tratamiento de Datos", "body": "Las Organizaciones que actúan como responsables del tratamiento pueden solicitar un Acuerdo de Tratamiento de Datos (DPA) escribiendo a legal@kntro.dev." }
+    ]
+  },
   "faq": {
     "section_label": "PREGUNTAS FRECUENTES",
     "title": "Todo lo que necesitas saber",
