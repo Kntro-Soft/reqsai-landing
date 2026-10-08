@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { useScrolled } from '../../hooks/useScrolled'
+import { SIGN_IN_URL, SIGN_UP_URL } from '../../config/appLinks'
 
 const NAV_LINKS = ['product', 'solutions', 'demo', 'pricing', 'team', 'faq', 'contact']
 
@@ -82,13 +83,13 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <LangToggle />
           <a
-            href="https://app.tamci.app/auth/sign-in"
+            href={SIGN_IN_URL}
             className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-1.5"
           >
             {t('nav.login')}
           </a>
           <a
-            href="https://app.tamci.app/auth/sign-up"
+            href={SIGN_UP_URL}
             className="text-sm font-medium bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-colors"
           >
             {t('nav.cta')}
@@ -131,14 +132,14 @@ export default function Navbar() {
           ))}
           <div className="mt-3 pt-3 border-t border-white/5 flex flex-col gap-2">
             <a
-              href="https://app.tamci.app/auth/sign-in"
+              href={SIGN_IN_URL}
               onClick={() => setOpen(false)}
               className="text-sm text-center text-slate-300 py-2.5 px-3 rounded-lg hover:bg-white/5 transition-colors"
             >
               {t('nav.login')}
             </a>
             <a
-              href="https://app.tamci.app/auth/sign-up"
+              href={SIGN_UP_URL}
               onClick={() => setOpen(false)}
               className="text-sm font-medium text-center bg-red-600 hover:bg-red-500 text-white py-2.5 px-3 rounded-lg transition-colors"
             >
