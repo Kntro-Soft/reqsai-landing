@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { SIGN_IN_URL, SIGN_UP_URL } from '../../config/appLinks'
 
 // href por posición del array `footer.legal`: [Privacidad, Términos]
 const LEGAL_HREFS = ['/privacidad', '/terminos']
@@ -41,14 +42,14 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="https://app.tamci.app/auth/sign-up"
+              href={SIGN_UP_URL}
               className="group inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-red-600/25 hover:-translate-y-0.5"
             >
               {t('footer.cta_button')}
               <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </a>
             <a
-              href="https://app.tamci.app/auth/sign-in"
+              href={SIGN_IN_URL}
               className="text-sm text-slate-500 hover:text-slate-300 transition-colors px-4 py-3"
             >
               {t('footer.cta_login')}

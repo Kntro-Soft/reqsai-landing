@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Zap, ShieldCheck, ArrowRight } from 'lucide-react'
+import { SIGN_UP_URL } from '../../config/appLinks'
 
 const TAB_ICONS = [Zap, ShieldCheck]
 
@@ -129,7 +130,7 @@ export default function Solutions() {
 
             <div className="mt-8">
               <a
-                href={active === 0 ? '#contact' : 'https://app.tamci.app/auth/sign-up'}
+                href={active === 0 ? '#contact' : SIGN_UP_URL}
                 className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${active === 0 ? 'text-red-400 hover:text-red-300' : 'text-rose-400 hover:text-rose-300'}`}
               >
                 {content.cta}

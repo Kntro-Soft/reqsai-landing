@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Check, Minus } from 'lucide-react'
+import { signUpForPlan } from '../../config/appLinks'
 
 function BillingToggle({ annual, onChange }) {
   const { t } = useTranslation()
@@ -158,7 +159,7 @@ function PlanCard({ plan, annual }) {
 
       {/* CTA */}
       <a
-        href="https://app.tamci.app/auth/sign-up"
+        href={signUpForPlan(plan.id)}
         className={`mt-auto block text-center text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 ${
           plan.highlight
             ? 'bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/25 hover:shadow-red-500/30 hover:-translate-y-0.5'

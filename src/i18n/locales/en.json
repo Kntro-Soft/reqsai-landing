@@ -17,7 +17,7 @@
     "headline_1": "Turn discovery meetings into",
     "headline_2": "perfect backlogs",
     "subheadline": "ReqsAI listens to your elicitation sessions in real time and automatically generates structured User Stories with Gherkin acceptance criteria — so you never miss a critical edge case again.",
-    "cta_primary": "Start 14-day free trial",
+    "cta_primary": "Start free",
     "cta_secondary": "Watch demo",
     "note": "No credit card required · Cancel anytime",
     "mockup": {
@@ -56,7 +56,7 @@
         { "title": "Fewer manual discovery hours", "desc": "Every session ends with structured User Stories and ready-to-review Gherkin, reducing the time your team spends reconstructing agreements and cleaning up notes." },
         { "title": "More billable capacity", "desc": "Analysts spend less time on administrative follow-up between meetings and can support more accounts or go deeper on new initiatives faster." },
         { "title": "Less client-side rework", "desc": "The AI co-pilot suggests questions live to close gaps before the next meeting and avoid unplanned clarification rounds." },
-        { "title": "Deliverables ready to share", "desc": "Export approved stories to Jira or Azure DevOps with consistent formatting so clients see tangible progress without manual handoff work." }
+        { "title": "Deliverables ready to share", "desc": "Export approved stories to Jira with consistent formatting so clients see tangible progress without manual handoff work." }
       ],
       "stat_value": "-30%",
       "stat_label": "less operational time spent on repetitive analysis work",
@@ -78,7 +78,7 @@
   },
   "footer": {
     "cta_title": "Start eliciting without losing anything",
-    "cta_subtitle": "14 days free, no credit card. Cancel anytime.",
+    "cta_subtitle": "Free Starter plan, no credit card. Upgrade to Pro when you need it.",
     "cta_button": "Create free account",
     "cta_login": "Already have an account? Sign in",
     "tagline": "From the meeting to the backlog, without friction.",
@@ -177,7 +177,7 @@
       },
       {
         "q": "What tools does ReqsAI integrate with?",
-        "a": "The Pro plan includes integration with Jira (Cloud and Server) and Azure DevOps. Approved User Stories export directly as issues with the correct fields pre-filled. We also offer webhooks for custom integrations in the Enterprise plan. Coming soon: Linear, Notion, and GitHub Issues."
+        "a": "Every plan integrates with Jira Cloud: connect your site with OAuth, export approved User Stories as issues with their acceptance criteria, and import existing issues into the backlog. Coming soon: Azure DevOps, Linear and GitHub Issues."
       },
       {
         "q": "Can I analyze recordings from previous meetings?",
@@ -192,8 +192,8 @@
         "a": "The transcription and analysis engine natively supports Spanish, English, and Portuguese — the three most common languages in LATAM tech teams. Gherkin can be generated in whichever language you prefer. The platform UI is available in Spanish and English."
       },
       {
-        "q": "How does the 14-day trial period work?",
-        "a": "When you sign up, your account is in Trial status with full access to the Pro plan for 14 days — no credit card required. You can process real meetings, invite your team, and export to Jira. At the end of the period we notify you in advance and you can continue with a paid plan or switch to the free Starter plan without losing your data."
+        "q": "Do I need a card to get started?",
+        "a": "No. When you sign up, your organization starts on the free Starter plan, with no credit card. When you need more members, AI tokens or context documents, you upgrade to Pro or Enterprise from Billing and pay with Stripe. If you go back to Starter, you keep your data."
       }
     ]
   },
@@ -235,8 +235,8 @@
     "save_badge": "Save 20%",
     "popular_badge": "Most popular",
     "cta_start": "Get started free",
-    "cta_pro": "Start 14-day free trial",
-    "cta_team": "Choose Enterprise",
+    "cta_pro": "Start with Pro",
+    "cta_team": "Start with Enterprise",
     "cta_enterprise": "Send message",
     "per_month": "/ mo",
     "billed_annually": "billed annually",
@@ -256,15 +256,13 @@
         "annual": 0,
         "highlight": false,
         "features": [
-          { "text": "3 sessions per month", "included": true },
-          { "text": "5 User Stories per session", "included": true },
-          { "text": "Auto-generated Gherkin", "included": true },
-          { "text": "Meeting summary and key notes", "included": true },
-          { "text": "Export to Jira & Azure DevOps", "included": false },
-          { "text": "Live AI Co-pilot", "included": false },
-          { "text": "RAG Context", "included": false },
-          { "text": "Team Review", "included": false },
-          { "text": "Schema-per-tenant isolation", "included": false }
+          { "text": "Up to 3 members", "included": true },
+          { "text": "100,000 AI tokens per month", "included": true },
+          { "text": "Live AI copilot and automatic Gherkin", "included": true },
+          { "text": "Glossary of up to 50 terms per project", "included": true },
+          { "text": "10 context documents per project", "included": true },
+          { "text": "Jira export and import", "included": true },
+          { "text": "Schema-per-tenant isolation", "included": true }
         ]
       },
       {
@@ -275,14 +273,14 @@
         "annual": 39,
         "highlight": true,
         "features": [
-          { "text": "Unlimited sessions", "included": true },
-          { "text": "Unlimited User Stories", "included": true },
-          { "text": "Export to Jira & Azure DevOps", "included": true },
-          { "text": "Auto-generated Gherkin", "included": true },
-          { "text": "Live AI Co-pilot", "included": true },
-          { "text": "Project-level RAG Context", "included": true },
-          { "text": "Team Review (up to 10 members)", "included": true },
-          { "text": "Schema-per-tenant isolation", "included": false }
+          { "text": "Up to 15 members", "included": true },
+          { "text": "2 million AI tokens per month", "included": true },
+          { "text": "Live AI copilot and automatic Gherkin", "included": true },
+          { "text": "Glossary of up to 300 terms per project", "included": true },
+          { "text": "50 context documents per project", "included": true },
+          { "text": "Jira export and import", "included": true },
+          { "text": "Per-project roles and permissions", "included": true },
+          { "text": "Schema-per-tenant isolation", "included": true }
         ]
       },
       {
@@ -294,12 +292,11 @@
         "highlight": false,
         "features": [
           { "text": "Everything in Pro", "included": true },
-          { "text": "Up to 25 team members", "included": true },
-          { "text": "Collaborative workspaces and projects", "included": true },
-          { "text": "Review and approval workflows", "included": true },
-          { "text": "Requirements analytics and traceability", "included": true },
-          { "text": "Basic roles and permissions", "included": true },
-          { "text": "Advanced RAG Context", "included": true },
+          { "text": "Up to 200 members", "included": true },
+          { "text": "50 million AI tokens per month", "included": true },
+          { "text": "Glossary of up to 3,000 terms per project", "included": true },
+          { "text": "500 context documents per project", "included": true },
+          { "text": "Custom roles and story approval", "included": true },
           { "text": "Priority support", "included": true }
         ]
       }
@@ -365,7 +362,7 @@
     "privacy_title": "Enterprise Privacy",
     "privacy_desc": "Schema-per-tenant isolation to guarantee that each organization's data is completely separate and secure.",
     "jira_title": "Jira Integration",
-    "jira_desc": "Export approved User Stories directly to your Jira or Azure DevOps backlog with one click, in under 10 minutes.",
+    "jira_desc": "Export approved User Stories directly to your Jira backlog with one click, in under 10 minutes.",
     "collab_title": "Team Review",
     "collab_desc": "Share, comment and approve User Stories with the whole team before they reach the sprint. Full traceability included."
   }

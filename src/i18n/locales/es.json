@@ -17,7 +17,7 @@
     "headline_1": "Transforma reuniones en",
     "headline_2": "backlogs perfectos",
     "subheadline": "ReqsAI escucha tus sesiones de elicitación en tiempo real y genera automáticamente User Stories estructuradas con criterios de aceptación en Gherkin — para que nunca pierdas un caso edge crítico.",
-    "cta_primary": "Prueba 14 días gratis",
+    "cta_primary": "Empezar gratis",
     "cta_secondary": "Ver demo",
     "note": "Sin tarjeta de crédito · Cancela cuando quieras",
     "mockup": {
@@ -56,7 +56,7 @@
         { "title": "Menos horas manuales por discovery", "desc": "Cada sesión termina con User Stories estructuradas y criterios Gherkin listos, reduciendo el tiempo que tu equipo dedica a reconstruir acuerdos y limpiar notas." },
         { "title": "Más capacidad facturable", "desc": "Los analistas invierten menos horas administrativas entre reuniones y pueden atender más cuentas o profundizar más rápido en nuevas iniciativas." },
         { "title": "Menos retrabajo con el cliente", "desc": "El copiloto IA sugiere preguntas en vivo para cerrar vacíos antes de la siguiente reunión y evitar rondas extra de aclaración no planificadas." },
-        { "title": "Entregables listos para compartir", "desc": "Exporta historias aprobadas a Jira o Azure DevOps con formato consistente para que el cliente vea avance tangible sin pasos manuales intermedios." }
+        { "title": "Entregables listos para compartir", "desc": "Exporta historias aprobadas a Jira con formato consistente para que el cliente vea avance tangible sin pasos manuales intermedios." }
       ],
       "stat_value": "-30%",
       "stat_label": "menos tiempo operativo invertido en análisis repetitivo",
@@ -78,7 +78,7 @@
   },
   "footer": {
     "cta_title": "Empieza a elicitar sin perder nada",
-    "cta_subtitle": "14 días gratis, sin tarjeta de crédito. Cancela cuando quieras.",
+    "cta_subtitle": "Plan Starter gratis, sin tarjeta de crédito. Mejora a Pro cuando lo necesites.",
     "cta_button": "Crear cuenta gratis",
     "cta_login": "¿Ya tienes cuenta? Inicia sesión",
     "tagline": "De la reunión al backlog, sin fricción.",
@@ -177,7 +177,7 @@
       },
       {
         "q": "¿Con qué herramientas se integra ReqsAI?",
-        "a": "En el plan Pro incluimos integración con Jira (Cloud y Server) y Azure DevOps. Las User Stories aprobadas se exportan directamente como issues con los campos correctos pre-llenados. También ofrecemos webhooks para integraciones personalizadas en el plan Enterprise. Próximamente: Linear, Notion y GitHub Issues."
+        "a": "Todos los planes se integran con Jira Cloud: conectas tu sitio con OAuth, exportas las User Stories aprobadas como issues con sus criterios de aceptación e importas issues existentes al backlog. Próximamente: Azure DevOps, Linear y GitHub Issues."
       },
       {
         "q": "¿Puedo analizar grabaciones de reuniones anteriores?",
@@ -192,8 +192,8 @@
         "a": "El motor de transcripción y análisis soporta español, inglés y portugués de forma nativa — los tres idiomas más usados en equipos de tecnología en LATAM. El Gherkin puede generarse en el idioma que prefieras. La plataforma (UI) está disponible en español e inglés."
       },
       {
-        "q": "¿Cómo funciona el período de prueba de 14 días?",
-        "a": "Al registrarte, tu cuenta queda en estado Trial con acceso completo al plan Pro durante 14 días — sin tarjeta de crédito requerida. Puedes procesar reuniones reales, invitar a tu equipo y exportar a Jira. Al final del período te avisamos con anticipación y puedes continuar con un plan pago o pasar al plan Starter gratuito sin perder tus datos."
+        "q": "¿Necesito una tarjeta para empezar?",
+        "a": "No. Al registrarte, tu organización empieza en el plan Starter gratuito, sin tarjeta de crédito. Cuando necesites más miembros, más tokens de IA o más documentos de contexto, mejoras a Pro o Enterprise desde Facturación y pagas con Stripe. Si vuelves a Starter, conservas tus datos."
       }
     ]
   },
@@ -235,8 +235,8 @@
     "save_badge": "Ahorra 20%",
     "popular_badge": "Más popular",
     "cta_start": "Empezar gratis",
-    "cta_pro": "Prueba 14 días gratis",
-    "cta_team": "Elegir Enterprise",
+    "cta_pro": "Empezar con Pro",
+    "cta_team": "Empezar con Enterprise",
     "cta_enterprise": "Enviar mensaje",
     "per_month": "/ mes",
     "billed_annually": "facturado anualmente",
@@ -256,15 +256,13 @@
         "annual": 0,
         "highlight": false,
         "features": [
-          { "text": "3 sesiones por mes", "included": true },
-          { "text": "5 User Stories por sesión", "included": true },
-          { "text": "Gherkin automático", "included": true },
-          { "text": "Resumen de reunión y notas clave", "included": true },
-          { "text": "Exportar a Jira & Azure DevOps", "included": false },
-          { "text": "Copiloto IA en vivo", "included": false },
-          { "text": "Contexto RAG", "included": false },
-          { "text": "Revisión en equipo", "included": false },
-          { "text": "Aislamiento schema-per-tenant", "included": false }
+          { "text": "Hasta 3 miembros", "included": true },
+          { "text": "100 000 tokens de IA al mes", "included": true },
+          { "text": "Copiloto IA en vivo y Gherkin automático", "included": true },
+          { "text": "Glosario de hasta 50 términos por proyecto", "included": true },
+          { "text": "10 documentos de contexto por proyecto", "included": true },
+          { "text": "Exportar e importar con Jira", "included": true },
+          { "text": "Aislamiento schema-per-tenant", "included": true }
         ]
       },
       {
@@ -275,14 +273,14 @@
         "annual": 39,
         "highlight": true,
         "features": [
-          { "text": "Sesiones ilimitadas", "included": true },
-          { "text": "User Stories ilimitadas", "included": true },
-          { "text": "Exportar a Jira & Azure DevOps", "included": true },
-          { "text": "Gherkin automático", "included": true },
-          { "text": "Copiloto IA en vivo", "included": true },
-          { "text": "Contexto RAG por proyecto", "included": true },
-          { "text": "Revisión en equipo (hasta 10 miembros)", "included": true },
-          { "text": "Aislamiento schema-per-tenant", "included": false }
+          { "text": "Hasta 15 miembros", "included": true },
+          { "text": "2 millones de tokens de IA al mes", "included": true },
+          { "text": "Copiloto IA en vivo y Gherkin automático", "included": true },
+          { "text": "Glosario de hasta 300 términos por proyecto", "included": true },
+          { "text": "50 documentos de contexto por proyecto", "included": true },
+          { "text": "Exportar e importar con Jira", "included": true },
+          { "text": "Roles y permisos por proyecto", "included": true },
+          { "text": "Aislamiento schema-per-tenant", "included": true }
         ]
       },
       {
@@ -294,12 +292,11 @@
         "highlight": false,
         "features": [
           { "text": "Todo lo de Pro", "included": true },
-          { "text": "Hasta 25 miembros del equipo", "included": true },
-          { "text": "Workspaces y proyectos colaborativos", "included": true },
-          { "text": "Flujos de revisión y aprobación", "included": true },
-          { "text": "Analytics y trazabilidad de requerimientos", "included": true },
-          { "text": "Roles y permisos básicos", "included": true },
-          { "text": "Contexto RAG avanzado", "included": true },
+          { "text": "Hasta 200 miembros", "included": true },
+          { "text": "50 millones de tokens de IA al mes", "included": true },
+          { "text": "Glosario de hasta 3 000 términos por proyecto", "included": true },
+          { "text": "500 documentos de contexto por proyecto", "included": true },
+          { "text": "Roles personalizados y aprobación de historias", "included": true },
           { "text": "Soporte prioritario", "included": true }
         ]
       }
@@ -365,7 +362,7 @@
     "privacy_title": "Privacidad Enterprise",
     "privacy_desc": "Aislamiento schema-por-tenant para garantizar que los datos de cada organización estén completamente separados y seguros.",
     "jira_title": "Integración con Jira",
-    "jira_desc": "Exporta User Stories aprobadas directamente a tu backlog de Jira o Azure DevOps con un solo clic, en menos de 10 minutos.",
+    "jira_desc": "Exporta User Stories aprobadas directamente a tu backlog de Jira con un solo clic, en menos de 10 minutos.",
     "collab_title": "Revisión en Equipo",
     "collab_desc": "Comparte, comenta y aprueba User Stories con todo el equipo antes de que lleguen al sprint. Trazabilidad completa incluida."
   }
