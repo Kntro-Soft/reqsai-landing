@@ -1,11 +1,15 @@
 name: Produccion
 
-# A push to main (a merged release/X.Y.Z or hotfix/X.Y.Z pull request):
-#   find the candidate vX.Y.Z-rc.N whose tree hash equals this commit's tree (otherwise fail: main differs from
-#   what was tested) → approval in produccion → `vercel promote` of the SAME deployment that staging served (or,
-#   when staging was skipped, `vercel deploy --prebuilt --prod` of the stored output, SHA-256 checked) → the
-#   production domain must serve /version.json of this candidate → only then tag vX.Y.Z + GitHub Release with the
-#   same output, and the back-merge pull request main → develop. Nothing is rebuilt.
+# A push to main (a merged release/X.Y.Z or hotfix/X.Y.Z pull request), docs/deploy.md:
+#   prepare     finds the candidate vX.Y.Z-rc.N whose tree hash equals this commit's tree (otherwise it fails:
+#               main differs from what was tested) and that passed staging (or skipped it).
+#   produccion  [approval in `produccion`] deploys THAT candidate's bundle (SHA-256 and dist/ fingerprint
+#               verified, nothing rebuilt) to the production branch `main` of the Cloudflare Pages project
+#               reqsai-landing, then the production URL must serve /version.json and index.html of it.
+#   release     only then: tag vX.Y.Z + GitHub Release with the same bundle and candidate.json, and the
+#               back-merge pull request main → develop.
+# If produccion fails, is rejected or is switched off, there is no tag; "Re-run failed jobs" deploys the same
+# candidate again.
 # Switch (organization variable, 'true' = on): ENABLE_REQSAI_LANDING_PRODUCCION.
 
 on:
@@ -21,10 +25,9 @@ permissions:
 
 env:
   VERSION_FILE: package.json
-  VERCEL_CLI: vercel@63.1.0
-  VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
-  VERCEL_TELEMETRY_DISABLED: '1'
+  PAGES_PROJECT: reqsai-landing
+  PAGES_URL: https://reqsai-landing.pages.dev
+  WRANGLER_VERSION: 4.149.0
 
 jobs:
   prepare:
@@ -63,19 +66,25 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "### v$version from candidate $(jq -r .tag <<<"$json") (stage $(jq -r .stage <<<"$json"), tree \`${tree:0:12}\`)" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Read the production switch
+      - name: Read the production switch and the Cloudflare secrets
         id: switch
+        if: steps.find.outputs.released == 'false'
         env:
           SWITCH: ${{ vars.ENABLE_REQSAI_LANDING_PRODUCCION }}
+          HAS_CLOUDFLARE: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
         run: |
-          if [ "$SWITCH" = true ]; then
-            echo "production_enabled=true" >> "$GITHUB_OUTPUT"
-          else
+          if [ "$HAS_CLOUDFLARE" != true ]; then
+            echo "production_enabled=false" >> "$GITHUB_OUTPUT"
+            msg="The secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are missing (docs/deploy.md): nothing is deployed and the version is not tagged. Add them and re-run all jobs."
+          elif [ "$SWITCH" != true ]; then
             echo "production_enabled=false" >> "$GITHUB_OUTPUT"
             msg="ENABLE_REQSAI_LANDING_PRODUCCION is not 'true': nothing is deployed and the version is not tagged. Turn it on and re-run all jobs (Kntro-Soft → Settings → Secrets and variables → Actions → Variables)."
-            echo "::warning title=Production skipped::$msg"
-            echo "$msg" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "production_enabled=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          echo "::warning title=Production skipped::$msg"
+          echo "$msg" >> "$GITHUB_STEP_SUMMARY"
 
   produccion:
     name: Deploy to produccion
@@ -85,66 +94,74 @@ jobs:
     timeout-minutes: 15
     environment:
       name: produccion
-      url: ${{ vars.LANDING_URL }}
+      url: ${{ vars.LANDING_URL || env.PAGES_URL }}
     concurrency:
       group: produccion-reqsai-landing
       cancel-in-progress: false
     outputs:
-      deployment: ${{ steps.deploy.outputs.deployment }}
-      url: ${{ vars.LANDING_URL }}
+      deployed: ${{ steps.deploy.outputs.deployed }}
+      deployment: ${{ steps.deploy.outputs.deployment-url }}
+      url: ${{ steps.url.outputs.url }}
     steps:
+      # LANDING_URL (variable of the environment produccion) is the public address of the landing: the
+      # Pages URL, or the custom domain once it is attached to the Pages project. Unset = the Pages URL.
+      - name: Resolve the production URL
+        id: url
+        env:
+          LANDING_URL: ${{ vars.LANDING_URL }}
+        run: |
+          url="${LANDING_URL:-$PAGES_URL}"
+          if [[ "$url" == *vercel.app* ]]; then
+            echo "::error title=LANDING_URL still points to Vercel::The landing is served by Cloudflare Pages now. Set the variable LANDING_URL of the environment produccion to $PAGES_URL (or to the custom domain attached to the Pages project), then re-run all jobs."
+            exit 1
+          fi
+          echo "url=${url%/}" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
 
-      - name: Install the Vercel CLI
-        run: npm install --global "$VERCEL_CLI"
-
-      - name: Promote the staging deployment, or deploy the stored output
+      - name: Deploy the candidate to the Pages production branch
         id: deploy
-        env:
-          GH_TOKEN: ${{ github.token }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          CANDIDATE: ${{ needs.prepare.outputs.candidate }}
-          TAG: ${{ needs.prepare.outputs.tag }}
-          VERSION: ${{ needs.prepare.outputs.version }}
-        run: |
-          deployment=$(jq -r '.deployment_url // empty' <<<"$CANDIDATE")
-          if [ -n "$deployment" ]; then
-            vercel promote "$deployment" --yes --token="$VERCEL_TOKEN"
-            echo "Promoted the staging deployment $deployment (same files, no rebuild)." >> "$GITHUB_STEP_SUMMARY"
-          else
-            vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
-            .github/scripts/candidate.sh fetch "$TAG" "$RUNNER_TEMP/candidate"
-            rm -rf .vercel/output
-            tar -xzf "$RUNNER_TEMP/candidate/reqsai-landing-$VERSION.tar.gz" -C .vercel
-            deployment=$(vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN")
-            echo "Deployed the stored output of $TAG as $deployment (staging was skipped; no rebuild)." >> "$GITHUB_STEP_SUMMARY"
-          fi
-          echo "deployment=$deployment" >> "$GITHUB_OUTPUT"
+        uses: ./.github/actions/pages-deploy
+        with:
+          branch: main
+          head-ref: main
+          release-tag: ${{ needs.prepare.outputs.tag }}
+          commit-message: v${{ needs.prepare.outputs.version }} from ${{ needs.prepare.outputs.tag }}
+          github-token: ${{ github.token }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          project: ${{ env.PAGES_PROJECT }}
+          wrangler-version: ${{ env.WRANGLER_VERSION }}
 
-      - name: Check that the production domain serves this candidate
+      - name: Check that production serves this candidate
+        if: steps.deploy.outputs.deployed == 'true'
         env:
-          URL: ${{ vars.LANDING_URL }}
-          VERSION: ${{ needs.prepare.outputs.version }}
-          CANDIDATE: ${{ needs.prepare.outputs.candidate }}
-        run: .github/scripts/check-deployment.sh "$URL" "$VERSION" "$(jq -r .commit <<<"$CANDIDATE")"
+          URL: ${{ steps.url.outputs.url }}
+          VERSION: ${{ steps.deploy.outputs.version }}
+          COMMIT: ${{ steps.deploy.outputs.commit }}
+        run: |
+          .github/scripts/check-deployment.sh "$PAGES_URL" "$VERSION" "$COMMIT" dist/index.html
+          if [ "$URL" != "$PAGES_URL" ]; then
+            .github/scripts/check-deployment.sh "$URL" "$VERSION" "$COMMIT" dist/index.html
+          fi
 
   release:
     name: Tag v${{ needs.prepare.outputs.version }} and back-merge
     needs: [prepare, produccion]
-    if: needs.produccion.result == 'success'
+    if: needs.produccion.result == 'success' && needs.produccion.outputs.deployed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write # creates the tag vX.Y.Z and its GitHub Release
+      pull-requests: write # opens the back-merge pull request
     steps:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
 
-      - name: Publish v${{ needs.prepare.outputs.version }} with the candidate's output
+      - name: Publish v${{ needs.prepare.outputs.version }} with the candidate's bundle
         env:
           GH_TOKEN: ${{ github.token }}
           CANDIDATE: ${{ needs.prepare.outputs.candidate }}
@@ -169,7 +186,7 @@ jobs:
           {
             echo "Gitflow back-merge of release $VERSION, now tagged [v$VERSION]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/tag/v$VERSION) and deployed."
             echo
-            echo "Brings the fixes made on the release or hotfix branch (and its version bump) back into \`develop\`."
+            echo "Brings the fixes made on the release or hotfix branch (and its version bump) back into \`develop\`. Merge with a merge commit, not a squash, so \`develop\` and \`main\` share history."
           } > "$body"
           url=$(.github/scripts/candidate.sh pr main develop "chore: merge release $VERSION back into develop" "$body")
           echo "Back-merge: ${url:-not needed}" >> "$GITHUB_STEP_SUMMARY"
