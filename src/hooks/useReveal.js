@@ -9,17 +9,15 @@ export function useReveal(options = {}) {
   } = options
 
   const ref = useRef(null)
-  const [revealed, setRevealed] = useState(false)
+  // Without IntersectionObserver (old browsers, prerendering) the content starts revealed.
+  const [revealed, setRevealed] = useState(
+    () => typeof window === 'undefined' || typeof IntersectionObserver === 'undefined',
+  )
 
   useEffect(() => {
     const node = ref.current
 
-    if (!node) return
-
-    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {
-      setRevealed(true)
-      return
-    }
+    if (!node || typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') return
 
     const observer = new IntersectionObserver(
       ([entry]) => {

@@ -1,0 +1,266 @@
+name: Release
+
+# Gitflow release flow, model C + tag at the end (docs/deploy.md). A push to release/X.Y.Z or hotfix/X.Y.Z:
+#   prepare     package.json must say X.Y.Z (and vX.Y.Z must not exist); numbers the candidate X.Y.Z-rc.N.
+#   ci          lint and build (ci.yml), so a candidate only comes from a commit that passed CI.
+#   candidate   `pnpm build` ONCE, dist/version.json (version, build, commit) written in, dist/ packed as
+#               reqsai-landing-X.Y.Z.tar.gz and stored in the pre-release vX.Y.Z-rc.N with candidate.json
+#               (commit, tree hash, build, SHA-256 of the archive, fingerprint of dist/).
+#   staging     [approval in `staging`] deploys THAT bundle (verified) to the Cloudflare Pages branch
+#               `staging` = https://staging.reqsai-landing.pages.dev, checks it serves this candidate and
+#               records it in candidate.json.
+#   ready       opens or updates the pull request release/X.Y.Z → main titled `release: X.Y.Z`.
+# Merging it runs produccion.yml, which deploys the SAME bundle to production and only then tags vX.Y.Z.
+# A new push to the release branch builds rc.N+1 and updates the pull request.
+#
+# Switch (organization variable, only 'true' turns it on): ENABLE_REQSAI_STAGING (off: the candidate goes
+# straight to the release pull request, e.g. an urgent hotfix; production still needs its approval).
+# Without the secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID the candidate is still built and stored,
+# staging is skipped and the run summary says why.
+
+on:
+  push:
+    branches: ['release/**', 'hotfix/**']
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  VERSION_FILE: package.json
+  PAGES_PROJECT: reqsai-landing
+  WRANGLER_VERSION: 4.149.0
+
+jobs:
+  prepare:
+    name: Version and candidate number
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.candidate.outputs.version }}
+      candidate: ${{ steps.candidate.outputs.candidate }}
+      tag: ${{ steps.candidate.outputs.tag }}
+      tree: ${{ steps.candidate.outputs.tree }}
+      staging_enabled: ${{ steps.switches.outputs.staging_enabled }}
+      cloudflare: ${{ steps.switches.outputs.cloudflare }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Check the version and number the candidate
+        id: candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          version=$(.github/scripts/candidate.sh branch "$BRANCH" "$VERSION_FILE")
+          read -r rc reused < <(.github/scripts/candidate.sh next "$version" "$GITHUB_SHA")
+          tree=$(git rev-parse 'HEAD^{tree}')
+          {
+            echo "version=$version"
+            echo "candidate=$version-rc.$rc"
+            echo "tag=v$version-rc.$rc"
+            echo "tree=$tree"
+          } >> "$GITHUB_OUTPUT"
+          echo "### reqsai-landing $version-rc.$rc from \`$BRANCH\` at \`${GITHUB_SHA:0:12}\` (tree \`${tree:0:12}\`, reused: $reused)" >> "$GITHUB_STEP_SUMMARY"
+          if ! grep -qF "## [$version]" CHANGELOG.md 2>/dev/null; then
+            echo "::warning title=No CHANGELOG section::CHANGELOG.md has no '## [$version]' section; the release notes will be generated from the commits. Add it on this branch."
+          fi
+
+      - name: Read the switch and the Cloudflare secrets
+        id: switches
+        env:
+          STAGING_SWITCH: ${{ vars.ENABLE_REQSAI_STAGING }}
+          HAS_CLOUDFLARE: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+        run: |
+          staging=false
+          [ "$STAGING_SWITCH" = true ] && staging=true
+          {
+            echo "staging_enabled=$staging"
+            echo "cloudflare=$HAS_CLOUDFLARE"
+          } >> "$GITHUB_OUTPUT"
+          if [ "$HAS_CLOUDFLARE" != true ]; then
+            echo "::notice title=Staging not deployed: Cloudflare secrets missing::Add the repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (docs/deploy.md). The candidate is still built and stored."
+            echo "- Staging skipped: the secrets \`CLOUDFLARE_API_TOKEN\` and \`CLOUDFLARE_ACCOUNT_ID\` are missing (docs/deploy.md)." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "$staging" != true ]; then
+            echo "::notice title=Staging skipped::ENABLE_REQSAI_STAGING is not 'true': the candidate goes to the release pull request without a staging deployment."
+            echo "- Staging skipped: organization variable \`ENABLE_REQSAI_STAGING\` is not \`true\` (Kntro-Soft → Settings → Secrets and variables → Actions → Variables). Production still needs approval." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+
+  candidate:
+    name: Build the candidate once
+    needs: [prepare, ci]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write # creates the pre-release vX.Y.Z-rc.N and its tag
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Install pnpm
+        run: npm install --global pnpm@12.4.2
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the site once
+        env:
+          VERSION: ${{ needs.prepare.outputs.version }}
+        run: |
+          pnpm build
+          # The final version lives inside the bundle; "rc" only lives in the pre-release name.
+          jq -n --arg version "$VERSION" --arg build "$GITHUB_RUN_NUMBER" --arg commit "$GITHUB_SHA" \
+            '{version: $version, build: $build, commit: $commit}' > dist/version.json
+
+      - name: Store the candidate as a pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+          CANDIDATE: ${{ needs.prepare.outputs.candidate }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          TREE: ${{ needs.prepare.outputs.tree }}
+          BRANCH: ${{ github.ref_name }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          asset="$RUNNER_TEMP/reqsai-landing-$VERSION.tar.gz"
+          tar --sort=name --mtime='1970-01-01' --owner=0 --group=0 --numeric-owner -czf "$asset" -C dist .
+          sum=$(sha256sum "$asset" | cut -d' ' -f1)
+          # One hash over every file of dist/ (path and content), recomputed after every download.
+          fingerprint=$(cd dist && find . -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)
+          jq -n --arg repository "$GITHUB_REPOSITORY" --arg version "$VERSION" --arg candidate "$CANDIDATE" \
+            --arg tag "$TAG" --arg commit "$GITHUB_SHA" --arg tree "$TREE" --arg branch "$BRANCH" \
+            --arg build "$GITHUB_RUN_NUMBER" --arg run_url "$RUN_URL" --arg name "$(basename "$asset")" --arg sum "$sum" \
+            --arg fingerprint "$fingerprint" \
+            '{repository: $repository, version: $version, candidate: $candidate, tag: $tag, commit: $commit,
+              tree: $tree, branch: $branch, build: $build, run_url: $run_url, stage: "pending",
+              assets: {($name): $sum}, dist_sha256: $fingerprint}' > "$RUNNER_TEMP/candidate.json"
+          url=$(.github/scripts/candidate.sh create "$RUNNER_TEMP/candidate.json" "$asset")
+          echo "Candidate: [$TAG]($url) — \`$(basename "$asset")\` sha256 \`$sum\`, dist/ fingerprint \`${fingerprint:0:16}\`" >> "$GITHUB_STEP_SUMMARY"
+
+  staging:
+    name: Deploy to staging
+    needs: [prepare, candidate]
+    if: needs.prepare.outputs.staging_enabled == 'true' && needs.prepare.outputs.cloudflare == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: staging
+      url: ${{ steps.deploy.outputs.alias-url }}
+    concurrency:
+      group: staging-reqsai-landing
+      cancel-in-progress: false
+    permissions:
+      contents: write # records the staging deployment in candidate.json
+    outputs:
+      superseded: ${{ steps.deploy.outputs.superseded }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Deploy the candidate to the Pages branch staging
+        id: deploy
+        uses: ./.github/actions/pages-deploy
+        with:
+          branch: staging
+          head-ref: ${{ github.ref_name }}
+          release-tag: ${{ needs.prepare.outputs.tag }}
+          commit-message: ${{ needs.prepare.outputs.candidate }} from ${{ github.ref_name }}
+          github-token: ${{ github.token }}
+          cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          cloudflare-account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          project: ${{ env.PAGES_PROJECT }}
+          wrangler-version: ${{ env.WRANGLER_VERSION }}
+
+      - name: Check that staging serves this candidate
+        if: steps.deploy.outputs.deployed == 'true'
+        env:
+          URL: ${{ steps.deploy.outputs.alias-url }}
+          VERSION: ${{ steps.deploy.outputs.version }}
+          COMMIT: ${{ steps.deploy.outputs.commit }}
+        run: .github/scripts/check-deployment.sh "$URL" "$VERSION" "$COMMIT" dist/index.html
+
+      - name: Record the staging deployment in the candidate
+        if: steps.deploy.outputs.deployed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          URL: ${{ steps.deploy.outputs.alias-url }}
+          DEPLOYMENT: ${{ steps.deploy.outputs.deployment-url }}
+          STAGE_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          .github/scripts/candidate.sh mark "$TAG" staging \
+            "$(jq -cn --arg url "$URL" --arg deployment "$DEPLOYMENT" '{staging_url: $url, deployment_url: $deployment}')" >/dev/null
+
+  ready:
+    name: Release candidate ready
+    needs: [prepare, candidate, staging]
+    if: >-
+      ${{ !cancelled() && needs.candidate.result == 'success' &&
+      (needs.staging.result == 'success' || needs.staging.result == 'skipped') &&
+      needs.staging.outputs.superseded != 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # marks the candidate staging-skipped when staging did not run
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Open or update the release pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          BRANCH: ${{ github.ref_name }}
+          STAGING: ${{ needs.staging.result }}
+          CLOUDFLARE: ${{ needs.prepare.outputs.cloudflare }}
+          STAGE_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$STAGING" = success ]; then
+            json=$(gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern candidate.json --output -)
+          else
+            json=$(.github/scripts/candidate.sh mark "$TAG" staging-skipped)
+          fi
+          if [ "$CLOUDFLARE" != true ]; then
+            skipped="the secrets \`CLOUDFLARE_API_TOKEN\` and \`CLOUDFLARE_ACCOUNT_ID\` are missing"
+          else
+            skipped="\`ENABLE_REQSAI_STAGING\` is not \`true\`"
+          fi
+          body="$RUNNER_TEMP/pr.md"
+          {
+            echo "## Release $VERSION"
+            echo
+            echo "Candidate **[$TAG]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/releases/tag/$TAG)**: commit \`$(jq -r .commit <<<"$json")\`, tree \`$(jq -r .tree <<<"$json")\`, build $(jq -r .build <<<"$json")."
+            echo
+            jq -r '.assets | to_entries[] | "- `\(.key)` sha256 `\(.value)` (dist/ of `pnpm build`)"' <<<"$json"
+            echo "- dist/ fingerprint \`$(jq -r .dist_sha256 <<<"$json")\`"
+            if [ "$STAGING" = success ]; then
+              echo "- Staging (approved in \`staging\`): $(jq -r .staging_url <<<"$json") — Pages deployment $(jq -r .deployment_url <<<"$json")"
+            else
+              echo "- Staging skipped ($skipped): production deploys the stored bundle directly, still behind its approval."
+            fi
+            echo
+            echo "Merging into \`main\` runs **Produccion** (\`produccion.yml\`): it finds this candidate by tree hash, waits for approval in \`produccion\`, deploys this same bundle to the Cloudflare Pages production branch, checks \`/version.json\`, then tags \`v$VERSION\` and opens the back-merge into \`develop\`."
+            echo "A new push to \`$BRANCH\` builds the next candidate and updates this description."
+          } > "$body"
+          url=$(.github/scripts/candidate.sh pr "$BRANCH" main "release: $VERSION" "$body")
+          echo "Release pull request: $url" >> "$GITHUB_STEP_SUMMARY"
