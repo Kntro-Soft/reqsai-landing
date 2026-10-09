@@ -66,74 +66,43 @@ Work follows the organization guide ([CONTRIBUTING.md](https://github.com/Kntro-
 an issue on the [ReqsAI project board](https://github.com/orgs/Kntro-Soft/projects/3), a branch
 `feature/<issue>-<slug>` from `develop`, a pull request with `Closes #<issue>`. `main` and `develop` require a pull
 request with 1 approval; **CI** (`.github/workflows/ci.yml`: `pnpm lint` + `pnpm build`) runs on every pull
-request and on pushes to `main`, `develop`, `release/**` and `hotfix/**`.
+request and on pushes to `main`, `develop`, `release/**` and `hotfix/**`. `develop` deploys nothing.
 
-The site is hosted on Vercel. Pull request and branch previews still come from the Vercel Git integration
-(no approval, no GitHub environment). **Production does not deploy on pushes to `main` by itself**
-(`vercel.json` turns the Git deployment of `main` off). Releases follow the organization flow, **model C + tag at
-the end**: the site is built once on the release branch, staged, and the same Vercel deployment is promoted to
-production after the merge.
+The site is a static Vite build hosted on **Cloudflare Pages** (project `reqsai-landing`, production at
+<https://reqsai-landing.pages.dev>). Nothing deploys on a push by itself: releases follow the organization flow,
+**model C + tag at the end**. The site is built **once** on the release branch, that bundle is staged, and the
+**same bytes** go to production after the merge into `main`; `vX.Y.Z` is tagged only when production succeeded.
 
 ```mermaid
 flowchart TD
     dev["develop"] -->|"cut release/X.Y.Z<br/>(hotfix/X.Y.Z from main)"| push["push to release/X.Y.Z"]
     subgraph rel["release.yml"]
         push --> ci["CI (ci.yml)"]
-        ci --> cand["candidate · vercel build --prod ONCE<br/>+ version.json · pre-release vX.Y.Z-rc.N<br/>(output .tar.gz, SHA-256, tree hash)"]
-        cand --> staging["staging · environment staging (approval)<br/>vercel deploy --prebuilt --prod --skip-domain<br/>switch ENABLE_REQSAI_STAGING"]
+        ci --> cand["candidate · pnpm build ONCE + version.json<br/>pre-release vX.Y.Z-rc.N<br/>(dist .tar.gz, SHA-256, tree hash)"]
+        cand --> staging["staging · environment staging (approval)<br/>Pages branch staging<br/>staging.reqsai-landing.pages.dev"]
         staging --> ready["Release candidate ready<br/>PR release: X.Y.Z → main"]
-        cand -->|"staging switched off"| ready
+        cand -->|"ENABLE_REQSAI_STAGING off"| ready
     end
     ready -->|"bug: fix on the release branch → rc.N+1"| push
     ready -->|"merge"| main["push to main"]
     subgraph prod["produccion.yml"]
         main --> find["prepare · candidate with the same tree hash"]
-        find --> promote["produccion · environment produccion (approval)<br/>vercel promote of the staging deployment<br/>check /version.json on the domain"]
-        promote --> release["release · tag vX.Y.Z + GitHub Release<br/>PR main → develop"]
+        find --> deploy["produccion · environment produccion (approval)<br/>same bundle → Pages production branch main<br/>check /version.json + index.html"]
+        deploy --> tag["release · tag vX.Y.Z + GitHub Release<br/>PR main → develop"]
     end
 ```
 
-**Release** (`release.yml`, on pushes to `release/**` and `hotfix/**`):
+| Workflow | Trigger | What it does |
+|----------|---------|--------------|
+| `ci.yml` | pull requests; pushes to `main`, `develop`, `release/**`, `hotfix/**` | `pnpm lint` + `pnpm build` |
+| `release.yml` | push to `release/**`, `hotfix/**` | candidate `vX.Y.Z-rc.N` → `staging` (approval) → PR `release: X.Y.Z` |
+| `produccion.yml` | push to `main` | candidate by tree hash → `produccion` (approval) → tag `vX.Y.Z` → back-merge PR |
+| `rollback.yml` | manual, from `main`, input `version` | redeploys the bundle of a final release `vX.Y.Z` (approval in `produccion`) |
 
-| Job | Environment | What it does |
-|-----|-------------|--------------|
-| `prepare` | — | Checks that `package.json` says `X.Y.Z` (first commit of a release: `chore(release): X.Y.Z`), numbers the candidate `X.Y.Z-rc.N`, records the tree hash, reads the switches. |
-| `ci` | — | Lint and build (`ci.yml`). |
-| `candidate` | — | `vercel build --prod` **once**, writes `version.json` (version, build, commit) into the output and stores the output as the asset of the pre-release `vX.Y.Z-rc.N` with its SHA-256. |
-| `staging` | `staging` (approval by `jhosepmyr`) | Downloads that asset (SHA-256 checked), deploys it as a production deployment **without the domains** (`--skip-domain`; alias `LANDING_STAGING_ALIAS` if set), checks that it serves `version.json` of this commit and records the deployment in the candidate. |
-| `ready` | — | Opens or updates the PR `release: X.Y.Z` with the candidate, the staging URL and the hashes. |
-
-A bug found in staging is fixed on the release branch; the next push builds `rc.N+1`.
-
-**Produccion** (`produccion.yml`, on pushes to `main`): finds the candidate whose tree hash equals the `main`
-commit (otherwise it fails: *main differs from the tested candidate*), waits for approval in `produccion`, runs
-`vercel promote` of **the same deployment** that staging served (if staging was switched off, it deploys the
-stored output with `vercel deploy --prebuilt --prod`), checks `version.json` on `LANDING_URL`, and only then tags
-`vX.Y.Z` with a GitHub Release carrying the same output and opens `chore: merge release X.Y.Z back into develop`.
-
-**Rollback** (`rollback.yml`, manual from `main`, input `version`): `vercel promote` of the deployment of that
-release (or, if Vercel no longer keeps it, its stored output), behind the `produccion` approval.
-
-Deploy switches (organization variables in *Kntro-Soft → Settings → Secrets and variables → Actions →
-Variables*; only `true` turns them on, otherwise the job is skipped and the run summary says why):
-
-| Variable | Controls |
-|----------|----------|
-| `ENABLE_REQSAI_LANDING_PREVIEW` | `candidate`: the Vercel build (off: CI only, no candidate, so no release) |
-| `ENABLE_REQSAI_STAGING` | `staging` (off: the candidate goes straight to the release PR, e.g. an urgent hotfix; production still needs approval) |
-| `ENABLE_REQSAI_LANDING_PRODUCCION` | `produccion.yml` and `rollback.yml` |
-
-One-time set-up:
-
-- Secret `VERCEL_TOKEN` (a token of the Vercel account that owns the project) and **repository** variables
-  `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` (from `.vercel/project.json` after `vercel link`).
-- Environments: `staging` (required reviewer `jhosepmyr`, branches `release/*` and `hotfix/*`) and `produccion`
-  (required reviewer `jhosepmyr`, branch `main`, variable `LANDING_URL`).
-- Optional: variable `LANDING_STAGING_ALIAS` (a fixed staging host name) and secret
-  `VERCEL_AUTOMATION_BYPASS_SECRET` (lets the staging check read a deployment behind Vercel Deployment
-  Protection; without it a protected staging URL is reported, not checked).
-- *Allow GitHub Actions to create and approve pull requests* (organization and repository settings) for the
-  release and back-merge pull requests; while it is off, the run prints the link to open them.
+The version lives in `package.json`: the first commit of `release/X.Y.Z` is `chore(release): X.Y.Z` setting it
+(the latest release is `v1.2.1`, so the next one is `1.3.0` or higher), plus its `## [X.Y.Z]` section in
+[CHANGELOG.md](CHANGELOG.md). The full pipeline, the one-time set-up (Cloudflare secrets, environments,
+switches), the custom domain and the rollback are in **[docs/deploy.md](docs/deploy.md)**.
 
 ---
 
