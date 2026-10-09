@@ -62,7 +62,7 @@ src/
 
 ## Contributing, releases and deployment
 
-Work follows the organization guide ([CONTRIBUTING.md](https://github.com/Kntro-Soft/.github/blob/main/CONTRIBUTING.md)):
+Work follows the organization guide ([CONTRIBUTING.md](https://github.com/Kntro-Soft/.github/blob/main/.github/CONTRIBUTING.md)):
 an issue on the [ReqsAI project board](https://github.com/orgs/Kntro-Soft/projects/3), a branch
 `feature/<issue>-<slug>` from `develop`, a pull request with `Closes #<issue>`. `main` and `develop` require a pull
 request with 1 approval; **CI** (`.github/workflows/ci.yml`: `pnpm lint` + `pnpm build`) runs on every pull
