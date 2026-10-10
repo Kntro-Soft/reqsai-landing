@@ -8,6 +8,8 @@ version as the notes of its GitHub Release: a release branch `release/X.Y.Z` ren
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-10
+
 ### Added
 
 - CI on every pull request and on pushes to `main`, `develop`, `release/**` and `hotfix/**`: `pnpm lint` and
