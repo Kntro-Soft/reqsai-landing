@@ -17,6 +17,7 @@ version as the notes of its GitHub Release: a release branch `release/X.Y.Z` ren
   the `staging` approval, and the same bundle is deployed to production from `main` behind the `produccion`
   approval; `vX.Y.Z` is tagged only after production succeeded, then a back-merge pull request into `develop`.
 - Rollback workflow that redeploys the bundle of an earlier final release.
+- A weekly `branch-cleanup.yml` (Mondays 04:00 UTC, or by hand with a dry run) deletes branches merged 7+ days ago and unmerged branches with no commits for 30+ days; it never touches `main`, `develop`, `release/*`, `hotfix/*`, branches with an open pull request or pull requests labelled `do-not-delete`, and `BRANCH_CLEANUP_ENABLED=false` turns it off.
 
 ### Changed
 
