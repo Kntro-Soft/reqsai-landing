@@ -1,0 +1,180 @@
+name: Deploy a landing candidate to Cloudflare Pages
+description: >-
+  Downloads the dist/ bundle stored in a GitHub Release (the pre-release vX.Y.Z-rc.N of a candidate,
+  or the final vX.Y.Z), verifies it against its candidate.json (SHA-256 of the archive, the digest
+  GitHub computed on upload, and the fingerprint of every unpacked file) and deploys it to one branch
+  of the Pages project with a pinned Wrangler. It never builds. Used by release.yml (staging),
+  produccion.yml and rollback.yml (docs/deploy.md).
+
+inputs:
+  branch:
+    description: >-
+      Pages branch. The production branch of the project (main) publishes https://<project>.pages.dev
+      and its custom domains; any other name is a preview at https://<branch>.<project>.pages.dev.
+    required: true
+  release-tag:
+    description: GitHub Release that holds candidate.json and the bundle (vX.Y.Z-rc.N or vX.Y.Z).
+    required: true
+  commit-message:
+    description: Commit subject attached to the Pages deployment.
+    required: true
+  commit-hash:
+    description: Commit attached to the Pages deployment. Default the run's commit.
+    required: false
+    default: ""
+  head-ref:
+    description: >-
+      Optional git branch (release/X.Y.Z or main). When set, nothing is deployed if that branch no longer
+      points at this run's commit: a newer push supersedes this run, also after a long approval wait.
+    required: false
+    default: ""
+  github-token:
+    description: Token that can read the repository and its releases.
+    required: true
+  cloudflare-api-token:
+    description: Cloudflare API token (Account · Cloudflare Pages · Edit).
+    required: true
+  cloudflare-account-id:
+    description: Cloudflare account ID.
+    required: true
+  project:
+    description: Cloudflare Pages project.
+    required: false
+    default: reqsai-landing
+  wrangler-version:
+    description: Exact Wrangler version, run through npx.
+    required: false
+    default: 4.149.0
+
+outputs:
+  deployed:
+    description: "`true` when this action deployed the bundle."
+    value: ${{ steps.pages.outputs.deployed || 'false' }}
+  superseded:
+    description: "`true` when head-ref points at a newer commit, so nothing was deployed."
+    value: ${{ steps.head.outputs.superseded || 'false' }}
+  deployment-url:
+    description: Unique URL of the new deployment.
+    value: ${{ steps.pages.outputs.deployment-url }}
+  alias-url:
+    description: Branch alias URL (https://<project>.pages.dev for the production branch).
+    value: ${{ steps.pages.outputs.alias-url }}
+  version:
+    description: Version recorded in the candidate (and in dist/version.json).
+    value: ${{ steps.bundle.outputs.version }}
+  commit:
+    description: Commit the candidate was built from (and in dist/version.json).
+    value: ${{ steps.bundle.outputs.commit }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check that this commit is still the head of the branch
+      id: head
+      if: inputs.head-ref != ''
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        HEAD_REF: ${{ inputs.head-ref }}
+      run: |
+        set -euo pipefail
+        head=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${HEAD_REF}" --jq .object.sha)
+        if [ "$head" != "$GITHUB_SHA" ]; then
+          echo "superseded=true" >> "$GITHUB_OUTPUT"
+          echo "::notice title=Superseded, not deployed::${HEAD_REF} now points at ${head:0:12}; this run is for ${GITHUB_SHA:0:12}. The run of the newer commit deploys instead."
+          echo "- Not deployed: \`${HEAD_REF}\` moved on to \`${head:0:12}\` (superseded by a newer push)" >> "$GITHUB_STEP_SUMMARY"
+        else
+          echo "superseded=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    # candidate.sh fetch checks the SHA-256 of every asset listed in candidate.json. On top of that:
+    # the digest GitHub computed when the archive was uploaded, and the fingerprint of dist/ (every
+    # path and content) recorded when the candidate was built.
+    - name: Download and verify the bundle
+      id: bundle
+      if: steps.head.outputs.superseded != 'true'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        TAG: ${{ inputs.release-tag }}
+      run: |
+        set -euo pipefail
+        dir="$RUNNER_TEMP/bundle"
+        rm -rf "$dir" dist
+        mkdir -p dist
+        .github/scripts/candidate.sh fetch "$TAG" "$dir"
+        json="$dir/candidate.json"
+        archive=$(jq -r '.assets // {} | keys[] | select(endswith(".tar.gz"))' "$json" | head -n1)
+        expected=$(jq -r '.dist_sha256 // empty' "$json")
+        if [ -z "$archive" ] || [ -z "$expected" ]; then
+          echo "::error title=No bundle in ${TAG}::${TAG} records no dist/ bundle or no dist_sha256 in candidate.json."
+          exit 1
+        fi
+        sum=$(jq -r --arg a "$archive" '.assets[$a]' "$json")
+        digest=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" \
+          --jq ".assets[] | select(.name == \"${archive}\") | .digest // \"\"")
+        if [ -n "$digest" ] && [ "$digest" != "sha256:${sum}" ]; then
+          echo "::error title=Bundle changed::GitHub reports ${digest} for ${archive} of ${TAG}; the candidate recorded sha256:${sum}."
+          exit 1
+        fi
+        tar -xzf "$dir/$archive" -C dist --no-same-owner
+        fingerprint=$(cd dist && find . -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)
+        if [ "$fingerprint" != "$expected" ]; then
+          echo "::error title=Bundle changed::dist/ fingerprint ${fingerprint}; the candidate recorded ${expected}."
+          exit 1
+        fi
+        {
+          echo "version=$(jq -r .version "$json")"
+          echo "commit=$(jq -r .commit "$json")"
+        } >> "$GITHUB_OUTPUT"
+        echo "- Bundle \`${archive}\` of \`${TAG}\`: SHA-256 \`${sum:0:16}\`, dist/ fingerprint \`${fingerprint:0:16}\` (verified)" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Create the Pages project if it does not exist
+      if: steps.head.outputs.superseded != 'true'
+      shell: bash
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ inputs.cloudflare-api-token }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ inputs.cloudflare-account-id }}
+        PROJECT: ${{ inputs.project }}
+        WRANGLER_VERSION: ${{ inputs.wrangler-version }}
+      run: |
+        set -euo pipefail
+        if ! npx --yes "wrangler@$WRANGLER_VERSION" pages project list 2> /dev/null | grep -q " $PROJECT "; then
+          npx --yes "wrangler@$WRANGLER_VERSION" pages project create "$PROJECT" --production-branch main --force
+        fi
+
+    # Wrangler through npx, outside the project's pnpm install (.npmrc ignores build scripts, which
+    # wrangler's esbuild/workerd need). The commit metadata is passed explicitly so the Cloudflare
+    # dashboard lists the deployment under the right commit.
+    - name: Deploy to Cloudflare Pages
+      id: pages
+      if: steps.head.outputs.superseded != 'true'
+      shell: bash
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ inputs.cloudflare-api-token }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ inputs.cloudflare-account-id }}
+        PROJECT: ${{ inputs.project }}
+        WRANGLER_VERSION: ${{ inputs.wrangler-version }}
+        BRANCH: ${{ inputs.branch }}
+        COMMIT_HASH: ${{ inputs.commit-hash || github.sha }}
+        COMMIT_MESSAGE: ${{ inputs.commit-message }}
+      run: |
+        set -euo pipefail
+        npx --yes "wrangler@$WRANGLER_VERSION" pages deploy dist --project-name="$PROJECT" \
+          --branch="$BRANCH" --commit-hash="$COMMIT_HASH" --commit-message="$COMMIT_MESSAGE" \
+          --commit-dirty=false | tee "$RUNNER_TEMP/pages-deploy.log"
+        url=$(grep -oE "https://[a-z0-9]+\.${PROJECT}\.pages\.dev" "$RUNNER_TEMP/pages-deploy.log" | head -n1 || true)
+        if [ "$BRANCH" = main ]; then
+          alias="https://${PROJECT}.pages.dev"
+        else
+          # Pages names the alias after the branch: lower case, anything but [a-z0-9] becomes "-",
+          # at most 28 characters.
+          slug=$(printf '%s' "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//' | cut -c1-28)
+          alias="https://${slug%-}.${PROJECT}.pages.dev"
+        fi
+        {
+          echo "deployed=true"
+          echo "deployment-url=${url}"
+          echo "alias-url=${alias}"
+        } >> "$GITHUB_OUTPUT"
+        echo "- Deployed to Pages branch \`${BRANCH}\`: ${alias} (deployment ${url:-unknown})" >> "$GITHUB_STEP_SUMMARY"
