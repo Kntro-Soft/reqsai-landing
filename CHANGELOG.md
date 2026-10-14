@@ -8,6 +8,9 @@ version as the notes of its GitHub Release: a release branch `release/X.Y.Z` ren
 
 ## [Unreleased]
 
+### Fixed (Branch cleanup — `bugfix/19-branch-cleanup-pulls`, #19)
+- The weekly branch cleanup read each branch's pull requests with `gh api -f`, which sends a POST to the create-pull-request endpoint instead of listing, so every lookup failed with 422 and the open-PR and `do-not-delete` protections were never checked. It now lists with `--method GET`, and a branch whose PRs cannot be read is left alone.
+
 ### Changed
 - The release pull request and the back-merge pull request are opened by the GitHub App `reqsai-release-bot` (a short-lived token minted per job from `RELEASE_APP_ID` and `RELEASE_APP_PRIVATE_KEY`), so their CI runs: opened with `GITHUB_TOKEN` they started no `pull_request` workflow. The back-merge turns on auto-merge (merge commit) when the repository allows it; without the App configuration the job fails instead of falling back to `GITHUB_TOKEN`.
 
