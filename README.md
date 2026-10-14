@@ -24,7 +24,10 @@ Landing page for **ReqsAI**, an AI-powered requirements elicitation platform by 
 
 ## Sections
 
-Navbar · Hero · Stats · Features · Solutions · Pricing · Testimonials · FAQ · Contact · Footer
+Navbar · Hero · How it works · Features (real screenshots) · Solutions · Demo video · Pricing · FAQ · Contact · Footer
+
+The screenshots are WebP files in `public/img/` (`<name>-720.webp` and `<name>-1440.webp`), rendered by
+`src/components/ui/Screenshot.jsx`; their alt text lives in the locale files under `features.items`.
 
 ## Getting started
 

@@ -2,7 +2,7 @@ import { usePageReveal } from '../hooks/usePageReveal'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import Hero from '../components/sections/Hero'
-import Stats from '../components/sections/Stats'
+import HowItWorks from '../components/sections/HowItWorks'
 import Features from '../components/sections/Features'
 import Solutions from '../components/sections/Solutions'
 import Pricing from '../components/sections/Pricing'
@@ -16,14 +16,13 @@ export default function Landing() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
-        <Stats />
+        <HowItWorks />
         <Features />
         <Solutions />
-        <Video id="demo" videoId="RPf5v-jJYlc" tKey="demo" />
+        <Video />
         <Pricing />
-        <Video id="team" videoId="6ZnpSvMzwR4" tKey="team" />
         <FAQ />
         <Contact />
       </main>

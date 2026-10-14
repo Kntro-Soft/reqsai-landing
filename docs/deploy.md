@@ -62,7 +62,7 @@ ci ──────┴─► candidate ─┴─► staging [environment stagi
 | `ci` | — | `ci.yml` (lint + build), so a candidate only comes from a commit that passed CI. |
 | `candidate` | — | `pnpm build` **once**; writes `dist/version.json` (`version`, `build` = run number, `commit`); packs `dist/` reproducibly as `reqsai-landing-X.Y.Z.tar.gz`; creates the pre-release `vX.Y.Z-rc.N` on the commit with that archive and `candidate.json`. |
 | `staging` | `staging` (approval) | Downloads the archive, verifies it, deploys it to the Pages branch `staging`, checks it and records `staging_url` / `deployment_url` in `candidate.json` (stage `staging`). |
-| `ready` (check *Release candidate ready*) | — | Opens or updates the PR `release: X.Y.Z` → `main` with the candidate, hashes and staging URL. When staging did not run, marks the candidate `staging-skipped`. |
+| `ready` (check *Release candidate ready*) | — | Opens or updates the PR `release: X.Y.Z` → `main` as `reqsai-release-bot` with the candidate, hashes and staging URL. When staging did not run, marks the candidate `staging-skipped`. |
 
 A bug found in staging is fixed **on the release branch**; the next push builds `rc.N+1` and updates the PR.
 If the branch moved on while a staging approval was pending, that older run deploys nothing (superseded).
@@ -77,7 +77,7 @@ prepare ─► produccion [environment produccion, approval] ─► release
 |-----|-------------|--------------|
 | `prepare` | — | Reads `package.json`. If `vX.Y.Z` already exists, nothing to do. Otherwise finds the newest pre-release `vX.Y.Z-rc.N` whose recorded **tree hash equals the tree of this `main` commit** and whose stage is `staging` or `staging-skipped`; none → fails: *main differs from the tested candidate; push the change to the release branch to build a new rc*. Reads `ENABLE_REQSAI_LANDING_PRODUCCION` and the Cloudflare secrets. |
 | `produccion` | `produccion` (approval) | Deploys that candidate's bundle (verified, **not rebuilt**) to the Pages production branch `main`, then checks <https://reqsai-landing.pages.dev> and `LANDING_URL` (if different): HTTP 200, `/version.json` of the candidate, `index.html` byte-identical to the bundle. |
-| `release` | — | Only if `produccion` deployed: tag `vX.Y.Z` on the `main` commit + GitHub Release with the same archive and `candidate.json` (notes = the CHANGELOG section), then the PR `chore: merge release X.Y.Z back into develop`. |
+| `release` | — | Only if `produccion` deployed: tag `vX.Y.Z` on the `main` commit + GitHub Release with the same archive and `candidate.json` (notes = the CHANGELOG section), then the PR `chore: merge release X.Y.Z back into develop` as `reqsai-release-bot`, with auto-merge (merge commit) when the repository allows it. |
 
 If `produccion` fails, is rejected or is switched off, **no tag** is created; *Re-run failed jobs* deploys the
 same candidate again. The tree hash comparison holds for any merge method as long as `main` has nothing the
@@ -145,8 +145,12 @@ turns them on, otherwise the job is skipped and the run summary says why):
    `produccion` (required reviewer, branch `main`). In `produccion`, set the variable **`LANDING_URL`** to
    `https://reqsai-landing.pages.dev` (or the custom domain once attached); while it still points to
    `vercel.app` the production job stops before deploying.
-3. *Allow GitHub Actions to create and approve pull requests* (organization and repository) for the release
-   and back-merge PRs; while it is off, the run prints the link to open them by hand.
+3. **Release bot**: the GitHub App `reqsai-release-bot` (installed on every Kntro-Soft repository), the
+   organization variable `RELEASE_APP_ID` and the organization secret `RELEASE_APP_PRIVATE_KEY`. The release and
+   back-merge PRs are opened with a short-lived token of that App, so their CI runs (opened with `GITHUB_TOKEN`
+   they would start no `pull_request` workflow). Without it the job fails with *Release bot not configured*;
+   nothing falls back to `GITHUB_TOKEN`. Optional: *Settings → General → Allow auto-merge*, so the back-merge
+   merges itself (merge commit) once approved and green.
 4. Optional: require the checks `Lint & build` and `Release candidate ready` on `main`.
 
 The Pages project is created by the first deploy if it does not exist
