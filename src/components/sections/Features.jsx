@@ -1,76 +1,82 @@
 import { useTranslation } from 'react-i18next'
-import { Mic, FileCode2, BrainCircuit, ShieldCheck, ArrowUpRight, Users } from 'lucide-react'
+import { Check } from 'lucide-react'
+import Screenshot from '../ui/Screenshot'
 
-const FEATURES = [
-  { key: 'live',    Icon: Mic,          accent: 'red'    },
-  { key: 'gherkin', Icon: FileCode2,    accent: 'rose'   },
-  { key: 'rag',     Icon: BrainCircuit, accent: 'amber'  },
-  { key: 'privacy', Icon: ShieldCheck,  accent: 'emerald'},
-  { key: 'jira',    Icon: ArrowUpRight, accent: 'red'    },
-  { key: 'collab',  Icon: Users,        accent: 'rose'   },
-]
-
-const ACCENT_STYLES = {
-  red:     { icon: 'bg-red-500/10 text-red-400 border-red-500/20', glow: 'group-hover:shadow-red-500/10' },
-  rose:    { icon: 'bg-rose-500/10 text-rose-400 border-rose-500/20', glow: 'group-hover:shadow-rose-500/10' },
-  amber:   { icon: 'bg-amber-500/10 text-amber-400 border-amber-500/20', glow: 'group-hover:shadow-amber-500/10' },
-  emerald: { icon: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', glow: 'group-hover:shadow-emerald-500/10' },
+// Imagen de cada capacidad, por el `id` de `features.items`. Las dimensiones son las de los WebP de /public/img.
+const SHOTS = {
+  code: { name: 'asistente-conflicto', width: 1440, height: 900 },
+  share: { name: 'sesion-compartida', width: 1440, height: 900 },
+  wizard: { name: 'asistente-fuentes', width: 840, height: 850, full: 840, narrow: true },
+  integrations: { name: 'integraciones', width: 1440, height: 860 },
+  overview: { name: 'resumen-proyecto', width: 1440, height: 900 },
+  usage: { name: 'uso-ia', width: 1440, height: 690 },
+  start: { name: 'bienvenida', width: 1440, height: 800 },
 }
 
-function FeatureCard({ feature: { key, Icon, accent } }) {
-  const { t } = useTranslation()
-  const styles = ACCENT_STYLES[accent]
+function Row({ item, flip, tinted }) {
+  const { narrow, ...shot } = SHOTS[item.id]
 
   return (
-    <article className={`group glass rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${styles.glow}`}>
-      <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border ${styles.icon} mb-4`}>
-        <Icon size={18} aria-hidden="true" />
+    <div className={tinted ? 'border-y border-white/5 bg-navy-950/60' : ''}>
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className={`lg:col-span-4 ${flip ? 'lg:order-2' : ''} ${item.alt_extra ? 'lg:sticky lg:top-24 lg:self-start' : ''}`}>
+            <h3 className="text-balance text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl">
+              {item.title}
+            </h3>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-slate-300">{item.desc}</p>
+            <ul className="mt-6 space-y-3">
+              {item.points.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-slate-300">
+                  <Check size={16} className="mt-0.5 shrink-0 text-emerald-400" aria-hidden="true" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={`lg:col-span-8 ${flip ? 'lg:order-1' : ''}`}>
+            <div className={narrow ? 'mx-auto max-w-xl' : 'space-y-6'}>
+              <Screenshot {...shot} alt={item.alt} />
+              {item.alt_extra && (
+                <Screenshot name="copiloto-codigo" width={1440} height={900} alt={item.alt_extra} />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-      <h3 className="text-base font-semibold text-white mb-2">
-        {t(`features.${key}_title`)}
-      </h3>
-      <p className="text-sm text-slate-400 leading-relaxed">
-        {t(`features.${key}_desc`)}
-      </p>
-    </article>
+    </div>
   )
 }
 
 export default function Features() {
   const { t } = useTranslation()
+  const items = t('features.items', { returnObjects: true })
+  const more = t('features.more', { returnObjects: true })
 
   return (
-    <section
-      id="product"
-      className="relative py-24 lg:py-32"
-      aria-labelledby="features-heading"
-    >
-      {/* Background accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" aria-hidden="true" />
+    <section id="product" className="relative scroll-mt-16" aria-labelledby="features-heading">
+      <div className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8 lg:pt-28">
+        <h2 id="features-heading" className="max-w-2xl text-balance text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+          {t('features.title')}
+        </h2>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-300">{t('features.subtitle')}</p>
+      </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
-            {t('features.section_label')}
-          </span>
-          <h2
-            id="features-heading"
-            className="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
-          >
-            {t('features.title')}
-          </h2>
-          <p className="mt-4 text-slate-400 text-base leading-relaxed">
-            {t('features.subtitle')}
-          </p>
-        </div>
+      {items.map((item, i) => (
+        <Row key={item.id} item={item} flip={i % 2 === 1} tinted={item.id === 'code'} />
+      ))}
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {FEATURES.map((feature) => (
-            <FeatureCard key={feature.key} feature={feature} />
+      <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+        <h3 className="text-xl font-bold tracking-tight text-white">{t('features.more_title')}</h3>
+        <dl className="mt-8 grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {more.map((m) => (
+            <div key={m.title} className="border-t border-white/10 pt-4">
+              <dt className="text-sm font-semibold text-white">{m.title}</dt>
+              <dd className="mt-1.5 text-sm leading-relaxed text-slate-300">{m.desc}</dd>
+            </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   )

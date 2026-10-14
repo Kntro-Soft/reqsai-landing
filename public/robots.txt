@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.reqsai.tech/sitemap.xml

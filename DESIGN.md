@@ -121,7 +121,7 @@ The source of truth for that purpose is the repo itself:
 
 - The README leads with: **"Landing page for ReqsAI, an AI-powered requirements elicitation platform"**.
 - The hero copy leads with: **"Transforma reuniones en backlogs perfectos" / "Turn discovery meetings into perfect backlogs"**.
-- The page structure in `src/App.jsx` is linear and conversion-oriented: `Hero -> Stats -> Features -> Solutions -> Pricing -> FAQ -> Contact`.
+- The page structure in `src/App.jsx` is linear and conversion-oriented: `Hero -> HowItWorks -> Features -> Solutions -> Video -> Pricing -> FAQ -> Contact`.
 - The visual implementation lives primarily in `src/index.css`, `src/components/sections/*`, and the locale files in `src/i18n/locales/*`.
 
 The brand should feel:
@@ -267,12 +267,11 @@ The page is built from repeatable marketing components. Their implementation liv
 
 ### Hero
 - This is the dominant storytelling moment.
-- The repo’s native shape is not a feature grid first; it is a **value statement plus product mockup**.
-- The right-side mockup should visualize live AI help, generated user stories, and Gherkin-like structure because that is the product’s differentiator.
+- The native shape is a **value statement plus a real screenshot** of the capture page (`public/img`), not a drawn mockup.
+- The screenshot shows live AI help, a suggested story with Given/When/Then criteria and the approve or draft choice.
 
-### Stats
-- Compact credibility strip.
-- Metrics should reinforce the README/context claims: fewer follow-up meetings, better first-pass acceptance, reduced error cost.
+### How it works
+- Three numbered steps (capture, decide, deliver). The numbers carry the sequence. No invented metrics anywhere on the page: every claim must be backed by the API and web CHANGELOGs or `PlanCatalog`.
 
 ### Features / Solutions
 - Should show how the product adapts to real team archetypes rather than generic benefits.

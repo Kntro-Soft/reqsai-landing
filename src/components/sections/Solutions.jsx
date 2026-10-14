@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Zap, ShieldCheck, ArrowRight } from 'lucide-react'
-import { SIGN_UP_URL } from '../../config/appLinks'
 
 const TAB_ICONS = [Zap, ShieldCheck]
 
@@ -42,23 +41,15 @@ export default function Solutions() {
   return (
     <section
       id="solutions"
-      className="relative py-24 lg:py-32 border-t border-white/5"
+      className="relative py-20 lg:py-28 border-t border-white/5"
       aria-labelledby="solutions-heading"
     >
-      {/* Ambient */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className={`absolute top-1/3 transition-all duration-700 ${active === 0 ? 'left-1/4' : 'right-1/4'} w-80 h-80 ${active === 0 ? 'bg-red-600/8' : 'bg-rose-600/8'} rounded-full blur-3xl`} />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
-            {t('solutions.section_label')}
-          </span>
+        <div className="max-w-2xl mb-12">
           <h2
             id="solutions-heading"
-            className="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+            className="text-balance text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
           >
             {t('solutions.title')}
           </h2>
@@ -68,8 +59,8 @@ export default function Solutions() {
         </div>
 
         {/* Tab switcher */}
-        <div className="flex justify-center mb-12" role="tablist" aria-label={t('solutions.section_label')}>
-          <div className="flex flex-col sm:flex-row gap-2 p-1 rounded-xl glass w-full sm:w-auto">
+        <div className="mb-12" role="tablist" aria-label={t('solutions.section_label')}>
+          <div className="flex flex-col sm:flex-row gap-2 p-1 rounded-xl border border-white/10 bg-white/[0.03] w-full sm:w-auto">
             {tabs.map((label, i) => {
               const Icon = TAB_ICONS[i]
               const isActive = active === i
@@ -77,13 +68,14 @@ export default function Solutions() {
                 <button
                   key={i}
                   role="tab"
+                  id={`solutions-tab-${i}`}
                   aria-selected={isActive}
                   aria-controls={`solutions-panel-${i}`}
                   onClick={() => setActive(i)}
                   className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border transition-all duration-200 w-full sm:w-auto ${
                     isActive
                       ? TAB_STYLES[i].active
-                      : 'border-transparent text-slate-500 hover:text-slate-300'
+                      : 'border-transparent text-slate-400 hover:text-slate-300'
                   }`}
                 >
                   <Icon size={15} aria-hidden="true" />
@@ -105,16 +97,11 @@ export default function Solutions() {
         >
           {/* Left — headline + pain + stat */}
           <div>
-            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-medium mb-6 ${active === 0 ? 'bg-red-500/10 border-red-500/25 text-red-300' : 'bg-rose-500/10 border-rose-500/25 text-rose-300'}`}>
-              <span className={`w-1.5 h-1.5 rounded-full ${TAB_STYLES[active].dot}`} aria-hidden="true" />
-              {tabs[active]}
-            </div>
-
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight mb-5">
               {content.headline}
             </h3>
 
-            <p className="text-slate-400 leading-relaxed mb-10 border-l-2 border-white/10 pl-4 text-sm">
+            <p className="text-slate-400 leading-relaxed mb-6 max-w-md text-base">
               {content.pain}
             </p>
 
@@ -128,9 +115,9 @@ export default function Solutions() {
               </span>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-2">
               <a
-                href={active === 0 ? '#contact' : SIGN_UP_URL}
+                href={active === 0 ? '#contact' : '#pricing'}
                 className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors ${active === 0 ? 'text-red-400 hover:text-red-300' : 'text-rose-400 hover:text-rose-300'}`}
               >
                 {content.cta}
@@ -153,6 +140,7 @@ export default function Solutions() {
           from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        @media (prefers-reduced-motion: reduce) { #solutions [role=tabpanel] { animation: none !important; } }
       `}</style>
     </section>
   )

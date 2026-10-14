@@ -37,8 +37,8 @@ All page sections are self-contained components in `src/components/sections/`. O
 src/
 ├── components/
 │   ├── layout/       # Navbar.jsx, Footer.jsx
-│   └── sections/     # Hero, Stats, Features, Solutions, Pricing,
-│                     # Testimonials, FAQ, Contact
+│   └── sections/     # Hero, HowItWorks, Features, Solutions, Video,
+│                     # Pricing, FAQ, Contact
 ├── hooks/            # useScrolled.js (scroll threshold for navbar glass)
 ├── i18n/
 │   ├── index.js      # i18next setup — reads localStorage('reqsai_lang')

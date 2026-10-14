@@ -4,76 +4,75 @@
     "solutions": "Solutions",
     "demo": "Demo",
     "pricing": "Pricing",
-    "team": "Team",
     "faq": "FAQ",
     "contact": "Contact",
     "login": "Sign in",
-    "cta": "Start free",
+    "cta": "Try free",
     "menu_open": "Open menu",
-    "menu_close": "Close menu"
+    "menu_close": "Close menu",
+    "skip": "Skip to content"
   },
   "hero": {
-    "badge": "AI Assistant for Requirements Meetings",
-    "headline_1": "Turn discovery meetings into",
-    "headline_2": "perfect backlogs",
-    "subheadline": "ReqsAI listens to your elicitation sessions in real time and automatically generates structured User Stories with Gherkin acceptance criteria — so you never miss a critical edge case again.",
+    "headline_1": "Turn every meeting into stories that",
+    "headline_2": "respect the client's code",
+    "subheadline": "ReqsAI transcribes the meeting live, suggests questions and edge cases while people talk, and writes user stories with Given/When/Then criteria. Connect GitHub and it also warns you when a request contradicts what the system already does.",
     "cta_primary": "Start free",
     "cta_secondary": "Watch demo",
-    "note": "No credit card required · Cancel anytime",
-    "mockup": {
-      "live_badge": "LIVE SESSION",
-      "ai_suggestion": "AI Suggestion",
-      "ai_text": "Consider the edge case: what happens when the user has no active subscription but tries to access a premium feature?",
-      "story_label": "GENERATED USER STORY",
-      "feature": "Premium Access Control",
-      "scenario": "User without subscription attempts access",
-      "given": "a user with a free account",
-      "when": "they navigate to a premium section",
-      "then": "they see an upgrade modal",
-      "and": "their current path is saved for post-upgrade redirect",
-      "approve": "Approve",
-      "export": "Export to Jira",
-      "counter": "1 of 8 stories"
-    }
-  },
-  "stats": {
-    "meetings_value": "40%",
-    "meetings_label": "Fewer follow-up meetings",
-    "acceptance_value": ">80%",
-    "acceptance_label": "First-pass acceptance rate",
-    "cost_value": "10×",
-    "cost_label": "Error cost reduction"
+    "note": "No credit card · Free Starter plan",
+    "image_alt": "ReqsAI capture page showing an AI suggestion for a new story: title, acceptance criteria, and the Approve, Save as draft, Edit and Dismiss buttons, next to the project's story list."
   },
   "solutions": {
-    "section_label": "SOLUTIONS",
-    "title": "Built for your team",
-    "subtitle": "Compare how ReqsAI adapts to software consultancies and product teams that need different workflows but the same clarity.",
-    "tabs": ["Software Consultancies", "Product Managers / Startups"],
+    "title": "For consultancies and product teams",
+    "subtitle": "Two ways of working, one idea: what was agreed in the meeting reaches the backlog whole.",
+    "tabs": [
+      "Software consultancies",
+      "Product managers and startups"
+    ],
     "consulting": {
-      "headline": "Reduce billable hours lost to analysis and requirements capture",
-      "pain": "When your team depends on workshops, discovery calls, and manual validation, every poorly documented meeting turns into non-billable hours, rework, and fuzzy scope with the client.",
+      "headline": "Less rework between the meeting and the delivery",
+      "pain": "When requirements live in loose notes, every misunderstanding comes back as rework and a blurry scope with the client.",
       "benefits": [
-        { "title": "Fewer manual discovery hours", "desc": "Every session ends with structured User Stories and ready-to-review Gherkin, reducing the time your team spends reconstructing agreements and cleaning up notes." },
-        { "title": "More billable capacity", "desc": "Analysts spend less time on administrative follow-up between meetings and can support more accounts or go deeper on new initiatives faster." },
-        { "title": "Less client-side rework", "desc": "The AI co-pilot suggests questions live to close gaps before the next meeting and avoid unplanned clarification rounds." },
-        { "title": "Deliverables ready to share", "desc": "Export approved stories to Jira with consistent formatting so clients see tangible progress without manual handoff work." }
+        {
+          "title": "Every story quotes the client",
+          "desc": "Suggestions bring what was said, who said it and when. The accepted story keeps that origin."
+        },
+        {
+          "title": "The client follows the meeting",
+          "desc": "A spectator or reviewer link lets the client watch the session and decide without creating an account."
+        },
+        {
+          "title": "Warnings before committing scope",
+          "desc": "With the code connected, ReqsAI warns when a request contradicts what the system already does."
+        },
+        {
+          "title": "Deliverables ready for Jira",
+          "desc": "Approved stories travel with their acceptance criteria to the client's backlog."
+        }
       ],
-      "stat_value": "-30%",
-      "stat_label": "less operational time spent on repetitive analysis work",
-      "cta": "Send message →"
+      "cta": "Send a message"
     },
     "startup": {
-      "headline": "Push requirements straight into Jira and move faster with agile workflows",
-      "pain": "Your product team can't slow down the sprint just to turn meetings into clear tickets. You need to move from conversation to backlog without losing context or momentum.",
+      "headline": "From conversation to ticket, no copy and paste",
+      "pain": "Your team cannot stop the sprint to turn meetings into clear tickets. You need to go from conversation to backlog without losing context.",
       "benefits": [
-        { "title": "Direct Jira integration", "desc": "Approved stories land in your backlog with pre-filled fields, ready for prioritization, estimation, and sprint planning." },
-        { "title": "Better fit for agile teams", "desc": "ReqsAI turns conversations into actionable stories, helping Product Managers and squads keep weekly cadence without documentation bottlenecks." },
-        { "title": "Edge cases before development starts", "desc": "The AI suggests questions during the meeting to surface alternate scenarios before they become bugs or scope changes." },
-        { "title": "From meeting to ticket in minutes", "desc": "The team avoids manual transcription, summarization, and rewriting, keeping focus on validating hypotheses and shipping product." }
+        {
+          "title": "Jira integration",
+          "desc": "Pick the project and issue type, and send stories from the backlog or from a story's detail. It also imports what you already have."
+        },
+        {
+          "title": "Projects from your sources",
+          "desc": "The project assistant takes the name, description and languages from Jira and GitHub."
+        },
+        {
+          "title": "Edge cases before development",
+          "desc": "The AI proposes questions and alternate scenarios during the meeting, not after the bug."
+        },
+        {
+          "title": "You decide the status",
+          "desc": "When you accept a suggestion you choose between approving the story and leaving it as a draft."
+        }
       ],
-      "stat_value": "1 click",
-      "stat_label": "to move from meeting to a sprint-ready backlog",
-      "cta": "See Pro plan →"
+      "cta": "See plans"
     }
   },
   "footer": {
@@ -149,64 +148,58 @@
     ]
   },
   "demo": {
-    "section_label": "DEMO",
     "title": "See ReqsAI in action",
-    "subtitle": "A demo of how ReqsAI turns a meeting into ready-to-ship User Stories and Gherkin acceptance criteria for your backlog."
-  },
-  "team": {
-    "section_label": "TEAM",
-    "title": "Meet the team behind ReqsAI",
-    "subtitle": "A look at the people building ReqsAI and the vision driving the product."
+    "subtitle": "A demonstration of how ReqsAI turns a meeting into user stories and Gherkin criteria ready for your backlog."
   },
   "faq": {
-    "section_label": "FREQUENTLY ASKED QUESTIONS",
     "title": "Everything you need to know",
-    "subtitle": "Can't find what you're looking for? Write to us at noreply.reqsai@gmail.com",
+    "subtitle": "Something you can't find here? Write to us at noreply.reqsai@gmail.com",
     "items": [
       {
-        "q": "How does ReqsAI work during a live meeting?",
-        "a": "ReqsAI connects to your meeting audio (Zoom, Meet, Teams) or a recording file. While the analyst talks with the client, the AI engine transcribes in real time, detects implicit requirements, and suggests questions to reveal hidden edge cases. When the meeting ends, the system automatically generates User Stories with Gherkin acceptance criteria ready for review."
+        "q": "How does ReqsAI work during a meeting?",
+        "a": "You record from the browser: in a virtual meeting you share the tab's audio, and in person you use the microphone. ReqsAI transcribes live, tells speakers apart and proposes new stories, changes, edge cases and questions to clarify. You decide each suggestion: approve it, save it as a draft or dismiss it."
       },
       {
-        "q": "Is my data secure? How is it isolated between organizations?",
-        "a": "We use a schema-per-tenant isolation architecture: each organization has its own completely separate database schema. No data crosses between tenants under any circumstances. RAG vectors are also stored per tenant. We comply with enterprise security standards and can provide technical isolation documentation to your legal team during Enterprise onboarding."
+        "q": "Is my data safe? How are organizations isolated?",
+        "a": "Each organization has its own database schema, separate from the others. We do not use your content to train models. ReqsAI reads your repositories with read-only permission, and stores neither the code nor credentials. The details are in the Privacy Policy."
       },
       {
         "q": "Do I need to install any software or plugin?",
-        "a": "No. ReqsAI runs 100% in the cloud from the browser. For live meetings we offer a recording bot that automatically joins your Zoom or Meet room — nothing to install on your computer. For existing recordings, simply upload the audio or video file directly from the platform."
+        "a": "No. ReqsAI runs in the browser. For a virtual meeting you share the audio of the tab where it happens, and for a past meeting you upload the recording from the capture menu."
       },
       {
-        "q": "What tools does ReqsAI integrate with?",
-        "a": "Every plan integrates with Jira Cloud: connect your site with OAuth, export approved User Stories as issues with their acceptance criteria, and import existing issues into the backlog. Coming soon: Azure DevOps, Linear and GitHub Issues."
+        "q": "Which tools does ReqsAI integrate with?",
+        "a": "Jira Cloud: connect one or several sites with Atlassian (or an API token), pick the project and issue type, send stories with their acceptance criteria and import existing ones. And GitHub, through a read-only app the copilot uses to understand the client's code."
       },
       {
-        "q": "Can I analyze recordings from previous meetings?",
-        "a": "Yes. In addition to live mode, you can upload MP3, MP4, WAV files or import from Google Drive and OneDrive. The engine processes the audio, identifies requirements, and generates the same structured output as a live session. Ideal for teams that want to feed historical context back into the RAG system."
+        "q": "Can I analyze recordings of earlier meetings?",
+        "a": "Yes. Upload the recording from the capture menu and ReqsAI transcribes it in the session's language and generates the stories. Uploading a recording counts against your monthly AI allowance."
       },
       {
-        "q": "How accurate is the generated Gherkin? How much editing is needed?",
-        "a": "In sessions with good audio quality and structured conversations, analysts report an average of under 15 minutes of editing per session. The system learns from your project history via RAG, improving accuracy with each session. All stories go through a review and approval flow before export, so the team always has final control."
+        "q": "Can I trust what the AI generates?",
+        "a": "The AI can be wrong, so no story is taken as good on its own. Each suggestion comes with the client's quote, you can edit it before accepting it and, with the code connected, verify it against what is implemented. You approve, save as draft or dismiss."
       },
       {
-        "q": "What languages does the AI support?",
-        "a": "The transcription and analysis engine natively supports Spanish, English, and Portuguese — the three most common languages in LATAM tech teams. Gherkin can be generated in whichever language you prefer. The platform UI is available in Spanish and English."
+        "q": "Which languages does it work in?",
+        "a": "You choose the language of each session, and transcription and analysis happen in it. The platform is available in Spanish and English."
       },
       {
-        "q": "Do I need a card to get started?",
-        "a": "No. When you sign up, your organization starts on the free Starter plan, with no credit card. When you need more members, AI tokens or context documents, you upgrade to Pro or Enterprise from Billing and pay with Stripe. If you go back to Starter, you keep your data."
+        "q": "What happens when the monthly AI allowance runs out?",
+        "a": "Each plan includes a monthly token allowance: 100,000 on Starter, 2 million on Pro and 50 million on Enterprise. You can see usage in Settings → Usage, with warnings at 80, 90 and 100%. At the cap suggestions and chat pause, but you can keep recording, transcribing, reading, editing and exporting."
+      },
+      {
+        "q": "Do I need a card to start?",
+        "a": "No. When you sign up your organization starts on the free Starter plan, no card. When you need more members, AI tokens or context documents, upgrade to Pro or Enterprise from Billing and pay with Stripe. If you go back to Starter, you keep your data."
       }
     ]
   },
   "contact": {
-    "section_label": "CONTACT",
     "title": "Let's talk about your team",
     "subtitle": "Questions about plans, security, or a specific integration? Write to us and we'll respond in under 24 hours.",
     "info_email_label": "Direct email",
     "info_email": "noreply.reqsai@gmail.com",
     "info_response_label": "Response time",
     "info_response": "Under 24 business hours",
-    "info_calendar_label": "Live demo",
-    "info_calendar": "Schedule a 30-min session",
     "form_name": "Full name",
     "form_name_placeholder": "Alejandro Ríos",
     "form_email": "Work email",
@@ -220,19 +213,30 @@
     "form_message": "How can we help you?",
     "form_message_placeholder": "Tell us about your team, your current process and what you want to improve...",
     "form_submit": "Send message",
-    "form_submitting": "Sending...",
-    "form_success_title": "Message received!",
-    "form_success_body": "We'll get back to you in under 24 business hours.",
-    "roles": ["Tech Lead", "Systems Analyst", "Product Owner", "CTO / VP Engineering", "Other"],
-    "plans": ["Pro ($49/mo)", "Enterprise (custom)", "Just have questions"]
+    "form_submitting": "Opening your mail...",
+    "form_success_title": "Message ready to send",
+    "form_success_body": "We opened your mail app with the message written. Send it from there and we will answer within 24 business hours.",
+    "roles": [
+      "Tech Lead",
+      "Systems Analyst",
+      "Product Owner",
+      "CTO / VP Engineering",
+      "Other"
+    ],
+    "plans": [
+      "Pro ($49/mo)",
+      "Enterprise (custom)",
+      "Just have questions"
+    ],
+    "mail_subject": "Question from the ReqsAI landing"
   },
   "pricing": {
-    "section_label": "PRICING",
     "title": "Plans for every stage of your team",
     "subtitle": "No forced annual contracts. Start free and scale when you're ready.",
     "toggle_monthly": "Monthly",
     "toggle_annual": "Annual",
     "save_badge": "Save 20%",
+    "free": "Free",
     "popular_badge": "Most popular",
     "cta_start": "Get started free",
     "cta_pro": "Start with Pro",
@@ -256,13 +260,34 @@
         "annual": 0,
         "highlight": false,
         "features": [
-          { "text": "Up to 3 members", "included": true },
-          { "text": "100,000 AI tokens per month", "included": true },
-          { "text": "Live AI copilot and automatic Gherkin", "included": true },
-          { "text": "Glossary of up to 50 terms per project", "included": true },
-          { "text": "10 context documents per project", "included": true },
-          { "text": "Jira export and import", "included": true },
-          { "text": "Schema-per-tenant isolation", "included": true }
+          {
+            "text": "Up to 3 members",
+            "included": true
+          },
+          {
+            "text": "100,000 AI tokens per month",
+            "included": true
+          },
+          {
+            "text": "Live AI copilot and automatic Gherkin",
+            "included": true
+          },
+          {
+            "text": "Glossary of up to 50 terms per project",
+            "included": true
+          },
+          {
+            "text": "10 context documents per project",
+            "included": true
+          },
+          {
+            "text": "Jira export and import",
+            "included": true
+          },
+          {
+            "text": "Schema-per-tenant isolation",
+            "included": true
+          }
         ]
       },
       {
@@ -273,14 +298,38 @@
         "annual": 39,
         "highlight": true,
         "features": [
-          { "text": "Up to 15 members", "included": true },
-          { "text": "2 million AI tokens per month", "included": true },
-          { "text": "Live AI copilot and automatic Gherkin", "included": true },
-          { "text": "Glossary of up to 300 terms per project", "included": true },
-          { "text": "50 context documents per project", "included": true },
-          { "text": "Jira export and import", "included": true },
-          { "text": "Per-project roles and permissions", "included": true },
-          { "text": "Schema-per-tenant isolation", "included": true }
+          {
+            "text": "Up to 15 members",
+            "included": true
+          },
+          {
+            "text": "2 million AI tokens per month",
+            "included": true
+          },
+          {
+            "text": "Live AI copilot and automatic Gherkin",
+            "included": true
+          },
+          {
+            "text": "Glossary of up to 300 terms per project",
+            "included": true
+          },
+          {
+            "text": "50 context documents per project",
+            "included": true
+          },
+          {
+            "text": "Jira export and import",
+            "included": true
+          },
+          {
+            "text": "Per-project roles and permissions",
+            "included": true
+          },
+          {
+            "text": "Schema-per-tenant isolation",
+            "included": true
+          }
         ]
       },
       {
@@ -291,79 +340,169 @@
         "annual": 119,
         "highlight": false,
         "features": [
-          { "text": "Everything in Pro", "included": true },
-          { "text": "Up to 200 members", "included": true },
-          { "text": "50 million AI tokens per month", "included": true },
-          { "text": "Glossary of up to 3,000 terms per project", "included": true },
-          { "text": "500 context documents per project", "included": true },
-          { "text": "Custom roles and story approval", "included": true },
-          { "text": "Priority support", "included": true }
+          {
+            "text": "Everything in Pro",
+            "included": true
+          },
+          {
+            "text": "Up to 200 members",
+            "included": true
+          },
+          {
+            "text": "50 million AI tokens per month",
+            "included": true
+          },
+          {
+            "text": "Glossary of up to 3,000 terms per project",
+            "included": true
+          },
+          {
+            "text": "500 context documents per project",
+            "included": true
+          },
+          {
+            "text": "Custom roles and story approval",
+            "included": true
+          },
+          {
+            "text": "Priority support",
+            "included": true
+          }
         ]
       }
     ]
   },
-  "testimonials": {
-    "section_label": "TESTIMONIALS",
-    "title": "Teams that never lose a requirement again",
-    "subtitle": "Startups and enterprises across LATAM that transformed their requirements process.",
+  "features": {
+    "title": "What ReqsAI does today",
+    "subtitle": "Real screenshots of the app, with demo data.",
     "items": [
       {
-        "quote": "We used to waste 2–3 follow-up meetings per sprint just to clarify poorly captured requirements. With ReqsAI, the analyst arrives at the retro with a complete, approved backlog. The velocity impact was immediate.",
-        "name": "Alejandro Ríos",
-        "role": "Tech Lead",
-        "company": "Wiio",
-        "initials": "AR",
-        "photo": "https://randomuser.me/api/portraits/men/32.jpg",
-        "color": "blue",
-        "stars": 5
+        "id": "code",
+        "title": "The copilot reads the client's code",
+        "desc": "Before a story is committed, ReqsAI compares it with what the system already implements.",
+        "points": [
+          "Connect GitHub repositories through a read-only app: ReqsAI stores neither the code nor credentials.",
+          "It builds a map of modules with the business rules each one implements.",
+          "It warns when a request already exists or contradicts what is implemented, and links the modules involved.",
+          "\"Verify in the code\" runs a deep search and cites the file and lines on GitHub."
+        ],
+        "alt": "ReqsAI capture with the chat: the client asks to cancel up to 24 hours before and the proposed story carries the warning \"Contradicts what is implemented\", because the code allows cancelling up to 2 hours before, with the Reservation management module linked.",
+        "alt_extra": "ReqsAI Code page: the module map filtered by \"2 horas\", showing the Reservation screens module and its implemented rules, such as cancellation only being allowed up to 2 hours before."
       },
       {
-        "quote": "I'm the bridge between non-technical stakeholders and a team that needs exact criteria. ReqsAI generates the Gherkin while I focus on listening to the client. I can finally practice actual active listening.",
-        "name": "Claudia Mendoza",
-        "role": "Senior Systems Analyst",
-        "company": "Grupo Financiero Andino",
-        "initials": "CM",
-        "photo": "https://randomuser.me/api/portraits/women/44.jpg",
-        "color": "violet",
-        "stars": 5
+        "id": "share",
+        "title": "Your client follows the meeting from a link",
+        "desc": "Share the session without asking the client to create an account.",
+        "points": [
+          "Create the link as a spectator, who only follows along, or as a reviewer, who also decides.",
+          "The page shows the conversation with names, pending suggestions and stories, and refreshes by itself.",
+          "A reviewer accepts as draft or approving, dismisses, and approves or rejects stories.",
+          "You can revoke any link at any time."
+        ],
+        "alt": "Public shared-session page with the reviewer role: a conversation between two speakers, two pending suggestions with the Accept and approve and Accept as draft buttons, and the session's stories."
       },
       {
-        "quote": "What surprised me most was the RAG context. On a 3-year-old project, ReqsAI detected we were duplicating a module we'd already built. It saved us weeks of work.",
-        "name": "Sebastián Vargas",
-        "role": "Product Owner",
-        "company": "Nuvem Studio",
-        "initials": "SV",
-        "photo": "https://randomuser.me/api/portraits/men/61.jpg",
-        "color": "indigo",
-        "stars": 5
+        "id": "integrations",
+        "title": "Jira and GitHub, connected to every project",
+        "desc": "Connect your tools once and let the project start from them.",
+        "points": [
+          "Connect several Jira sites with Atlassian and send stories with their criteria as issues.",
+          "Import the backlog you already have in Jira.",
+          "GitHub is read with read-only permission and the map updates on every push."
+        ],
+        "alt": "ReqsAI Integrations settings: a Jira card with the Connect with Atlassian button and a GitHub card with the Connect GitHub button, each with a how-it-works explanation."
       },
       {
-        "quote": "The schema-per-tenant isolation is what convinced Legal. We needed to guarantee each client's data was fully separate and ReqsAI does it by default. Zero friction in our compliance process.",
-        "name": "Mariana Torres",
-        "role": "CTO",
-        "company": "DataSafe Enterprise",
-        "initials": "MT",
-        "photo": "https://randomuser.me/api/portraits/women/26.jpg",
-        "color": "emerald",
-        "stars": 5
+        "id": "wizard",
+        "title": "Create the project from your sources",
+        "desc": "Pick the Jira project or the GitHub repositories and let the assistant fill in the basics.",
+        "points": [
+          "The name comes from the Jira project or, failing that, from the first repository.",
+          "The description comes from Jira and the languages from the repositories.",
+          "You tick what to apply: a name you already typed is kept unless you tick it.",
+          "The project opens right away and a bar follows the Jira setup and the code indexing."
+        ],
+        "alt": "ReqsAI new-project assistant, Sources step: Connect with Atlassian button for Jira, GitHub repositories with acme/reservas picked and the \"Fill in the project from these sources\" card with the option to use \"reservas\" as the name."
+      },
+      {
+        "id": "overview",
+        "title": "An overview of every project and the organization",
+        "desc": "Dashboards that show where things stand at a glance, no hand-built reports.",
+        "points": [
+          "Active stories, story points, sessions and how often the AI's proposals were accepted.",
+          "Weekly activity of sessions and stories, with a table view.",
+          "The organization overview covers only the projects each member can reach.",
+          "A project with no data tells you what to do instead of showing zeros."
+        ],
+        "alt": "Demo project overview in ReqsAI: cards with 6 active stories, 26 story points and 1 session, and a weekly activity chart."
+      },
+      {
+        "id": "usage",
+        "title": "You know how much AI you use",
+        "desc": "Consumption is measured and capped monthly by plan, with no surprises.",
+        "points": [
+          "The usage page shows tokens by feature and by project, and the minutes of audio transcribed.",
+          "An estimate in meeting minutes tells you how much you have left.",
+          "Warnings at 80, 90 and 100% of the monthly allowance.",
+          "At the cap suggestions pause; recording, reading, editing and exporting keep working."
+        ],
+        "alt": "ReqsAI Usage page: a bar of AI tokens used against the 100,000 monthly limit, an estimate of meeting minutes that can still be captured, and the current plan."
+      },
+      {
+        "id": "start",
+        "title": "A guided first day",
+        "desc": "When you create your organization you see where to begin.",
+        "points": [
+          "A welcome panel: try the demo, create your project or connect Jira and GitHub.",
+          "A guided tour of the interface that you can repeat whenever you like.",
+          "A demo project with a session, stories, glossary and constraints, which you can restore."
+        ],
+        "alt": "ReqsAI welcome panel with three options: try the demo first, create your project or connect Jira or GitHub, and the quick tour link."
+      }
+    ],
+    "more_title": "And also",
+    "more": [
+      {
+        "title": "Given/When/Then criteria",
+        "desc": "Every new story arrives with its acceptance criteria in Gherkin."
+      },
+      {
+        "title": "Project context",
+        "desc": "Glossary, technical constraints and client documents feed the AI."
+      },
+      {
+        "title": "Source quote",
+        "desc": "An accepted story keeps what the client said and links to that moment of the session."
+      },
+      {
+        "title": "Assistant chat",
+        "desc": "Ask or request a story during capture, and the assistant searches the code too."
+      },
+      {
+        "title": "Role permissions",
+        "desc": "Who approves, who edits and who connects integrations is set by role."
+      },
+      {
+        "title": "Isolated data",
+        "desc": "Each organization has its own database schema."
       }
     ]
   },
-  "features": {
-    "section_label": "CAPABILITIES",
-    "title": "Everything your team needs to elicit requirements perfectly",
-    "subtitle": "From the meeting to a sprint-ready backlog, without friction.",
-    "live_title": "Live AI Co-pilot",
-    "live_desc": "Real-time prompts during client meetings to surface hidden edge cases and logic gaps before the call ends.",
-    "gherkin_title": "Auto-generated Gherkin",
-    "gherkin_desc": "Structured Given-When-Then acceptance criteria generated instantly from meeting transcripts, ready to export.",
-    "rag_title": "Intelligent Context (RAG)",
-    "rag_desc": "Detects requirement duplication and automatically aligns with your existing architecture using your project history.",
-    "privacy_title": "Enterprise Privacy",
-    "privacy_desc": "Schema-per-tenant isolation to guarantee that each organization's data is completely separate and secure.",
-    "jira_title": "Jira Integration",
-    "jira_desc": "Export approved User Stories directly to your Jira backlog with one click, in under 10 minutes.",
-    "collab_title": "Team Review",
-    "collab_desc": "Share, comment and approve User Stories with the whole team before they reach the sprint. Full traceability included."
+  "steps": {
+    "title": "From meeting to backlog in three steps",
+    "items": [
+      {
+        "title": "Capture",
+        "desc": "Record live from the browser, in person or in a virtual meeting, or upload a recording. The transcript tells each speaker apart."
+      },
+      {
+        "title": "Decide",
+        "desc": "Every suggestion comes with the client's quote. You approve it, save it as a draft or dismiss it."
+      },
+      {
+        "title": "Deliver",
+        "desc": "Stories with their acceptance criteria go to Jira, and the client can follow the session from a link."
+      }
+    ]
   }
 }
