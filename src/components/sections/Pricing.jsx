@@ -7,7 +7,7 @@ function BillingToggle({ annual, onChange }) {
   const { t } = useTranslation()
   return (
     <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur-sm">
-      <span className={`text-sm font-medium transition-colors ${!annual ? 'text-white' : 'text-slate-500'}`}>
+      <span className={`text-sm font-medium transition-colors ${!annual ? 'text-white' : 'text-slate-400'}`}>
         {t('pricing.toggle_monthly')}
       </span>
       <button
@@ -26,7 +26,7 @@ function BillingToggle({ annual, onChange }) {
           }`}
         />
       </button>
-      <span className={`text-sm font-medium flex items-center gap-2 transition-colors ${annual ? 'text-white' : 'text-slate-500'}`}>
+      <span className={`text-sm font-medium flex items-center gap-2 transition-colors ${annual ? 'text-white' : 'text-slate-400'}`}>
         {t('pricing.toggle_annual')}
         <span className="text-[10px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 px-2 py-0.5 rounded-full">
           {t('pricing.save_badge')}
@@ -52,7 +52,7 @@ function FeatureRow({ feature }) {
           aria-hidden="true"
         />
       )}
-      <span className={`text-sm leading-snug ${feature.included ? 'text-slate-300' : 'text-slate-600'}`}>
+      <span className={`text-sm leading-snug ${feature.included ? 'text-slate-300' : 'text-slate-400'}`}>
         {feature.text}
       </span>
     </li>
@@ -78,7 +78,7 @@ function PlanCard({ plan, annual }) {
 
   return (
     <article
-      className={`relative flex h-full flex-col rounded-[28px] px-6 pb-6 pt-9 transition-all duration-300 hover:-translate-y-1 ${
+      className={`relative flex h-full flex-col rounded-2xl px-6 pb-6 pt-9 transition-all duration-300 hover:-translate-y-1 ${
         plan.highlight
           ? 'border border-red-400/40 bg-gradient-to-b from-red-600/14 via-navy-800/95 to-rose-600/10 shadow-2xl shadow-red-950/50'
           : 'border border-white/10 bg-white/[0.035] shadow-[0_24px_80px_rgba(3,8,15,0.42)] backdrop-blur-sm'
@@ -131,15 +131,15 @@ function PlanCard({ plan, annual }) {
               <span className="mb-2 text-lg font-medium text-slate-400">$</span>
             )}
             <span className="text-5xl font-extrabold text-white tracking-tight leading-none">
-              {isFree ? t('pricing.cta_start').split(' ')[0] === 'Get' ? 'Free' : 'Gratis' : price}
+              {isFree ? t('pricing.free') : price}
             </span>
             {!isFree && (
-              <span className="mb-1 text-sm text-slate-500">{t('pricing.per_month')}</span>
+              <span className="mb-1 text-sm text-slate-400">{t('pricing.per_month')}</span>
             )}
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             {!isFree && (
-              <p className="text-xs text-slate-500">{billingLabel}</p>
+              <p className="text-xs text-slate-400">{billingLabel}</p>
             )}
             {hasDiscount && (
               <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-1 text-[11px] font-medium text-emerald-300">
@@ -183,28 +183,15 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="relative overflow-hidden py-24 lg:py-32 border-t border-white/5"
+      className="relative overflow-hidden py-20 lg:py-28 border-t border-white/5"
       aria-labelledby="pricing-heading"
     >
-      {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute top-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full bg-red-600/8 blur-3xl" />
-        <div className="absolute right-0 top-1/2 h-72 w-72 rounded-full bg-rose-600/8 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.06]" style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-        }} />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
-            {t('pricing.section_label')}
-          </span>
+        <div className="max-w-3xl mb-12">
           <h2
             id="pricing-heading"
-            className="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+            className="text-balance text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
           >
             {t('pricing.title')}
           </h2>
@@ -214,7 +201,7 @@ export default function Pricing() {
         </div>
 
         {/* Billing toggle */}
-        <div className="flex justify-center mb-14">
+        <div className="mb-14">
           <BillingToggle annual={annual} onChange={setAnnual} />
         </div>
 

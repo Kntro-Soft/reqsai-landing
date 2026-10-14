@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react'
 import { useScrolled } from '../../hooks/useScrolled'
 import { SIGN_IN_URL, SIGN_UP_URL } from '../../config/appLinks'
 
-const NAV_LINKS = ['product', 'solutions', 'demo', 'pricing', 'team', 'faq', 'contact']
+const NAV_LINKS = ['product', 'solutions', 'demo', 'pricing', 'faq', 'contact']
 
 function LangToggle() {
   const { i18n } = useTranslation()
@@ -41,6 +41,13 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
+    <>
+    <a
+      href="#main"
+      className="fixed left-4 top-4 z-[60] -translate-y-20 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-navy-900 transition-transform focus:translate-y-0"
+    >
+      {t('nav.skip')}
+    </a>
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled ? 'glass-nav' : 'bg-transparent'
@@ -71,7 +78,7 @@ export default function Navbar() {
             <li key={key}>
               <a
                 href={`#${key}`}
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-slate-300 hover:text-white transition-colors"
               >
                 {t(`nav.${key}`)}
               </a>
@@ -116,7 +123,7 @@ export default function Navbar() {
         id="mobile-menu"
         aria-hidden={!open}
         className={`lg:hidden glass-nav border-t border-white/5 overflow-hidden transition-all duration-300 ${
-          open ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
+          open ? 'max-h-[460px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 py-4 flex flex-col gap-1">
@@ -149,5 +156,6 @@ export default function Navbar() {
         </div>
       </div>
     </header>
+    </>
   )
 }

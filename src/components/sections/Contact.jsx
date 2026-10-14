@@ -1,15 +1,14 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Mail, Clock, CalendarDays, CheckCircle2, Send } from 'lucide-react'
+import { Mail, Clock, CheckCircle2, Send } from 'lucide-react'
 
 const INFO_ITEMS = [
   { icon: Mail,         labelKey: 'info_email_label',    valueKey: 'info_email'    },
   { icon: Clock,        labelKey: 'info_response_label', valueKey: 'info_response' },
-  { icon: CalendarDays, labelKey: 'info_calendar_label', valueKey: 'info_calendar' },
 ]
 
 const INPUT_BASE =
-  'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-red-500/60 focus:bg-white/8 transition-colors'
+  'w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:outline-none focus-visible:border-red-400 focus-visible:ring-2 focus-visible:ring-red-500/40 transition-colors'
 
 function Field({ id, label, required, children }) {
   return (
@@ -50,8 +49,23 @@ function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!e.currentTarget.checkValidity()) {
+      e.currentTarget.reportValidity()
+      return
+    }
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 1200))
+    const lines = [
+      `${t('contact.form_name')}: ${fields.name}`,
+      `${t('contact.form_email')}: ${fields.email}`,
+      fields.company && `${t('contact.form_company')}: ${fields.company}`,
+      fields.role && `${t('contact.form_role')}: ${fields.role}`,
+      fields.plan && `${t('contact.form_plan')}: ${fields.plan}`,
+      '',
+      fields.message,
+    ].filter((line) => line !== false && line !== '')
+    const body = lines.join('\n')
+    const subject = t('contact.mail_subject')
+    window.location.href = `mailto:${t('contact.info_email')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     setSubmitting(false)
     setSubmitted(true)
   }
@@ -59,7 +73,7 @@ function ContactForm() {
   if (submitted) return <SuccessState />
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-4">
         <Field id="contact-name" label={t('contact.form_name')} required>
           <input
@@ -125,7 +139,7 @@ function ContactForm() {
               className={`text-xs py-2.5 px-2 rounded-xl border text-center transition-colors ${
                 fields.plan === p
                   ? 'bg-red-600/20 border-red-500/50 text-red-300'
-                  : 'bg-white/5 border-white/10 text-slate-500 hover:text-slate-300 hover:border-white/20'
+                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-slate-300 hover:border-white/20'
               }`}
             >
               {p}
@@ -173,26 +187,17 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-24 lg:py-32 border-t border-white/5"
+      className="relative py-20 lg:py-28 border-t border-white/5"
       aria-labelledby="contact-heading"
     >
-      {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-rose-600/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-600/8 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
           {/* Left — copy & info */}
           <div className="lg:col-span-2">
-            <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
-              {t('contact.section_label')}
-            </span>
             <h2
               id="contact-heading"
-              className="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+              className="text-balance text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
             >
               {t('contact.title')}
             </h2>
@@ -207,7 +212,7 @@ export default function Contact() {
                     <Icon size={16} className="text-red-400" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-600 font-medium uppercase tracking-wider">{t(`contact.${labelKey}`)}</p>
+                    <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">{t(`contact.${labelKey}`)}</p>
                     <p className="text-sm text-slate-300 mt-0.5">{t(`contact.${valueKey}`)}</p>
                   </div>
                 </li>
@@ -216,7 +221,7 @@ export default function Contact() {
           </div>
 
           {/* Right — form */}
-          <div className="lg:col-span-3 glass rounded-2xl p-6 sm:p-8">
+          <div className="lg:col-span-3 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
             <ContactForm />
           </div>
 

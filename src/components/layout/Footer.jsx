@@ -29,12 +29,7 @@ export default function Footer() {
     <footer>
       {/* CTA strip */}
       <div className="relative border-t border-white/5 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-transparent to-rose-600/10" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-48 bg-red-600/10 blur-3xl rounded-full" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
             {t('footer.cta_title')}
           </h2>
@@ -50,7 +45,7 @@ export default function Footer() {
             </a>
             <a
               href={SIGN_IN_URL}
-              className="text-sm text-slate-500 hover:text-slate-300 transition-colors px-4 py-3"
+              className="text-sm text-slate-400 hover:text-slate-300 transition-colors px-4 py-3"
             >
               {t('footer.cta_login')}
             </a>
@@ -77,7 +72,7 @@ export default function Footer() {
                   Reqs AI
                 </span>
               </a>
-              <p className="text-sm text-slate-500 leading-relaxed max-w-[200px]">
+              <p className="text-sm text-slate-400 leading-relaxed max-w-[200px]">
                 {t('footer.tagline')}
               </p>
 
@@ -90,7 +85,7 @@ export default function Footer() {
                     aria-label={label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-8 px-2.5 gap-2 rounded-lg border border-white/10 text-slate-500 hover:text-white hover:border-white/25 flex items-center justify-center text-xs font-medium transition-colors"
+                    className="h-8 px-2.5 gap-2 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/25 flex items-center justify-center text-xs font-medium transition-colors"
                   >
                     <Icon size={14} />
                     {label}
@@ -110,7 +105,7 @@ export default function Footer() {
                     <li key={label}>
                       <a
                         href={href}
-                        className="text-sm text-slate-500 hover:text-slate-200 transition-colors"
+                        className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
                       >
                         {label}
                       </a>
@@ -126,7 +121,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-4 text-xs text-slate-600">
+          <div className="flex items-center gap-4 text-xs text-slate-400">
             <span>{t('footer.copyright')}</span>
             <span aria-hidden="true">·</span>
             <span>{t('footer.made_in')}</span>
@@ -135,7 +130,7 @@ export default function Footer() {
             <ul className="flex items-center gap-4" role="list">
               {legal.map((item, i) => {
                 const href = LEGAL_HREFS[i] ?? '#'
-                const className = 'text-xs text-slate-600 hover:text-slate-400 transition-colors'
+                const className = 'text-xs text-slate-400 hover:text-slate-400 transition-colors'
                 return (
                   <li key={item}>
                     {href.startsWith('/') ? (

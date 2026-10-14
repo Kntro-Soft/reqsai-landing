@@ -8,6 +8,18 @@ version as the notes of its GitHub Release: a release branch `release/X.Y.Z` ren
 
 ## [Unreleased]
 
+### Changed (Landing shows the current product — `feature/21-landing-refresh`, #21)
+- The hero shows a real screenshot of the capture page instead of a drawn mockup, and the copy leads with the code-aware copilot.
+- Features are alternating rows with real screenshots (WebP, two widths, fixed dimensions, lazy below the fold): the copilot that reads the client's code and warns on contradictions, shared session links (spectator and reviewer), Jira and GitHub, creating a project from its sources, project and organization overviews, AI usage and the token allowance, and the guided first steps.
+- Solutions, FAQ and the hero copy only state what the API and web CHANGELOGs and `PlanCatalog` back: the invented metrics (40 %, 80 %, 10x, 30 %), the "less than 15 minutes of editing" claim, the Zoom and Meet bot, the Drive and OneDrive import and the "coming soon" integrations are gone. A new FAQ answers what happens when the monthly AI allowance runs out.
+- The contact form no longer fakes a send: it opens the visitor's mail app with the message written.
+- Accessibility: skip link, visible focus ring, text contrast at 4.5:1 or better, selection and scrollbar colours, no blur on the reveal. Gradient text, section eyebrows and decorative glows are removed. The English free plan label no longer reads "Gratis".
+- Metadata: Spanish title and description, canonical URL, Open Graph and Twitter image (`public/og-image.jpg`), `robots.txt` and `sitemap.xml`.
+
+### Removed
+- The team video section and its "Equipo" navigation link. The product demo video stays.
+- The unused testimonials copy (invented people) and the metrics strip.
+
 ### Fixed (Branch cleanup — `bugfix/19-branch-cleanup-pulls`, #19)
 - The weekly branch cleanup read each branch's pull requests with `gh api -f`, which sends a POST to the create-pull-request endpoint instead of listing, so every lookup failed with 422 and the open-PR and `do-not-delete` protections were never checked. It now lists with `--method GET`, and a branch whose PRs cannot be read is left alone.
 

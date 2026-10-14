@@ -23,7 +23,7 @@ function FAQItem({ item, index, open, onToggle }) {
             className={`mt-0.5 shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-200 ${
               open
                 ? 'bg-red-600/20 border-red-500/40 text-red-400'
-                : 'border-white/10 text-slate-500 group-hover:border-white/20 group-hover:text-slate-300'
+                : 'border-white/10 text-slate-400 group-hover:border-white/20 group-hover:text-slate-300'
             }`}
             aria-hidden="true"
           >
@@ -63,7 +63,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative py-24 lg:py-32 border-t border-white/5"
+      className="relative py-20 lg:py-28 border-t border-white/5"
       aria-labelledby="faq-heading"
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -72,24 +72,21 @@ export default function FAQ() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-semibold text-red-400 tracking-widest uppercase">
-            {t('faq.section_label')}
-          </span>
+        <div className="max-w-2xl mb-16">
           <h2
             id="faq-heading"
-            className="mt-3 text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+            className="text-balance text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
           >
             {t('faq.title')}
           </h2>
-          <p className="mt-4 text-slate-500 text-sm">
+          <p className="mt-4 text-slate-400 text-sm">
             {t('faq.subtitle')}
           </p>
         </div>
 
         {/* Two-column accordion on desktop */}
         <div className="grid lg:grid-cols-2 gap-x-16">
-          <div className="glass rounded-2xl px-6 divide-y-0">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 divide-y-0">
             {left.map((item, i) => (
               <FAQItem
                 key={i}
@@ -100,7 +97,7 @@ export default function FAQ() {
               />
             ))}
           </div>
-          <div className="glass rounded-2xl px-6 mt-4 lg:mt-0 divide-y-0">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 mt-4 lg:mt-0 divide-y-0">
             {right.map((item, i) => (
               <FAQItem
                 key={i + half}
