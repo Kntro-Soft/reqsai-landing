@@ -8,6 +8,8 @@ version as the notes of its GitHub Release: a release branch `release/X.Y.Z` ren
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-10-13
+
 ### Changed (Landing shows the current product — `feature/21-landing-refresh`, #21)
 - The hero shows a real screenshot of the capture page instead of a drawn mockup, and the copy leads with the code-aware copilot.
 - Features are alternating rows with real screenshots (WebP, two widths, fixed dimensions, lazy below the fold): the copilot that reads the client's code and warns on contradictions, shared session links (spectator and reviewer), Jira and GitHub, creating a project from its sources, project and organization overviews, AI usage and the token allowance, and the guided first steps.
